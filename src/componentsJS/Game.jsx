@@ -3,10 +3,15 @@ import game from '../data/game';
 import { useNavigate } from 'react-router-dom';
 import '../componentsCSS/Game.css';
 
+// פונקציה שמערבבת את השאלות
+const shuffleArray = (array) => {
+  return [...array].sort(() => Math.random() - 0.5);
+};
+
 const Game = () => {
   const navigate = useNavigate();
   const [score, setScore] = useState(0);
-  const statements = Object.values(game);
+  const [statements] = useState(() => shuffleArray(Object.values(game))); // מערבבים את השאלות פעם אחת
   const [currentIndex, setCurrentIndex] = useState(0);
 
   const [dragging, setDragging] = useState(false);
@@ -14,7 +19,7 @@ const Game = () => {
   const [offset, setOffset] = useState({ x: 0, y: 0 });
 
   const [feedback, setFeedback] = useState('');
-  const [feedbackType, setFeedbackType] = useState(''); // 'correct' or 'incorrect'
+  const [feedbackType, setFeedbackType] = useState(''); 
   const [gameOver, setGameOver] = useState(false);
 
   const dragItemRef = useRef(null);
@@ -33,7 +38,7 @@ const Game = () => {
 
     if (statement.correct === isCorrectDrop) {
       setScore(prev => prev + 1);
-      setFeedback('נכון! ניקוד עולה.');
+      setFeedback('יפה ! קיבלת נקודה');
       setFeedbackType('correct');
     } else {
       setFeedback(`לא נכון.<br/>${statement.explanation}`);
@@ -68,7 +73,7 @@ const Game = () => {
     setDragPos({ x: touch.clientX, y: touch.clientY });
   };
 
-  const onTouchEnd = (e) => {
+  const onTouchEnd = () => {
     if (!dragging) return;
     if (isInside(dragPos.x, dragPos.y, correctRef.current)) {
       handleDrop(true);
@@ -150,7 +155,6 @@ const Game = () => {
             האם המאפיין משותף בין החברה הערבית לחרדית?
           </p>
 
-          {/* אזור הפידבק */}
           {feedback && (
             <div className={`feedback ${feedbackType}`}>
               <span dangerouslySetInnerHTML={{ __html: feedback }} />
@@ -213,7 +217,7 @@ const Game = () => {
             </div>
           </div>
 
-          <div className="score">
+          <div className="score-game">
             ניקוד:<br />{statements.length} / {score}
           </div>
         </>

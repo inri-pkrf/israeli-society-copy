@@ -69,11 +69,10 @@ position: relative;
     font-weight: bold;
 }
 .feedback {
-       position: fixed;
-    margin-top: 2vh;
+    position: fixed;
+    margin-top: -22vh;
     left: 50%;
     transform: translateX(-50%);
-    background-color: rgb(21 82 103);
     color: white;
     padding: 12px 20px;
     border-radius: 24px;
@@ -85,7 +84,7 @@ position: relative;
     font-size: 7vmin;
     max-width: 79vw;
     z-index: 2000;
-    height: 40vh;
+    height: 61vh;
     -webkit-user-select: none;
     user-select: none;
     text-align: center;
@@ -103,7 +102,11 @@ position: relative;
   }
   
   .feedback.incorrect {
-    font-family: "Heebo";
+    background-color: rgb(228, 39, 83);
+
+  }
+  .feedback.correct {
+    background-color: rgb(21 82 103);
 
   }
   
@@ -120,7 +123,7 @@ position: relative;
     line-height: 1;
     transition: color 0.3s ease;
   }
-  .score{
+  .score-game{
     position: fixed;
     text-align:center;
     left: 50%;

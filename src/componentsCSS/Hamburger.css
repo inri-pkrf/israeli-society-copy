@@ -21,7 +21,7 @@
 }
 .hamburger-line.open:nth-child(1) {
     background-color: white;
-    transform: rotate(45deg) translate(6px, 4px);
+    transform: rotate(45deg) translate(2px, 2px);
 }
 
 .hamburger-line.open:nth-child(2) {

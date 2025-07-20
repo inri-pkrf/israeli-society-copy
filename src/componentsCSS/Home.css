@@ -33,14 +33,15 @@ position: fixed;
 }
 
 .info1{
-    font-family: "Assistant";
-    font-size: 1.3em;
-    position: absolute;
-    right: 50%;
-    transform: translateX(50%);
-    width: 90vw;
-    margin-top: 40vh;
-    text-align: center;
+        font-family: "Assistant";
+        font-size: 1.3em;
+        position: absolute;
+        right: 50%;
+        transform: translateX(50%);
+        width: 90vw;
+        margin-top: 40vh;
+        text-align: right;
+        direction: rtl;
 
 }
 .info2{
