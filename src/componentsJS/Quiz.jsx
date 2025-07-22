@@ -129,23 +129,33 @@ const Quiz = ({ onReset }) => {
           </div>
         </div>
       ) : (
-        showMistakes ? (
+        showMistakes && score<100 ? (
           <div className="mistakes-container">
             <h2>איפה טעית?</h2>
-            {quizData.map((question, index) => {
-              const userAnswer = selectedAnswers[index];
-              const correctAnswer = question.correctAnswer;
-              const isCorrect = userAnswer === correctAnswer;
+            <div className='container-mistakes'>
+           {quizData
+          .map((question, index) => ({ question, index })) // שמירה על האינדקס המקורי
+          .filter(({ question, index }) => selectedAnswers[index] !== question.correctAnswer)
+          .map(({ question, index }) => {
+            const userAnswer = selectedAnswers[index];
+            const correctAnswer = question.correctAnswer;
 
-              return (
-                <div key={index} className={`mistake-item ${isCorrect ? 'correct' : 'wrong'}`}>
-                  <p><strong>שאלה {index + 1}:</strong> {question.question}</p>
-                  <p>❌ ענית: {userAnswer || 'לא ענית'}</p>
-                  <p>✅ תשובה נכונה: {correctAnswer}</p>
-                </div>
-              );
-            })}
-            <button onClick={() => setShowMistakes(false)} className="back-btn">חזרה לתוצאה</button>
+            return (
+              <div key={index} className="mistake-item wrong">
+                <p className="mistake-q wrong">
+                  <strong>שאלה {index + 1}:</strong> {question.question}
+                </p>
+                <p className="ans-mis"> ענית לא נכון:{userAnswer || 'לא ענית'}</p>
+                <p className="ans-mis-cor">תשובה נכונה: {correctAnswer}</p>
+              </div>
+            );
+          })}
+
+            </div>
+             <div className='container-endBtn'>
+
+            <button onClick={() => setShowMistakes(false)} className="back-btn-mis" >  חזרה למסך סיום </button>
+          </div>
           </div>
         ) : (
           <div className="results">

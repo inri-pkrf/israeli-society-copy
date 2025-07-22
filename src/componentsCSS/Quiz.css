@@ -152,21 +152,21 @@
 
 /* הודעה */
 .message {
-       color: white;
+  color: white;
     position: absolute;
     font-family: "Assistant";
     font-size: 7vmin;
-    margin-top: -4vh;
+    margin-top: -7vh;
     right: 50%;
+    width: 108vw;
     font-weight: bold;
     transform: translateX(50%);
-
     text-align: center;
 }
 
 /* שם משתמש */
 .user-name {
-font-family: "Assistant", Arial;
+  font-family: "Assistant", Arial;
     color: #ffffff;
     position: absolute;
     right: 50%;
@@ -232,30 +232,87 @@ font-family: "Assistant", Arial;
 
 }
 .mistakes-btn{
-  background-color: rgb(33, 173, 216);
-  color: white;
-  border: none;
-  border-radius: 50px;
-  padding: 10px 20px;
-  font-size: 1.2em;
-  font-family: "Heebo";
-  width: 70%;
-  margin: 2em auto;
-  cursor: pointer;
-  display: block;
+     background-color: rgb(80 131 221);
+    color: white;
+    border: none;
+    border-radius: 50px;
+    padding: 10px 20px;
+    font-size: 1.2em;
+    font-family: "Heebo";
+    width: 45%;
+    position: absolute;
+    margin: 2em auto;
+    cursor: pointer;
+    right: 28vw;
+    display: block;
+    top: 47vh;
 }
 
 /* כפתור סיום */
 .end-btn {
-  background-color: rgb(33, 173, 216);
-  color: white;
-  border: none;
-  border-radius: 50px;
-  padding: 10px 20px;
-  font-size: 1.2em;
-  font-family: "Heebo";
-  width: 70%;
-  margin: 2em auto;
-  cursor: pointer;
-  display: block;
+    background-color: rgb(33, 173, 216);
+    color: white;
+    border: none;
+    border-radius: 50px;
+    padding: 10px 20px;
+    font-size: 1.2em;
+    font-family: "Heebo";
+    width: 45%;
+    position: absolute;
+    right: 28vw;
+    top: 57vh;
+    margin: 2em auto;
+    cursor: pointer;
+    display: block;
 }
+
+.container-endBtn{
+ position: fixed;
+    top: 10vh;
+    width: 100vw;
+    background-color: white;
+    height: 10vh;
+}
+
+.container-mistakes{
+position: relative;
+    margin-top: 12vh;
+    text-align: right;
+    font-family: 'ASSISTANT';
+    width: 90vw;
+    padding-left: 4vw;
+    direction: rtl;
+}
+
+.mistake-q.wrong{
+    color: #f86363;
+    font-size: 6vmin
+}
+.mistake-q.correct{
+    color: #2b8f96;
+    font-size: 6vmin
+}
+.ans-mis{
+  font-size: 5vmin;
+}
+.ans-mis-cor{
+  font-size: 5vmin;
+  font-weight: 200;
+
+}
+
+.back-btn-mis{
+height: 6vh;
+    margin-top: 2vh;
+    padding: 10px 20px;
+    font-size: 1.2em;
+    font-family: "Heebo";
+    border: none;
+    border-radius: 50px;
+    color: white;
+    cursor: pointer;
+    background-color: rgb(33, 173, 216);
+
+}
+
+ 
