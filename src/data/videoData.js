@@ -103,7 +103,7 @@ const videoData = {
     imgSrc:`${process.env.PUBLIC_URL}/assets/imgs/cuctuseJPNG/cactusOld.png`,
     videoInfo:`צפו בסרטון הבא להסבר על ההבדלים והאתגרים לגיל השלישי ואוכלוסיה עם מוגבלויות, בסיומו, נשאל שאלות להבנה.`,
 
-    videoSrc: `${process.env.PUBLIC_URL}/assets/media/oldbVid.mp4`,
+    videoSrc: `${process.env.PUBLIC_URL}/assets/media/oldVid.mp4`,
     questions:[
       {
         question: "מהו אחד האתגרים המרכזיים בהתמודדות עם אנשים המתניידים בכיסאות גלגלים בשעת חירום?",
