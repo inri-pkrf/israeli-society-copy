@@ -17,14 +17,14 @@ import SummaryPoints from './componentsJS/SummaryPoints'
 import FinalScreen from './componentsJS/FinalScreen'
 import Quiz from './componentsJS/Quiz'
 
-// מכאן זה למצב אנכי בלבד בהמשך לטפל בזה
+// mobile only until the design is complete
 
 function useIsPortraitAndSmallScreen() {
   const [isAllowed, setIsAllowed] = React.useState(() => {
     const width = window.innerWidth;
     const height = window.innerHeight;
-    if (width > 768) return false;  // כל רוחב מעל 768 - אסור
-    return height > width;           // במכשירים קטנים - רק אנכי מותר
+    if (width > 768) return false;  
+    return height > width;           
   });
 
   React.useEffect(() => {
@@ -47,7 +47,6 @@ function useIsPortraitAndSmallScreen() {
 
 
 function App() {
-// מכאן זה למצב אנכי בלבד בהמשך לטפל בזה
   const location = useLocation();
   const allowedHorizontalPaths = ['/video-page'];
   const isAllowed = useIsPortraitAndSmallScreen();

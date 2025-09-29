@@ -1,15 +1,15 @@
 import React, { useState } from 'react';
-import SummaryCards from '../componentsJS/SummaryCards'; // ודא שהקומפוננטה קיימת
+import SummaryCards from '../componentsJS/SummaryCards';
 import '../componentsCSS/SummaryPoints.css';
 
 const SummaryPoints = () => {
   const [showCards, setShowCards] = useState(false);
 
   const handleNext = () => {
-    setShowCards(true); // מציג את הקומפוננטה של הכרטיסיות
+    setShowCards(true); 
   };
   const handleExit = () => {
-    setShowCards(false); // חוזר למסך ההסבר
+    setShowCards(false);
   };
   
   if (showCards) {

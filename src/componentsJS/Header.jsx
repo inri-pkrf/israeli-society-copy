@@ -15,20 +15,20 @@ function Header() {
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
-  // בודק אם המסלול הוא "/home", "/game" או "/test"
+
   const isSpecialPath = ['/home', '/game', '/test'].includes(location.pathname);
 
   const imageSrc = isSpecialPath
-    ? `${process.env.PUBLIC_URL}/assets/imgs/collegeLogo.png` // צבעוני
-    : `${process.env.PUBLIC_URL}/assets/imgs/whiteLogo.svg`; // לבן
+    ? `${process.env.PUBLIC_URL}/assets/imgs/collegeLogo.png` 
+    : `${process.env.PUBLIC_URL}/assets/imgs/whiteLogo.svg`; 
 
-  // אם המסלול הוא /home → NavBar בהיר, אחרת כהה
+
   const isDarkMode = !['/home', '/game', '/test'].includes(location.pathname);
 
 
   return (
     <header className={isSpecialPath ? 'header' : 'header2'}>
-      {/* תפריט ניווט - המבורגר במובייל, ניווט רגיל בדסקטופ */}
+      {/*desktop or mobile*/}
       {isMobile ? <Hamburger className="hamburger" /> : <NavBar isDark={isDarkMode} />}
 
       <img src={imageSrc} className="App-logo" alt="logo" />

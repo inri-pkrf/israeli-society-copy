@@ -3,7 +3,6 @@ import game from '../data/game';
 import { useNavigate } from 'react-router-dom';
 import '../componentsCSS/Game.css';
 
-// פונקציה שמערבבת את השאלות
 const shuffleArray = (array) => {
   return [...array].sort(() => Math.random() - 0.5);
 };
@@ -11,7 +10,7 @@ const shuffleArray = (array) => {
 const Game = () => {
   const navigate = useNavigate();
   const [score, setScore] = useState(0);
-  const [statements] = useState(() => shuffleArray(Object.values(game))); // מערבבים את השאלות פעם אחת
+  const [statements] = useState(() => shuffleArray(Object.values(game)));
   const [currentIndex, setCurrentIndex] = useState(0);
 
   const [dragging, setDragging] = useState(false);

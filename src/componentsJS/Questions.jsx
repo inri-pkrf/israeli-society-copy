@@ -7,10 +7,9 @@ const Questions = ({ questions, startPartThree, scrollContainerRef }) => {
   const [selectedAnswer, setSelectedAnswer] = useState('');
   const [completed, setCompleted] = useState(false);
   const [attempts, setAttempts] = useState(0);
-  const [feedback, setFeedback] = useState(null); // 'correct', 'wrong', or 'showAnswer'
+  const [feedback, setFeedback] = useState(null); 
 
   useEffect(() => {
-    // Shuffle and select 3 random questions
     const shuffled = [...questions].sort(() => 0.5 - Math.random());
     setRandomQuestions(shuffled.slice(0, 3));
   }, [questions]);
@@ -69,7 +68,7 @@ const Questions = ({ questions, startPartThree, scrollContainerRef }) => {
     }
   };
 
-  if (randomQuestions.length === 0) return null; // Wait until questions are ready
+  if (randomQuestions.length === 0) return null;
 
   if (completed) {
     return (

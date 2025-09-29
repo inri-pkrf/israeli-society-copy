@@ -206,8 +206,8 @@ li[style*="not-allowed"] {
         font-family: "Heebo", Arial;
         text-align: center;
         white-space: nowrap;  /* מונע מהמילים לעבור לשורה הבאה */
-        overflow: hidden;     /* מוודא שלא יגלשו מעבר לגבולות */
-        text-overflow: ellipsis; /* אם יש יותר מדי טקסט, יופיע '...' בסוף */
+        overflow: hidden;     
+        text-overflow: ellipsis; 
     }
     
     

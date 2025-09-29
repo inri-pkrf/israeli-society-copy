@@ -9,7 +9,7 @@ position: fixed;
   width: 100%;
   height: 100%;
   background-color: #ffffff;
-  z-index: 2000; /* Ensure it appears above the header */
+  z-index: 2000; 
   text-align: right;
   padding-top: 2vh;
   overflow: scroll;
@@ -84,14 +84,6 @@ position: fixed;
         box-shadow: 9px 10px 20px #323030, -3px -3px 5px rgba(255, 255, 255, 0.2);
 }
 
-
-
-
-
-
-
-
-
 .pakar-logo{
  position: absolute;
         height: 7vh;
@@ -116,8 +108,6 @@ position: fixed;
     margin-top: 2vh;
     right: 5%;
 }
-
-
 
 .credits{
     font-family: 'Assistant';
@@ -162,12 +152,6 @@ position: fixed;
 
 
 }
-
-
-
-
-
-
 
 .tzahi-button {
     border: none;
@@ -242,16 +226,13 @@ position: fixed;
           width: 100%;
           height: 100%;
           background-color: #ffffff;
-          z-index: 2000; /* Ensure it appears above the header */
+          z-index: 2000;
           text-align: right;
           padding-top: 2vh;
           overflow: scroll;
           direction: rtl;
         }
-        
-        
-        
-        
+    
         .home-title{
             font-family: "karantina";
             font-size: 5em;
@@ -297,13 +278,6 @@ position: fixed;
             box-shadow: 9px 10px 20px #323030, -3px -3px 5px rgba(255, 255, 255, 0.2);
         }
         
-        
-        
-        
-        
-        
-        
-        
         .pakar-logo{
             position: absolute;
             height: 10vh;
@@ -319,8 +293,6 @@ position: fixed;
             margin-top: 6vh;
         }
         
-        
-        
         .collage-logo{
             position: absolute;
             height: 10vh;
@@ -328,8 +300,6 @@ position: fixed;
             margin-top: 5vh;
             right: 20%;
         }
-        
-        
         
         .credits{
             font-family: 'Assistant';
@@ -354,6 +324,7 @@ position: fixed;
             direction: rtl;
             font-family: "Assistant";
         }
+
         .bold-text{
             position: absolute;
             text-align: right;
@@ -369,14 +340,7 @@ position: fixed;
             right: 67vw;
             font-size: 1.1em;
             color: rgb(86, 85, 85);
-        
-        
-        
         }
-        
-        
-        
-    
         
         .feedback{
             position: absolute;
@@ -422,9 +386,7 @@ position: fixed;
             width: 100vw;
             z-index: 100;
         }
-
 }
-
 
 @media screen and (min-width: 1025px) {
  
@@ -435,15 +397,12 @@ position: fixed;
           width: 100%;
           height: 100%;
           background-color: #ffffff;
-          z-index: 2000; /* Ensure it appears above the header */
+          z-index: 2000; 
           text-align: right;
           padding-top: 2vh;
           overflow: scroll;
           direction: rtl;
         }
-        
-        
-        
         
         .home-title{
             font-family: "karantina";
@@ -494,12 +453,6 @@ position: fixed;
 
         }
         
-        
-        
-        
-        
-        
-        
         .pakar-logo{
             position: absolute;
             height: 13vh;
@@ -515,8 +468,6 @@ position: fixed;
             margin-top: 6vh;
         }
         
-        
-        
         .collage-logo{
             position: absolute;
             height: 14vh;
@@ -524,7 +475,6 @@ position: fixed;
             margin-top: 5vh;
             right: 20%;
         }
-        
         
         
         .credits{
@@ -565,14 +515,7 @@ position: fixed;
             right: 67vw;
             font-size: 1.1em;
             color: rgb(86, 85, 85);
-        
-        
-        
         }
-        
-        
-        
-    
         
         .feedback{
             position: absolute;
@@ -618,5 +561,4 @@ position: fixed;
             width: 100vw;
             z-index: 100;
         }
-
 }

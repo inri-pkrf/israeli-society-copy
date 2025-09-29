@@ -36,14 +36,10 @@ const Menu = () => {
       setIsDesktop(window.innerWidth > 768);
     };
 
-    handleResize(); // Run once at start
+    handleResize();
     window.addEventListener('resize', handleResize);
     return () => window.removeEventListener('resize', handleResize);
   }, []);
-
-  const handleClick = () => {
-    setIsOpen(!isOpen);
-  };
 
   const toggleDropdown = (path) => {
     setOpenDropdown((prev) => ({
@@ -163,7 +159,7 @@ const Menu = () => {
                 )}
               </div>
 
-              {/* תתי הנושאים מוצגים אם במחשב או אם בחרנו לפתוח בטלפון */}
+              {/* start of desktop design*/}
               {(isDesktop || openDropdown[part.path]) && part.subtopics.length > 0 && (
                 <ul className="submenu-list-home">
                   {part.subtopics.map((subtopic, subIndex) => (

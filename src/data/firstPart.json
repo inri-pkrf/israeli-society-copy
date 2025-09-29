@@ -32,12 +32,6 @@
         "id":5,
         "podcastSrc":"${process.env.PUBLIC_URL}/assets/media/part1.mp3",
         "animationVideo":"${process.env.PUBLIC_URL}/assets/media/part1.mp4"
-       
     }
-  
-
-
-
-
   }
   

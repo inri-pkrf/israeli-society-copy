@@ -5,7 +5,7 @@ const VideoPageStep2 = ({ videoSrc, videoInfo, onNextStep }) => {
 
   const goToNextStep = () => {
     if (onNextStep) {
-      onNextStep(); // פשוט מעביר סיגנל לאב
+      onNextStep(); 
     }
   };
 

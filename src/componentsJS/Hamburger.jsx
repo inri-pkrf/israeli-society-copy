@@ -61,7 +61,7 @@ const Hamburger = () => {
     }
   };
 
-  // תמיד בודק מהsessionStorage
+
   const pressedButtons = (() => {
     const raw = sessionStorage.getItem('pressedButtons');
     return raw ? JSON.parse(raw) : { dos: false, arab: false, old: false };

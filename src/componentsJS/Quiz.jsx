@@ -134,7 +134,7 @@ const Quiz = ({ onReset }) => {
             <h2>איפה טעית?</h2>
             <div className='container-mistakes'>
            {quizData
-          .map((question, index) => ({ question, index })) // שמירה על האינדקס המקורי
+          .map((question, index) => ({ question, index }))
           .filter(({ question, index }) => selectedAnswers[index] !== question.correctAnswer)
           .map(({ question, index }) => {
             const userAnswer = selectedAnswers[index];

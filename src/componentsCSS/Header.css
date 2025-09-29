@@ -42,8 +42,8 @@
   .right-logo-link {
     position: fixed;
     top: 10px;
-    left: 10px; /* Positioning the icon to the left */
-    cursor: pointer; /* Change cursor to pointer */
+    left: 10px;
+    cursor: pointer; 
   }
   
   .decorative-photo {
@@ -79,7 +79,7 @@
   width: 100%;
   height: 10vh;
   z-index: 10000;
-  background-image: linear-gradient(to right, /* כיוון: משמאל לימין */ #14286d,#14286d,#22396f, #435b81 /* או כל צבע משלים */);
+  background-image: linear-gradient(to right,  #14286d,#14286d,#22396f, #435b81 );
  }
   
   .App-logo {
@@ -106,8 +106,8 @@
   .right-logo-link {
     position: fixed;
     top: 10px;
-    left: 10px; /* Positioning the icon to the left */
-    cursor: pointer; /* Change cursor to pointer */
+    left: 10px; 
+    cursor: pointer; 
   }
   
   .decorative-photo {
@@ -144,7 +144,7 @@
     width: 100%;
     height: 10vh;
     z-index: 10000;
-    background-image: linear-gradient(to right, /* כיוון: משמאל לימין */ #14286d,#14286d,#22396f, #435b81 /* או כל צבע משלים */);
+    background-image: linear-gradient(to right,  #14286d,#14286d,#22396f, #435b81 /* או כל צבע משלים */);
    }
     
     .App-logo {
@@ -171,8 +171,8 @@
     .right-logo-link {
       position: fixed;
       top: 10px;
-      left: 10px; /* Positioning the icon to the left */
-      cursor: pointer; /* Change cursor to pointer */
+      left: 10px; 
+      cursor: pointer;
     }
     
     .decorative-photo {

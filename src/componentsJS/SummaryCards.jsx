@@ -15,23 +15,21 @@ const SummaryCards = ({ onExitToSummary }) => {
     if (currentIndex < cardKeys.length - 1) {
       setCurrentIndex(currentIndex + 1);
     } else {
-      navigate('/final-screen'); // ניתוב למסך הסיום
+      navigate('/final-screen'); 
     }
   };
-  
-
   const handlePrev = () => {
     if (currentIndex > 0) {
       setCurrentIndex(currentIndex - 1);
     } else {
       if (onExitToSummary) {
-        onExitToSummary(); // שולח אירוע לקומפוננטת האב
+        onExitToSummary(); 
       }
     }
   };
   const GoBack = () => {
     if (onExitToSummary) {
-      onExitToSummary(); // חוזר למסך ההסבר
+      onExitToSummary(); 
     }
   };
   

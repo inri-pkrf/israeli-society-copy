@@ -46,7 +46,7 @@ const VideoPage = () => {
           <Questions
             questions={companyData.questions}
             startPartThree={goToPartThree}
-            scrollContainerRef={videoPageRef} // <<<<<< הוספה
+            scrollContainerRef={videoPageRef} 
           />
         </div>
       )}

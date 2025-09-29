@@ -44,22 +44,17 @@ function NavBar({ isDark = false }) {
   const handleClick = (item) => {
     if (item.locked) return;
 
-    // אם יש פרומפט -> עבור לדף וידאו
     if (item.prompt) {
       if (item.prompt === 'החברה החרדית') handlePress('dos', item.prompt);
       if (item.prompt === 'החברה הערבית') handlePress('arab', item.prompt);
       if (item.prompt === 'מוגבלויות והגיל השלישי') handlePress('old', item.prompt);
     }
 
-    // אחרת ניווט רגיל
     else if (item.path) {
       navigate(item.path);
     }
-
-    // סגור תפריטים
     setOpenDropdown({});
 
-    // עדכון דפים שנצפו
     if (item.path && !visitedPages.includes(item.path)) {
       const updatedPages = [...visitedPages, item.path];
       setVisitedPages(updatedPages);
