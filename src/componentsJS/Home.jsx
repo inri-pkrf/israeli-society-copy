@@ -29,7 +29,7 @@ const Home = () => {
 
  </p>
  
- <button className='home-button' onClick={goToMenu}>קדימה מתחילים</button>
+ <button className='home-button' onClick={goToMenu}>קדימה להתחלה</button>
 
 <div className='greeting-div'>
        <img
