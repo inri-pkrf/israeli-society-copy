@@ -13,7 +13,7 @@ const Home = () => {
 
   return (
     <div className="homepage-container">
-      <h1 className='home-title'>  ברוכים הבאים והבאות   <br></br>לשיעור הדיגיטלי על החברה הישראלית
+      <h1 className='home-title'>  ברוכים וברוכות הבאים והבאות   <br></br>לשיעור הדיגיטלי על החברה הישראלית
 
  </h1>
  <p className="info1">
