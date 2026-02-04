@@ -36,6 +36,8 @@ const VideoPage = () => {
           className="video-componnet"
           videoSrc={companyData.videoSrc}
           videoInfo={companyData.videoInfo}
+          textContent={companyData.textContent}
+          titleContent={companyData.titleContent}
           onNextStep={handleNextStep}
         />
       ) : (
