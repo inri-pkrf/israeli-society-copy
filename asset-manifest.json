@@ -1,21 +1,21 @@
 {
   "files": {
-    "main.css": "/israeli-society/static/css/main.1d07805f.css",
-    "main.js": "/israeli-society/static/js/main.6e8aac1e.js",
-    "static/js/453.6a2e03c8.chunk.js": "/israeli-society/static/js/453.6a2e03c8.chunk.js",
-    "static/media/Bg4.png": "/israeli-society/static/media/Bg4.c663d97e084be0f14323.png",
-    "static/media/Bg5.png": "/israeli-society/static/media/Bg5.456b8645dc4a56540d4c.png",
-    "static/media/Bg2.png": "/israeli-society/static/media/Bg2.866de4557859667c4d73.png",
-    "static/media/Bg1.png": "/israeli-society/static/media/Bg1.ac9f9c75b406e10ae608.png",
-    "static/media/Bg3.jpg": "/israeli-society/static/media/Bg3.1a978dc904a71df35bb9.jpg",
-    "static/media/Bg2.jpg": "/israeli-society/static/media/Bg2.de20226800bbbdc0afc9.jpg",
-    "index.html": "/israeli-society/index.html",
-    "main.1d07805f.css.map": "/israeli-society/static/css/main.1d07805f.css.map",
-    "main.6e8aac1e.js.map": "/israeli-society/static/js/main.6e8aac1e.js.map",
-    "453.6a2e03c8.chunk.js.map": "/israeli-society/static/js/453.6a2e03c8.chunk.js.map"
+    "main.css": "/israeli-society-copy/static/css/main.7a492c51.css",
+    "main.js": "/israeli-society-copy/static/js/main.0f8c325a.js",
+    "static/js/453.6a2e03c8.chunk.js": "/israeli-society-copy/static/js/453.6a2e03c8.chunk.js",
+    "static/media/Bg4.png": "/israeli-society-copy/static/media/Bg4.c663d97e084be0f14323.png",
+    "static/media/Bg5.png": "/israeli-society-copy/static/media/Bg5.456b8645dc4a56540d4c.png",
+    "static/media/Bg2.png": "/israeli-society-copy/static/media/Bg2.866de4557859667c4d73.png",
+    "static/media/Bg1.png": "/israeli-society-copy/static/media/Bg1.ac9f9c75b406e10ae608.png",
+    "static/media/Bg3.jpg": "/israeli-society-copy/static/media/Bg3.1a978dc904a71df35bb9.jpg",
+    "static/media/Bg2.jpg": "/israeli-society-copy/static/media/Bg2.de20226800bbbdc0afc9.jpg",
+    "index.html": "/israeli-society-copy/index.html",
+    "main.7a492c51.css.map": "/israeli-society-copy/static/css/main.7a492c51.css.map",
+    "main.0f8c325a.js.map": "/israeli-society-copy/static/js/main.0f8c325a.js.map",
+    "453.6a2e03c8.chunk.js.map": "/israeli-society-copy/static/js/453.6a2e03c8.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.1d07805f.css",
-    "static/js/main.6e8aac1e.js"
+    "static/css/main.7a492c51.css",
+    "static/js/main.0f8c325a.js"
   ]
 }
