@@ -9,7 +9,7 @@ import PartOne from './componentsJS/PartOne';
 import PartTwo from './componentsJS/PartTwo';
 import PartThree from './componentsJS/PartThree';
 import PartTwoSub from './componentsJS/PartTwoSub';
-import VideoPage from './componentsJS/VideoPage ';
+import VideoPage from './componentsJS/VideoPage';
 import GameIntro from './componentsJS/GameIntro';
 import GameExplaine from './componentsJS/GameExplaine';
 import Game from './componentsJS/Game'
