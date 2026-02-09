@@ -16,6 +16,8 @@ import Game from './componentsJS/Game'
 import SummaryPoints from './componentsJS/SummaryPoints'
 import FinalScreen from './componentsJS/FinalScreen'
 import Quiz from './componentsJS/Quiz'
+import TrueOrFalseGame from './componentsJS/TrueOrFalseGame'
+
 
 // mobile only until the design is complete
 
@@ -78,6 +80,7 @@ function App() {
         <Route path="/summary-points" element={<SummaryPoints/>} />
         <Route path="/final-screen" element={<FinalScreen/>} />
         <Route path="/test" element={<Quiz/>} />
+        <Route path="/TrueOrFalseGame" element={<TrueOrFalseGame/>} />
 
 
         </Routes>
