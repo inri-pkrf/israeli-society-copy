@@ -1,10 +1,24 @@
 import React, { useState, useRef } from 'react';
-import { useLocation } from 'react-router-dom';
 import '../componentsCSS/VideoPageStep2.css';
 import '../componentsCSS/TrueOrFalseGame.css';
 import trueFalseData from '../data/trueFalseData';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 const TrueOrFalseGame = () => {
+
+  const navigate = useNavigate();
+
+  const handleNextPage = () => {
+    if (prompt === 'החברה החרדית') {
+      navigate('/haredi-page'); // כתובת העמוד של החברה החרדית
+    } else if (prompt === 'החברה הערבית') {
+      navigate('/arab-page'); // כתובת העמוד של החברה הערבית
+    } else if (prompt === 'מוגבלויות והגיל השלישי') {
+      navigate('/elderly-page'); // כתובת העמוד של גיל השלישי ומוגבלויות
+    } else {
+      navigate('/'); // ברירת מחדל
+    }
+  };
 
   const location = useLocation();
   const sessionPrompt = sessionStorage.getItem('currentPrompt');
@@ -123,6 +137,10 @@ const TrueOrFalseGame = () => {
           {locked && currentQuestion === questions.length - 1 && (
             <div style={{ marginTop: '10px', fontWeight: 'bold' }}>
               סיימת את כל השאלות 🎉
+            <br />
+            <button className="tf-reset" onClick={handleNextPage} style={{ marginTop: '10px' }}>
+              המשך לעמוד הבא
+            </button>
             </div>
           )}
         </div>
