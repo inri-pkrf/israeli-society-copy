@@ -1,91 +1,22 @@
 import React, { useState, useRef } from 'react';
+import { useLocation } from 'react-router-dom';
 import '../componentsCSS/VideoPageStep2.css';
 import '../componentsCSS/TrueOrFalseGame.css';
+import trueFalseData from '../data/trueFalseData';
 
 const TrueOrFalseGame = () => {
 
-const questions = [
-  { 
-    statement: 'רוב החרדים גרים בירושלים ובבני ברק', 
-    correct: 'true',
-    feedback: {
-      correct: 'נכון! רוב החרדים מרוכזים בירושלים ובבני ברק.',
-      wrong: 'לא נכון. רוב החרדים אכן גרים בירושלים ובבני ברק.'
-    }
-  },
-  { 
-    statement: 'כל החרדים מתנגדים ללימודי ליבה', 
-    correct: 'false',
-    feedback: {
-      correct: 'נכון! לא כל החרדים מתנגדים ללימודי ליבה – יש קהילות שמקדמות לימודים כלליים.',
-      wrong: 'לא נכון. יש חרדים שלומדים גם לימודי ליבה.'
-    }
-  },
-  { 
-    statement: 'החברה החרדית מגוונת ומורכבת מתתי-קהילות שונות', 
-    correct: 'true',
-    feedback: {
-      correct: 'נכון! יש מגוון של תתי-קהילות בחברה החרדית.',
-      wrong: 'לא נכון. החברה החרדית אכן מורכבת מקבוצות ותתי-קהילות שונות.'
-    }
-  },
-  { 
-    statement: 'כל הגברים החרדים אינם עובדים כלל', 
-    correct: 'false',
-    feedback: {
-      correct: 'נכון! לא כל הגברים החרדים אינם עובדים – רבים עובדים במגוון תחומים.',
-      wrong: 'לא נכון. ישנם גברים חרדים רבים שעובדים.'
-    }
-  },
-  { 
-    statement: 'החברה החרדית מונה מעל מיליון איש בישראל', 
-    correct: 'true',
-    feedback: {
-      correct: 'נכון! האוכלוסייה החרדית בישראל מונה מעל מיליון איש.',
-      wrong: 'לא נכון. מספר החרדים בישראל אכן מעל מיליון.'
-    }
-  },
-  { 
-    statement: 'כל החרדים לובשים אותו לבוש בדיוק', 
-    correct: 'false',
-    feedback: {
-      correct: 'נכון! יש הבדלים בלבוש בין הקבוצות השונות בחברה החרדית.',
-      wrong: 'לא נכון. לא כל החרדים לובשים את אותו הלבוש.'
-    }
-  },
-  { 
-    statement: 'יש זרמים שונים בתוך החברה החרדית', 
-    correct: 'true',
-    feedback: {
-      correct: 'נכון! קיימים מספר זרמים בחברה החרדית כמו חסידים, ליטאים, ספרדים ועוד.',
-      wrong: 'לא נכון. קיימים זרמים שונים בתוך החברה החרדית.'
-    }
-  },
-  { 
-    statement: 'כל הנשים החרדיות אינן עובדות', 
-    correct: 'false',
-    feedback: {
-      correct: 'נכון! נשים רבות בחברה החרדית משתלבות בשוק העבודה.',
-      wrong: 'לא נכון. יש נשים חרדיות רבות שעובדות.'
-    }
-  },
-  { 
-    statement: 'הילודה בחברה החרדית גבוהה מהממוצע בישראל', 
-    correct: 'true',
-    feedback: {
-      correct: 'נכון! שיעור הילודה בחברה החרדית גבוה מהממוצע הארצי.',
-      wrong: 'לא נכון. הילודה בחברה החרדית אכן גבוהה מהממוצע.'
-    }
-  },
-  { 
-    statement: 'החברה החרדית אינה משתתפת כלל בפוליטיקה', 
-    correct: 'false',
-    feedback: {
-      correct: 'נכון! החרדים משתתפים בפוליטיקה בישראל דרך מפלגות ייצוגיות.',
-      wrong: 'לא נכון. החברה החרדית פעילה גם בפוליטיקה.'
-    }
-  }
-];
+  const location = useLocation();
+  const sessionPrompt = sessionStorage.getItem('currentPrompt');
+  const prompt = location.state?.prompt || sessionPrompt || 'החברה החרדית';
+  const questions = trueFalseData[prompt] || trueFalseData['החברה החרדית'];
+
+  const cactusMap = {
+    'החברה החרדית': 'cactusDos.png',
+    'החברה הערבית': 'cactusArab.png',
+    'מוגבלויות והגיל השלישי': 'cactusOld.png'
+  };
+  const cactusSrc = `${process.env.PUBLIC_URL}/assets/imgs/cuctuseJPNG/${cactusMap[prompt] || 'cactusDos.png'}`;
 
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [value, setValue] = useState(50);
@@ -127,12 +58,12 @@ const questions = [
 
       <img
         className="cactus-img"
-        src={`${process.env.PUBLIC_URL}/assets/imgs/cuctuseJPNG/cactusDos.png`}
-        alt="cactus"
+        src={cactusSrc}
+        alt={prompt}
       />
 
       <div className="circle-div-video">
-        <h1 className="page-title-video">החברה החרדית</h1>
+        <h1 className="page-title-video">{prompt}</h1>
       </div>
 
       <div id="true-false-text2">

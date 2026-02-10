@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import '../componentsCSS/VideoPage.css';
 import secondPart from '../data/videoData';
@@ -13,6 +13,11 @@ const VideoPage = () => {
   const videoPageRef = useRef(null); // <<<<<< הוספה
 
   const prompt = location.state?.prompt;
+  useEffect(() => {
+    if (prompt) {
+      sessionStorage.setItem('currentPrompt', prompt);
+    }
+  }, [prompt]);
   const [showQuestions, setShowQuestions] = useState(false);
   const [showInterlude, setShowInterlude] = useState(false);
 
