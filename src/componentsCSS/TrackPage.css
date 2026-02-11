@@ -1,0 +1,127 @@
+#TrackPage {
+  position: relative;
+  top: 10vh;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-image: url("/public/assets/imgs/Bg2.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  direction: rtl;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+
+/* מיכל העיגולים */
+.track-container {
+  position: relative;
+  width: 100%;
+  height: 60vh;
+}
+
+/* עיגולים */
+.track-circle {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: #d8d8d8;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18vmin;
+  font-weight: bold;
+  cursor: pointer;
+  position: absolute;
+  transition: 0.3s;
+  font-family: "karantina";
+  font-weight: lighter;
+}
+
+/* מיקומים ידניים כמו בתמונה */
+.track-circle:nth-child(1) { top: 5%; left: 65%; background:#9fd18b; }
+.track-circle:nth-child(2) { top: 20%; left: 10%; background:#f0d57a; }
+.track-circle:nth-child(3) { top: 30%; left: 50%; background:#e8c79c; }
+.track-circle:nth-child(4) { top: 60%; left: 40%; background:#d88c8c; }
+.track-circle:nth-child(5) { top: 80%; left: 10%; background:#d46f5e; }
+.track-circle:nth-child(6) { top: 80%; left: 65%; background:#9baeee; }
+
+/* נעול */
+.locked {
+  opacity: 0.4;
+  pointer-events: none;
+}
+
+/* הושלם */
+.completed {
+  transform: scale(1.1);
+}
+
+/* תיבת קריאה */
+.reading-box {
+  width: 80%;
+  margin: 20px auto;
+  background: white;
+  padding: 20px;
+  border-radius: 12px;
+  text-align: center;
+  z-index: 10;
+}
+
+/* כפתור המשך */
+.next-button {
+  display: block;
+  margin: 20px auto;
+  padding: 12px 40px;
+  font-size: 18px;
+  border: none;
+  background: #2f2f6f;
+  color: white;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+#circle-text {
+    font-family: "heebo";
+    font-size: 1.5em;
+}
+
+.track-circle {
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  background: #d8d8d8;
+  display: flex;
+  flex-direction: column; /* מספר מעל הטקסט */
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  cursor: pointer;
+  position: absolute;
+  transition: 0.3s;
+}
+
+.circle-number {
+  font-size: 18vmin;
+  position: absolute;
+  top: -10%;
+  left: 90%;
+  font-weight: lighter;
+}
+
+.circle-text {
+  font-size: 4vmin; /* גודל קטן יותר מהמספר */
+  font-weight: normal;
+  text-align: center;
+  margin-top: 2px;
+  font-family: 'heebo';
+  width: 80%;
+}
+
+#rode-img {
+    position: absolute;
+    width: 80vw;
+    height: auto;
+    top: 38%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
