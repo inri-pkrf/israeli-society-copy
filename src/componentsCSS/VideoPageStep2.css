@@ -27,6 +27,11 @@
     margin-top:110%;
 }
 
+/* smaller top spacing for society pages so title/cactus appear near top */
+.video-step2.society .video-info2{
+    margin-top: 3vh;
+}
+
 .next-step-button-2{
     margin-top: 5vh;
     padding: 0.6rem 1.6rem;
@@ -98,6 +103,10 @@
         margin-top: 3vh;
     }
 
+    .video-step2.society .video-info2{
+        margin-top: 2vh;
+    }
+
    
     
 
@@ -156,6 +165,10 @@
         color: #535353;
         text-align: center;
         margin-top: 3vh;
+    }
+
+    .video-step2.society .video-info2{
+        margin-top: 1.5vh;
     }
 
    
@@ -252,4 +265,22 @@
         #text-container{ padding-bottom: calc(3.6vmax + 2vmax); }
     }
 
-  
+  /* העטיפה הראשית */
+.video-step2 {
+  position: relative;
+  min-height: 100vh;
+}
+
+/* וידאו – קצת יותר למעלה */
+.video-play {
+  position: absolute;
+  margin-top: 20vh;  
+  z-index: 2;
+}
+
+/* הכפתור */
+.next-step-button-2 {
+  position: relative;   /* לא absolute */
+  z-index: 5;
+  cursor: pointer;
+}

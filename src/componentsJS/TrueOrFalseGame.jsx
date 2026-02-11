@@ -2,6 +2,7 @@ import React, { useState, useRef } from 'react';
 import '../componentsCSS/VideoPageStep2.css';
 import '../componentsCSS/TrueOrFalseGame.css';
 import trueFalseData from '../data/trueFalseData';
+import videoData from '../data/videoData';
 import { useLocation, useNavigate } from 'react-router-dom';
 
 const TrueOrFalseGame = () => {
@@ -9,14 +10,23 @@ const TrueOrFalseGame = () => {
   const navigate = useNavigate();
 
   const handleNextPage = () => {
+    const company = videoData[prompt] || videoData['החברה החרדית'];
+    const state = {
+      videoSrc: company.videoSrc,
+      videoInfo: company.videoInfo,
+      titleContent: company.titleContent,
+      textContent: company.textContent,
+      slides: company.slides,
+    };
+
     if (prompt === 'החברה החרדית') {
-      navigate('/haredi-page'); // כתובת העמוד של החברה החרדית
+      navigate('/haredi-page', { state });
     } else if (prompt === 'החברה הערבית') {
-      navigate('/arab-page'); // כתובת העמוד של החברה הערבית
+      navigate('/arab-page', { state });
     } else if (prompt === 'מוגבלויות והגיל השלישי') {
-      navigate('/elderly-page'); // כתובת העמוד של גיל השלישי ומוגבלויות
+      navigate('/elderly-page', { state });
     } else {
-      navigate('/'); // ברירת מחדל
+      navigate('/', { state });
     }
   };
 

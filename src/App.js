@@ -17,7 +17,10 @@ import SummaryPoints from './componentsJS/SummaryPoints'
 import FinalScreen from './componentsJS/FinalScreen'
 import Quiz from './componentsJS/Quiz'
 import TrueOrFalseGame from './componentsJS/TrueOrFalseGame'
-
+import HarediPage from './componentsJS/HarediPage'
+import ArabPage from './componentsJS/ArabPage'
+import ElderlyPage from './componentsJS/ElderlyPage'
+import TrackPage from './componentsJS/TrackPage';
 
 // mobile only until the design is complete
 
@@ -73,6 +76,9 @@ function App() {
         <Route path="/part-two" element={<PartTwo />} />
         <Route path="/subChosing" element={<PartTwoSub />} />
         <Route path="/video-page" element={<VideoPage />} />
+        <Route path="/haredi-page" element={<HarediPage />} />
+        <Route path="/arab-page" element={<ArabPage />} />
+        <Route path="/elderly-page" element={<ElderlyPage />} />
         <Route path="/part-three" element={<PartThree />} />
         <Route path="/game-intro" element={<GameIntro />} />
         <Route path="/game-explain" element={<GameExplaine />} />
@@ -81,6 +87,7 @@ function App() {
         <Route path="/final-screen" element={<FinalScreen/>} />
         <Route path="/test" element={<Quiz/>} />
         <Route path="/TrueOrFalseGame" element={<TrueOrFalseGame/>} />
+        <Route path="/TrackPage" element={<TrackPage />} />
 
 
         </Routes>
