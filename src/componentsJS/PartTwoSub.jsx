@@ -21,7 +21,7 @@ const PartTwoSub = () => {
     const updated = { ...pressedButtons, [key]: true };
     setPressedButtons(updated);
     sessionStorage.setItem('pressedButtons', JSON.stringify(updated));
-    navigate('/video-page', { state: { prompt: promptText } }); // מעבר עם פרומפט
+    navigate('/introduction-to-society', { state: { prompt: promptText } }); // מעבר לעמוד ההקדמה עם פרומפט
   };
 
   const allPressed = Object.values(pressedButtons).every(Boolean);

@@ -1,196 +1,132 @@
+/* Text headline */
 #true-false-text2 {
-    z-index: 30;
-    width: 90vw;
-    text-align: center;
-    color: #003561;
-    margin-top: 35%;
+  z-index: 30;
+  width: 90vw;
+  text-align: center;
+  color: #003561; /* צבע טקסט כחול כהה */
+  margin: 6vmin auto 0;
+  font-family: "heebo";
+  font-size: 4.5vmin;
 }
+
+/* Game container */
 
 #true-false-game {
-    width: 90vw;
-    max-width: 720px;
-    margin: 0 auto;
-    text-align: center;
-    position: relative;
-    z-index: 20;
-    background: transparent;
+  width: 90vw;
+  max-width: 92vmin;
+  margin: 20vmin auto 0;
+  text-align: center;
+  position: relative;
+  z-index: 20;
+  background: transparent;
 }
 
-@media screen and (min-width: 769px) {
-    #true-false-game {
-        margin-top: 20vh;
-        max-width: 900px;
-    }
-}
-
-@media screen and (min-width: 1025px) {
-    #true-false-game {
-        margin-top: 12vh;
-    }
-}
-
-.text-bold {
-    font-size: 4.6vmin;
-    color: #003561;
-}
-
+/* Progress pill */
 .tf-progress {
-    position: relative;
-    background: #EEEEEE;
-    display: inline-block;
-    padding: 6px 10px;
-    border-radius: 12px;
-    right: 35%;
-    transform: translateX(-50%);
+  position: relative;
+  background: #EEEEEE; /* אפור בהיר */
+  display: inline-block;
+  padding: 1.2vmin 2.2vmin;
+  border-radius: 2.6vmin;
+  font-size: 4vmin;
 }
 
-
+/* Statement card */
 .tf-statement {
-    background: #EEEEEE;
-    border-radius: 12px;
-    padding: 2vh 2vw;
-    min-height: 72px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: #1f2937;
-    margin: 1.4vh 0;
-    box-shadow: 0 6px 18px rgba(17, 24, 39, 0.03);
+  background: #EEEEEE; /* אפור בהיר */
+  border-radius: 2.6vmin;
+  padding: 3vmin 3.5vmin;
+  min-height: 12vmin;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #1f2937; /* אפור כהה */
+  margin: 2.2vmin 0;
+  box-shadow: 0 6px 18px rgba(17, 24, 39, 0.03);
+  font-size: 4.5vmin;
 }
 
-.tf-label {
-    margin-bottom: 2vh;
+/* Statement card – correct/wrong */
+.tf-statement.correct {
+  border: 0.4vmin solid #7DE498; /* ירוק בהיר */
+  background-color: rgba(5, 150, 105, 0.2); /* ירוק חצי שקוף */
 }
 
+.tf-statement.wrong {
+  border: 0.4vmin solid #F87D87; /* ורוד/אדום */
+  background-color: rgba(248, 125, 135, 0.2);
+}
+
+/* Slider row */
 .tf-slider-wrap {
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 2vw;
-    margin: 2vh 0 4vh 0;
-    padding: 2vh 0 0 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 3vmin;
+  margin: 3vmin 0 5vmin 0;
 }
 
 .label-left,
 .label-right {
-    width: 20%;
-    color: #9ca3af;
-    font-weight: 700;
+  width: 20%;
+  font-weight: 700;
+  font-size: 5vmin;
 }
 
-.label-left.active {
-    color: #e11d48;
-}
+.label-left { color: #ef4444; } /* אדום */
+.label-right { color: #059669; } /* ירוק */
 
-.label-right.active {
-    color: #059669;
-}
-
+/* Range slider */
 .tf-range {
-    -webkit-appearance: none;
-    width: 60%;
-    height: 16px;
-    border-radius: 8px;
-    background: #d1d5db;
-    outline: none;
-    margin: 0 1vw;
+  -webkit-appearance: none;
+  width: 60%;
+  height: 2.6vmin;
+  border-radius: 2vmin;
+  background: #d1d5db; /* אפור בינוני */
+  outline: none;
 }
 
 .tf-range::-webkit-slider-thumb {
-    -webkit-appearance: none;
-    appearance: none;
-    width: 36px;
-    height: 36px;
-    border-radius: 50%;
-    background: #9ca3af;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.12);
-    transform: translateY(-10%);
+  -webkit-appearance: none;
+  width: 6vmin;
+  height: 6vmin;
+  max-width: 44px;
+  max-height: 44px;
+  border-radius: 50%;
+  background: #9ca3af; /* אפור כהה */
+  box-shadow: 0 4px 10px rgba(0,0,0,0.12);
 }
 
-.tf-range.correct::-webkit-slider-thumb {
-    background: #10b981;
-}
+.tf-range.left-selected::-webkit-slider-thumb { background: #ef4444; } /* אדום */
+.tf-range.right-selected::-webkit-slider-thumb { background: #059669; } /* ירוק */
 
-.tf-range.wrong::-webkit-slider-thumb {
-    background: #ef4444;
-}
-
+/* Result text */
 .tf-result {
-    font-weight: 700;
-    margin-top: 1vh;
-    position: absolute;
-    right: 50%;
-    transform: translateX(50%);
-    top: 100%;
+  font-weight: 700;
+  margin-top: 2vmin;
+  font-size: 5vmin;
 }
 
-.tf-result.correct {
-    color: #059669;
-}
+.tf-result.correct { color: #059669; } /* ירוק */
+.tf-result.wrong { color: #ef4444; } /* אדום */
 
-.tf-result.wrong {
-    color: #ef4444;
-}
-
-.tf-statement.correct {
-    border: 1px solid #7DE498;
-    background-color: rgba(5, 150, 105, 0.2);
-}
-
-.tf-statement.wrong {
-    border: 1px solid #F87D87;
-    background-color: #F87D87;
-    background-color: rgba(248, 125, 135, 0.2); /* אדום עם שקיפות 40% */
-
-}
-
-.tf-actions {
-    margin-top: 2vh;
-}
+/* Actions container */
+.tf-actions { margin-top: 4vmin; }
 
 .tf-reset {
-    background: #1bbfe5;
-    color: white;
-    border: none;
-    padding: 8px 16px;
-    border-radius: 20px;
-    display: inline-block;
-    position: absolute;
-    right: 50%;
-    transform: translateX(50%);
-    top: 120%;
+  background: #1bbfe5; /* תכלת */
+  color: white;
+  border: none;
+  padding: 3vmin 3.2vmin;
+  border-radius: 20px;
+  font-size: 5vmin;
 }
 
-#text-bold {
-    font-weight: bold;
+/* Media queries – נשארים רק למיקומים/רוחבים */
+@media screen and (min-width: 769px) {
+  #true-false-game { margin-top: 6vmin; max-width: 110vmin; }
 }
 
-.label-left {
-    width: 20%;
-    font-weight: 700;
-    color: #ef4444; /* תמיד אדום */
-}
-
-.label-right {
-    width: 20%;
-    font-weight: 700;
-    color: #059669; /* תמיד ירוק */
-}
-
-.tf-range.left-selected::-webkit-slider-thumb {
-    background: #ef4444; /* אדום */
-}
-
-.tf-range.right-selected::-webkit-slider-thumb {
-    background: #059669; /* ירוק */
-}
-
-/* Firefox */
-.tf-range.left-selected::-moz-range-thumb {
-    background: #ef4444;
-}
-
-.tf-range.right-selected::-moz-range-thumb {
-    background: #059669;
+@media screen and (min-width: 1025px) {
+  #true-false-game { margin-top: 5vmin; }
 }

@@ -9,18 +9,18 @@ import PartOne from './componentsJS/PartOne';
 import PartTwo from './componentsJS/PartTwo';
 import PartThree from './componentsJS/PartThree';
 import PartTwoSub from './componentsJS/PartTwoSub';
-import VideoPage from './componentsJS/VideoPage';
+import IntroductionToSociety from './componentsJS/IntroductionToSociety';
+import VideoPage from './componentsJS/VideoPage ';
+import Interlude from './componentsJS/Interlude';
+import TrueOrFalseGame from './componentsJS/TrueOrFalseGame';
+import SocietyQuestions from './componentsJS/SocietyQuestions';
+import TrackPage from './componentsJS/TrackPage';
 import GameIntro from './componentsJS/GameIntro';
 import GameExplaine from './componentsJS/GameExplaine';
 import Game from './componentsJS/Game'
 import SummaryPoints from './componentsJS/SummaryPoints'
 import FinalScreen from './componentsJS/FinalScreen'
 import Quiz from './componentsJS/Quiz'
-import TrueOrFalseGame from './componentsJS/TrueOrFalseGame'
-import HarediPage from './componentsJS/HarediPage'
-import ArabPage from './componentsJS/ArabPage'
-import ElderlyPage from './componentsJS/ElderlyPage'
-import TrackPage from './componentsJS/TrackPage';
 
 // mobile only until the design is complete
 
@@ -75,10 +75,12 @@ function App() {
         <Route path="/part-one" element={<PartOne />} />
         <Route path="/part-two" element={<PartTwo />} />
         <Route path="/subChosing" element={<PartTwoSub />} />
+        <Route path="/introduction-to-society" element={<IntroductionToSociety />} />
+        <Route path="/interlude" element={<Interlude />} />
+        <Route path="/true-or-false" element={<TrueOrFalseGame />} />
         <Route path="/video-page" element={<VideoPage />} />
-        <Route path="/haredi-page" element={<HarediPage />} />
-        <Route path="/arab-page" element={<ArabPage />} />
-        <Route path="/elderly-page" element={<ElderlyPage />} />
+        <Route path="/track-page" element={<TrackPage />} />
+        <Route path="/society-questions" element={<SocietyQuestions />} />
         <Route path="/part-three" element={<PartThree />} />
         <Route path="/game-intro" element={<GameIntro />} />
         <Route path="/game-explain" element={<GameExplaine />} />
@@ -86,8 +88,6 @@ function App() {
         <Route path="/summary-points" element={<SummaryPoints/>} />
         <Route path="/final-screen" element={<FinalScreen/>} />
         <Route path="/test" element={<Quiz/>} />
-        <Route path="/TrueOrFalseGame" element={<TrueOrFalseGame/>} />
-        <Route path="/TrackPage" element={<TrackPage />} />
 
 
         </Routes>

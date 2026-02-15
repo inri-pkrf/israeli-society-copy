@@ -1,41 +1,22 @@
 @media screen and (max-width: 768px) {
 
 .video-step2 {
-    position: relative;
-    top: 0;
+    position: fixed;
+    top: 10vh;
     left: 0;
     width: 100vw;
-    height: auto;
+    height: 100vh;
     background-size: cover;
     background-repeat: no-repeat;
     align-items: center;
     z-index: 9990;
     direction: rtl;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding-bottom: 10vh;
-}
-
-.video-info2{
-    font-family: "Heebo";
-    font-size: 5vmin;
-    font-weight: 400;
-    width: 90vw;
-    color: #535353;
-    text-align: center;
-    margin-top:110%;
-}
-
-/* smaller top spacing for society pages so title/cactus appear near top */
-.video-step2.society .video-info2{
-    margin-top: 3vh;
 }
 
 .next-step-button-2{
-    margin-top: 5vh;
-    padding: 0.6rem 1.6rem;
-    font-size: 5vmin;
+    margin-top: 30px;
+    padding: 10px 25px;
+    font-size: 1.5em;
     border-radius: 30px;
     background-color:#1bbfe5;
     color: white;
@@ -44,35 +25,17 @@
     cursor: pointer;
     width:60vw;
 }
-
-.video-content #text-container h2{
-    font-size: 6vmin;
-}
-
-.video-content #text-container p{
-    font-size: 4.5vmin;
-}
-
 .video-play {
     width: 90vw;
     height: auto;
     object-fit: cover;
+    margin-top: 60%;
+}
+  
 }
 
-#text-container {
-    background-color: #F2F2FF;
-    padding: 2vw 6vw;
-    box-sizing: border-box;
-    border-radius: 20px;
-    width: 80vw;
-    left: 50%;
-    transform: translateX(-50%); 
-    position: relative;   
-    color: #003561;
-    text-align: right;
-}
 
-}
+
 
 
 @media screen and (min-width: 769px) and (max-width: 1024px)  {
@@ -94,17 +57,15 @@
     
     .video-info2{
         font-family: "Heebo";
-        /* tablet: slightly smaller vmin */
-        font-size: 3.2vmin;
+        font-size: 2em;
         font-weight: 400;
+        position: relative;
+        right: 50%;
+        transform: translateX(50%);
         width: 90vw;
         color: #535353;
         text-align: center;
-        margin-top: 3vh;
-    }
-
-    .video-step2.society .video-info2{
-        margin-top: 2vh;
+        margin-top: 20vh;
     }
 
    
@@ -112,9 +73,9 @@
 
 
     .next-step-button-2{
-        margin-top: 3vh;
-        padding: 0.6rem 1.4rem;
-        font-size: 2.8vmin;
+        margin-top: 30px;
+        padding: 10px 25px;
+        font-size: 1.5em;
         border-radius: 30px;
         background-color:#1bbfe5;
         color: white;
@@ -122,12 +83,6 @@
         font-family: "Heebo";
         cursor: pointer;
         width:50vw;
-    }
-    .video-content #text-container h2{
-        font-size: 3.2vmin;
-    }
-    .video-content #text-container p{
-        font-size: 2.8vmin;
     }
     .video-play {
         width: 70vw;
@@ -158,17 +113,15 @@
     
     .video-info2{
        font-family: "Assistant";
-        /* desktop: use vmax for larger viewports */
-        font-size: 2.6vmax;
+        font-size: 5vmin;
         font-weight: 400;
+        position: relative;
+        right: 50%;
+        transform: translateX(50%);
         width: 90vw;
         color: #535353;
         text-align: center;
-        margin-top: 3vh;
-    }
-
-    .video-step2.society .video-info2{
-        margin-top: 1.5vh;
+        margin-top: 20vh;
     }
 
    
@@ -176,9 +129,9 @@
 
 
     .next-step-button-2{
-            margin-top: 4vh;
-        padding: 0.7rem 0.9rem;
-        font-size: 1.8vmax;
+            margin-top: 84vh;
+        padding: 10px 25px;
+        font-size: 5vmin;
         border-radius: 30px;
         background-color: #1bbfe5;
         color: white;
@@ -186,12 +139,6 @@
         font-family: "Assistant";
         cursor: pointer;
         width: 19vw;
-    }
-    .video-content #text-container h2{
-        font-size: 2.6vmax;
-    }
-    .video-content #text-container p{
-        font-size: 1.9vmax;
     }
     
     .video-play {
@@ -205,82 +152,4 @@
     
   }
 
-    /* Slide indicator and arrow navigation inside the text card */
-    #text-container {
-        position: relative;
-        /* reserve space for circular arrow buttons so text doesn't flow underneath */
-        padding-bottom: calc(2vw + 10vw + 2vw);
-    }
-
-    .slide-indicator{
-        position: absolute;
-        top: 1vw;
-        left: 1vw;
-        background: white;
-        color: #303030;
-        padding: 1vw 4vw;
-        border-radius: 12px;
-        font-size: 3.6vmin;
-        box-shadow: 0 2px 6px rgba(0,0,0,0.08);
-        z-index: 8;
-    }
-
-    .arrow-btn{
-        position: absolute;
-        bottom: 1.4vw;
-        width: 10vw;
-        height: 10vw;
-        min-width: 36px;
-        min-height: 36px;
-        border-radius: 50%;
-        border: none;
-        background: white;
-        color: #003561;
-        font-size: 6vmin;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        box-shadow: 0 6px 18px rgba(17,24,39,0.08);
-        cursor: pointer;
-        z-index: 10;
-    }
-
-    .arrow-left{
-        right: 1.4vw;
-    }
-
-    .arrow-right{
-        left: 1.4vw;
-    }
-
-    @media screen and (min-width: 769px) and (max-width: 1024px)  {
-        .slide-indicator{ font-size: 2.4vmin; top: 0.8vh; left: 0.8vh;}
-        .arrow-btn{ width: 6vmin; height: 6vmin; font-size: 2.8vmin; bottom: 2vh;}
-        #text-container{ padding-bottom: 9vmin; }
-    }
-
-    @media screen and (min-width: 1025px) {
-        .slide-indicator{ font-size: 1.6vmax; top: 1vmax; left: 1vmax;}
-        .arrow-btn{ width: 3.6vmax; height: 3.6vmax; font-size: 1.8vmax; bottom: 2vmax;}
-        #text-container{ padding-bottom: calc(3.6vmax + 2vmax); }
-    }
-
-  /* העטיפה הראשית */
-.video-step2 {
-  position: relative;
-  min-height: 100vh;
-}
-
-/* וידאו – קצת יותר למעלה */
-.video-play {
-  position: absolute;
-  margin-top: 20vh;  
-  z-index: 2;
-}
-
-/* הכפתור */
-.next-step-button-2 {
-  position: relative;   /* לא absolute */
-  z-index: 5;
-  cursor: pointer;
-}
+  

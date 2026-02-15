@@ -1,57 +1,5 @@
 @media screen and (max-width: 768px) {
 
-#videoPage {
-    position: fixed;
-    top: 0vh;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    background-size: cover;
-    background-repeat: no-repeat;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 1000;
-    background-image: url("/public/assets/imgs/Bg2.jpg");
-    overflow-y: scroll;
-    overflow-x: hidden;
-    direction: rtl;
-   
-}
-
-.circle-div-video {
-    border: 1px solid white;
-    border-top-left-radius: 53.5vh;
-    border-top-right-radius: 53.5vh;
-    border-bottom-left-radius: 0;
-    border-bottom-right-radius: 0;
-    background-color: white;
-    height: 136vh;
-    width: 107vh;
-    right: 50%;
-    transform: translateX(50%);
-    position: absolute;
-    margin-top: 63vh;
-  }
-  
-
-.cactus-img{
-    position: absolute;
-    right: 50%;
-    transform: translateX(50%);
-    height: 12vh;
-    width: auto;
-    margin-top: -61vh;
-    z-index: 100000;
-
-}
-.page-title-video{
-    font-family: "karantina";
-    color:rgb(40, 40, 134);
-    font-size: 2.5em;
-    margin-top: 15vh;
-}
-
 .Q-explain{
     position: absolute;
     margin-top: 34vh;
@@ -77,55 +25,7 @@
 
 
 @media screen and (min-width: 769px) and (max-width: 1024px)  {
-    #videoPage {
-        position: relative;
-        overflow-x: hidden;
-        overflow-y: scroll;
-        top: 10vh;
-        left: 0;
-        width: 100vw;
-        height: 110vh;
-        background-size: cover;
-        background-repeat: no-repeat;
-        align-items: center;
-        z-index: 9990;
-        background-image: url('/public/assets/imgs/Bg3.jpg');
-        direction: rtl;
-    }
-     
-    
-    .circle-div-video {
-      border: 1px solid white;
-      border-top-left-radius: 249.3vh;
-      border-top-right-radius: 249.3vh;
-      border-bottom-left-radius: 0;
-      border-bottom-right-radius: 0;
-      background-color: white;
-      height: 113vh;
-      width: 252vh;
-      right: 50%;
-      transform: translateX(50%);
-      position: absolute;
-      margin-top: 6vh;
-    }
-    
-  
-  .cactus-img{
-      position: absolute;
-      right: 50%;
-      transform: translateX(50%);
-      height: 14vh;
-      width: auto;
-      margin-top: 8vh;
-      z-index: 100000;
-  
-  }
-  .page-title-video{
-      font-family: "karantina";
-      color:rgb(40, 40, 134);
-      font-size: 5em;
-      margin-top: 14vh;
-  }
+
   
   .Q-explain{
       position: absolute;
@@ -154,55 +54,7 @@
   
   
   @media screen and (min-width: 1025px) {
-    #videoPage {
-      position: relative;
-      overflow-x: hidden;
-      overflow-y: scroll;
-      top: 10vh;
-      left: 0;
-      width: 100vw;
-      height: 150vh;
-      background-size: cover;
-      background-repeat: no-repeat;
-      align-items: center;
-      z-index: 9990;
-      background-image: url('/public/assets/imgs/Bg3.jpg');
-      direction: rtl;
-  }
-   
-  
-  .circle-div-video {
-   border: 1px solid white;
-        border-top-left-radius: 249.3vh;
-        border-top-right-radius: 249.3vh;
-        border-bottom-left-radius: 0;
-        border-bottom-right-radius: 0;
-        background-color: white;
-        height: 199vh;
-        width: 358vh;
-        right: 50%;
-        transform: translateX(50%);
-        position: absolute;
-        margin-top: 6vh;
-  }
-  
 
-.cactus-img{
-    position: absolute;
-    right: 50%;
-    transform: translateX(50%);
-    height: 14vh;
-    width: auto;
-    margin-top: 8vh;
-    z-index: 100000;
-
-}
-.page-title-video{
-    font-family: "karantina";
-    color:rgb(40, 40, 134);
-    font-size: 5em;
-    margin-top: 14vh;
-}
 
 .Q-explain{
     position: absolute;
