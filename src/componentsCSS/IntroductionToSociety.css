@@ -1,0 +1,139 @@
+.introduction-to-society {
+	display: flex;
+	justify-content: center;
+	align-items: flex-start;
+	padding: 6vh 2vw;
+	box-sizing: border-box;
+	direction: rtl;
+	background: transparent;
+	min-height: 100vh;
+    font-family: "heebo";
+
+}
+
+.intro-content {
+	width: 100%;
+	max-width: 900px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 2.5vh;
+}
+
+
+
+.video-info2{
+    font-family: "Heebo";
+    font-size: 1.2em;
+    font-weight: 400;
+    position: absolute;
+    right: 50%;
+    transform: translateX(50%);
+    width: 90vw;
+    color: #535353;
+    text-align: center;
+    top: 35%;
+}
+
+.video-content #text-container{
+	background-color: #F2F2FF;
+	padding: 2.5vw 5vw 6vh; /* added bottom padding for spacing */
+	box-sizing: border-box;
+	border-radius: 16px;
+	width: 100%;
+	color: #003561;
+	text-align: right;
+	position: relative;
+}
+
+.slide-indicator{
+	position: absolute;
+	top: 8px;
+	left: 8px;
+	background: white;
+	color: #303030;
+	padding: 6px 12px;
+	border-radius: 8px;
+	font-size: 14px;
+	box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+	z-index: 8;
+}
+
+.arrow-btn{
+	position: absolute;
+	bottom: 10px;
+	width: 44px;
+	height: 44px;
+	border-radius: 50%;
+	border: none;
+	background: white;
+	color: #003561;
+	font-size: 20px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	box-shadow: 0 6px 18px rgba(17,24,39,0.08);
+	cursor: pointer;
+	z-index: 10;
+}
+
+.arrow-left{ right: 18px; }
+.arrow-right{ left: 18px; }
+
+.next-step-button-2{
+	margin-top: 3vh;
+	padding: 0.6rem 1.4rem;
+	font-size: 2.8vmin;
+	border-radius: 30px;
+	background-color:#1bbfe5;
+	color: white;
+	border: none;
+	font-family: "Heebo", sans-serif;
+	cursor: pointer;
+	width: 60%;
+	max-width: 320px;
+    z-index: 100;
+}
+
+.intro-content { padding-bottom: 6vh; }
+
+/* Responsive adjustments */
+@media screen and (max-width: 768px) {
+	.video-info2{ font-size: 5vmin; margin-top: 2vh; }
+	.video-content #text-container h2{ font-size: 6vmin; }
+	.video-content #text-container p{ font-size: 4.5vmin; }
+	.slide-indicator{ font-size: 3.6vmin; }
+	.arrow-btn{ width: 10vw; height: 10vw; font-size: 6vmin; }
+}
+
+@media screen and (min-width: 769px) and (max-width: 1024px) {
+	.video-info2{ font-size: 3.2vmin; }
+	.video-content #text-container h2{ font-size: 3.2vmin; }
+	.video-content #text-container p{ font-size: 2.8vmin; }
+}
+
+@media screen and (min-width: 1025px) {
+	.video-info2{ font-size: 2.6vmax; }
+	.video-content #text-container h2{ font-size: 2.6vmax; }
+	.video-content #text-container p{ font-size: 1.9vmax; }
+	.next-step-button-2{ width: 19vw; max-width: 360px; }
+}
+
+#text-container {
+    margin-top: 60%;
+}
+
+#TrueFalseText {
+    position: absolute;
+    right: 50%;
+    transform: translateX(50%);
+    color: #003561;
+    text-align: center;
+    top: 40%;
+    font-size: 6vmin;
+    width: 80%;
+}
+
+.next-step-button-2.True-False {
+    margin-top: 60vh;
+}

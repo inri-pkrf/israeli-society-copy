@@ -1,0 +1,50 @@
+#SocietyHeader {
+    position: fixed;
+    top: 0vh;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-size: cover;
+    background-repeat: no-repeat;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: url("/public/assets/imgs/Bg2.jpg");
+    /* overflow-y: scroll;
+    overflow-x: hidden; */
+    direction: rtl;
+   
+}
+
+.circle-div-video {
+    border: 1px solid white;
+    border-top-left-radius: 53.5vh;
+    border-top-right-radius: 53.5vh;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+    background-color: white;
+    height: 136vh;
+    width: 107vh;
+    right: 50%;
+    transform: translateX(50%);
+    position: absolute;
+    margin-top: 63vh;
+  }
+  
+
+.cactus-img{
+    position: absolute;
+    right: 50%;
+    transform: translateX(50%);
+    height: 12vh;
+    width: auto;
+    margin-top: -61vh;
+    z-index: 100000;
+
+}
+.page-title-video{
+    font-family: "karantina";
+    color:rgb(40, 40, 134);
+    font-size: 2.5em;
+    margin-top: 15vh;
+}
