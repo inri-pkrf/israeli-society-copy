@@ -1,15 +1,20 @@
 
 @media screen and (max-width: 768px) {
+  .Q-explain {
+    z-index: 1000;
+    margin-top: -3vh;
+  }
 
 .questions {
-    position: relative;
-    top: 35vh;
+    position: absolute;
+    top: 40vh;
     left: 0;
     width: 90vw;
     height: 86vh;
     background-size: cover;
     background-repeat: no-repeat;
     direction: rtl;
+    background-color: white;
   }
   .questions-card {
     position: relative;
@@ -115,7 +120,7 @@
     width: 90vw;
     color: #535353;
     text-align: center;
-    margin-top: 18vh;
+    margin-top: 10vh;
   }
   .Q-title{
     font-family: "karantina";

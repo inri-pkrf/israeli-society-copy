@@ -29,11 +29,13 @@ export default function SocietyQuestions() {
     <div className="introduction-to-society" ref={containerRef}>
       <SocietyHeader imgSrc={companyData.imgSrc} title={prompt} />
       <div className="intro-content">
-        <p className='Q-explain'>בנוקודה זו נשאל כמה שאלות כדי לוודא הבנה...</p>
         <Questions
           questions={companyData.questions}
           startPartThree={goToPartThree}
           scrollContainerRef={containerRef}
+          renderQExplain={() => (
+            <p className='Q-explain'>בנוקודה זו נשאל כמה שאלות כדי לוודא הבנה...</p>
+          )}
         />
       </div>
     </div>

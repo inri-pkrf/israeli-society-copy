@@ -10,10 +10,7 @@
     justify-content: center;
     align-items: center;
     background-image: url("/public/assets/imgs/Bg2.jpg");
-    /* overflow-y: scroll;
-    overflow-x: hidden; */
     direction: rtl;
-   
 }
 
 .circle-div-video {
@@ -48,3 +45,4 @@
     font-size: 2.5em;
     margin-top: 15vh;
 }
+
