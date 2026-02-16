@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import '../componentsCSS/Questions.css';
 
-const Questions = ({ questions, startPartThree, scrollContainerRef }) => {
+const Questions = ({ questions, startPartThree, scrollContainerRef, renderQExplain }) => {
   const [randomQuestions, setRandomQuestions] = useState([]);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [selectedAnswer, setSelectedAnswer] = useState('');
@@ -81,6 +81,7 @@ const Questions = ({ questions, startPartThree, scrollContainerRef }) => {
 
   return (
     <div className="questions">
+      {renderQExplain && renderQExplain()}
       <div className="questions-card">
         <h2 className='Question-t'>{currentQuestion.question}</h2>
         <div className="answers">

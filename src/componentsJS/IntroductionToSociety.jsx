@@ -37,6 +37,7 @@ export default function IntroductionToSociety() {
   return (
     <div className="introduction-to-society">
             <SocietyHeader 
+      className="society-header"
       imgSrc={companyData.imgSrc} 
       title={prompt} 
     />

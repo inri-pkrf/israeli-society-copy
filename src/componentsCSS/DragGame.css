@@ -1,0 +1,70 @@
+.drag-game {
+  display: flex;
+  flex-direction: column;
+  gap: 4vh;
+  text-align: center;
+  touch-action: none; /* חשוב למובייל */
+  position: relative; /* container for absolutely-positioned dragged image */
+  background-color: #F2F2FF;
+  padding: 0vh 4vw 4vh;
+  margin-top: 2vh;
+  border-radius: 2vh;
+}
+
+.parties {
+  display: flex;
+  justify-content: space-around;
+  gap: 3vw;
+}
+
+.party-img {
+  width: 80px;
+  user-select: none;
+  cursor: grab;
+}
+
+.party-img.small {
+  width: 60px;
+}
+
+.sectors {
+  display: flex;
+  justify-content: space-around;
+  gap: 3vw;
+}
+
+.sector-box {
+  width: 28vw;
+  max-width: 140px;
+  min-height: 120px;
+  border: 2px dashed #1bbfe5;
+  border-radius: 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 1vh;
+  transition: background 0.3s, border 0.3s;
+}
+
+.sector-box.correct {
+  background: rgba(0, 200, 120, 0.2);
+  border-color: #00c878;
+}
+
+.sector-box.wrong {
+  background: rgba(220, 50, 50, 0.2);
+  border-color: #dc3232;
+}
+
+.sector-title {
+  font-weight: 700;
+  margin-bottom: 1vh;
+}
+
+.dragging-img {
+  position: absolute;
+  width: 80px;
+  pointer-events: none;
+  z-index: 9999;
+}

@@ -11,11 +11,12 @@
 }
 
 .track-container {
-  position: relative;
-  width: 100%;
+  position: absolute;
+  width: 100vw;
   height: 60vh;
   margin-top: 35vh;
   margin-bottom: 50%;
+  background-color: white;
 }
 
 .track-circle {
@@ -40,6 +41,11 @@
 .track-circle:nth-child(4) { top: 60%; left: 40%; background: #d88c8c; }
 .track-circle:nth-child(5) { top: 80%; left: 10%; background: #d46f5e; }
 .track-circle:nth-child(6) { top: 80%; left: 65%; background: #9baeee; }
+
+/* מיקומים ייחודיים לעיגולים עבור החברה הערבית */
+.arabic-company .track-circle:nth-child(1) { top: 5%; left: 65%; }
+.arabic-company .track-circle:nth-child(2) { top: 25%; left: 20%; }
+.arabic-company .track-circle:nth-child(3) { top: 80%; left: 65%; }
 
 .circle-number {
   font-size: 18vmin;
@@ -84,6 +90,8 @@
   transform: translate(-50%, -50%);
   width: 85%;
   max-width: 500px;
+  max-height: 70vh;
+  overflow-y: auto;
   background: white;
   padding: 4vh;
   border-radius: 24px;
@@ -120,6 +128,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  z-index: 10050; /* ensure close button is above dragged image */
 }
 
 .reading-close:hover {
@@ -140,10 +149,9 @@
 
 .next-step-button-2.track-page {
   position: absolute;
-  top: 105vh;         
   left: 50%;
   transform: translateX(-50%);
-  
+  top: 105%;
   padding: 0.8rem 2.4rem;
   font-size: 5vmin;
   border: none;
@@ -153,7 +161,7 @@
   cursor: pointer;
   font-family: "Heebo";
   z-index: 10;
-
+  height: 8vh;
   width: 60vw;
   max-width: 400px;
   text-align: center;
@@ -167,6 +175,60 @@
   top: 75%;
   left: 48%;
   transform: translate(-50%, -50%);
-  z-index: 5;
+  z-index: 2;
 }
- 
+
+.rotate-screen {
+  height: 60vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-size: 1.4rem;
+}
+
+.fullscreen-reading {
+  position: absolute !important;
+  top: 50%;
+  left: 50%;
+  width: 100vw;
+  height: 100dvh;
+  background: white;
+  z-index: 10000;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+
+  padding: 2rem 1rem;
+  margin: 0 !important;
+  border-radius: 0 !important;
+
+  overflow-y: auto;
+}
+
+.fullscreen-stage {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100dvh;
+  background: white;
+  z-index: 9999;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+
+  padding: 1.5rem;
+  overflow: hidden; /* אין גלילה */
+}
+
+.rotate-screen {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+  text-align: center;
+}

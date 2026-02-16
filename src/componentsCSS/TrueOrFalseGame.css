@@ -1,39 +1,63 @@
 /* Text headline */
 #true-false-text2 {
   z-index: 30;
-  width: 90vw;
+  width: 100vw;
   text-align: center;
   color: #003561; /* צבע טקסט כחול כהה */
-  margin: 6vmin auto 0;
   font-family: "heebo";
   font-size: 4.5vmin;
+  top: 35%; 
+  position: relative;
+  background-color: white;
 }
 
 /* Game container */
 
 #true-false-game {
-  width: 90vw;
-  max-width: 92vmin;
-  margin: 20vmin auto 0;
+  width: 100vw;
+  max-width: 100vmin;
+  margin: 60vmin auto 0;
   text-align: center;
   position: relative;
   z-index: 20;
   background: transparent;
+  min-height: 100vh;
+  height: auto;
+  overflow-y: auto;
+  box-sizing: border-box;
+  background-color: white;
+  z-index: 40;
+
 }
+
+.introduction-to-society {
+	display: flex;
+	justify-content: center;
+	align-items: flex-start;
+	padding: 6vh 2vw;
+	box-sizing: border-box;
+	direction: rtl;
+	background: transparent;
+	min-height: 100vh;
+    font-family: "heebo";
+}
+
 
 /* Progress pill */
 .tf-progress {
   position: relative;
-  background: #EEEEEE; /* אפור בהיר */
+  background: #F2F2FF; /* אפור בהיר */
   display: inline-block;
   padding: 1.2vmin 2.2vmin;
   border-radius: 2.6vmin;
   font-size: 4vmin;
+  right: 50%;
+  transform: translateX(50%);
 }
 
 /* Statement card */
 .tf-statement {
-  background: #EEEEEE; /* אפור בהיר */
+  background: #F2F2FF; /* אפור בהיר */
   border-radius: 2.6vmin;
   padding: 3vmin 3.5vmin;
   min-height: 12vmin;
@@ -117,7 +141,7 @@
   background: #1bbfe5; /* תכלת */
   color: white;
   border: none;
-  padding: 3vmin 3.2vmin;
+  padding: 3vmin 10vmin;
   border-radius: 20px;
   font-size: 5vmin;
 }

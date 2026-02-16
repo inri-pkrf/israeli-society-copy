@@ -7,8 +7,9 @@
 	direction: rtl;
 	background: transparent;
 	min-height: 100vh;
-    font-family: "heebo";
-
+	font-family: "heebo";
+	height: 100vh;
+	overflow-y: auto;
 }
 
 .intro-content {
@@ -137,3 +138,4 @@
 .next-step-button-2.True-False {
     margin-top: 60vh;
 }
+
