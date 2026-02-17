@@ -53,7 +53,7 @@ function useIsPortraitAndSmallScreen() {
 
 function App() {
   const location = useLocation();
-  const allowedHorizontalPaths = ['/video-page', '/track-page'];
+  const allowedHorizontalPaths = ['/video-page'];
   const isAllowed = useIsPortraitAndSmallScreen();
   const isHorizontalAllowed = allowedHorizontalPaths.includes(location.pathname);
    if (!isHorizontalAllowed && !isAllowed) {

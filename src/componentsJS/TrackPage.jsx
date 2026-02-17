@@ -24,22 +24,11 @@ const TrackPage = () => {
 
   const [activeStep, setActiveStep] = useState(null);
   const [completedSteps, setCompletedSteps] = useState([]);
-  const [isLandscape, setIsLandscape] = useState(
-    window.innerWidth > window.innerHeight
-  );
-
-  useEffect(() => {
-    const handleResize = () => {
-      setIsLandscape(window.innerWidth > window.innerHeight);
-    };
-
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
-  }, []);
 
   const handleClick = (stepId) => {
     if (stepId === 1 || completedSteps.includes(stepId - 1)) {
       setActiveStep(stepId);
+
       if (!completedSteps.includes(stepId)) {
         setCompletedSteps((prev) => [...prev, stepId]);
       }
@@ -63,145 +52,120 @@ const TrackPage = () => {
   return (
     <div id="TrackPage">
 
-      {/* 🔹 מסך מלא אמיתי לשלב DragTextMatch */}
-      {showDragTextMatch && activeStep !== null ? (
-        <div className="fullscreen-stage">
+      <SocietyHeader
+        imgSrc={companyData.imgSrc}
+        title={prompt}
+      />
 
-          <button
-            className="reading-close"
-            onClick={() => setActiveStep(null)}
-          >
-            ×
-          </button>
+      <img
+        src={`${process.env.PUBLIC_URL}/assets/imgs/rode.png`}
+        alt="rode"
+        id="rode-img"
+      />
 
-          <h2>{companySteps[activeStep - 1].title}</h2>
-          <p>{companySteps[activeStep - 1].text}</p>
+      <div
+        className={`track-container${
+          prompt === "החברה הערבית"
+            ? " arabic-company"
+            : ""
+        }`}
+      >
+        {companySteps.map((step) => {
+          const isUnlocked =
+            step.id === 1 ||
+            completedSteps.includes(step.id - 1);
 
-          {!isLandscape ? (
-            <div className="rotate-screen">
-              <h2>נא לסובב את המכשיר לרוחב 📱</h2>
-            </div>
-          ) : (
-            <DragTextMatch
-              onComplete={() => {
-                if (!completedSteps.includes(2)) {
-                  setCompletedSteps((prev) => [...prev, 2]);
-                }
-              }}
-            />
-          )}
+          const isCompleted =
+            completedSteps.includes(step.id);
 
-        </div>
-      ) : (
-        <>
-          <SocietyHeader
-            imgSrc={companyData.imgSrc}
-            title={prompt}
-          />
-
-          <img
-            src={`${process.env.PUBLIC_URL}/assets/imgs/rode.png`}
-            alt="rode"
-            id="rode-img"
-          />
-
-          <div
-            className={`track-container${
-              prompt === "החברה הערבית"
-                ? " arabic-company"
-                : ""
-            }`}
-          >
-            {companySteps.map((step) => {
-              const isUnlocked =
-                step.id === 1 ||
-                completedSteps.includes(step.id - 1);
-
-              const isCompleted =
-                completedSteps.includes(step.id);
-
-              return (
-                <div
-                  key={step.id}
-                  className={`track-circle ${
-                    !isUnlocked ? 'locked' : ''
-                  } ${isCompleted ? 'completed' : ''}`}
-                  onClick={() => handleClick(step.id)}
-                >
-                  <div className="circle-number">
-                    {step.id}
-                  </div>
-                  <div className="circle-text">
-                    {step.textInCircle}
-                  </div>
-                </div>
-              );
-            })}
-          </div>
-
-          {/* 🔹 מודאל רגיל לשאר השלבים */}
-          {activeStep !== null &&
-            companySteps[activeStep - 1] && (
-              <>
-                <div
-                  className="reading-backdrop"
-                  onClick={() =>
-                    setActiveStep(null)
-                  }
-                />
-
-                <div className="reading-box">
-                  <button
-                    className="reading-close"
-                    onClick={() =>
-                      setActiveStep(null)
-                    }
-                  >
-                    ×
-                  </button>
-
-                  <h2>
-                    {companySteps[activeStep - 1].title}
-                  </h2>
-
-                  <p>
-                    {companySteps[activeStep - 1].text}
-                  </p>
-
-                  {showDragGame && (
-                    <DragGame
-                      onComplete={() => {
-                        if (
-                          !completedSteps.includes(4)
-                        ) {
-                          setCompletedSteps(
-                            (prev) => [...prev, 4]
-                          );
-                        }
-                      }}
-                    />
-                  )}
-                </div>
-              </>
-            )}
-
-          {allCompleted && (
-            <button
-              className="next-step-button-2 track-page"
-              onClick={() =>
-                navigate('/video-page', {
-                  state: {
-                    prompt,
-                    videoIndex: 0,
-                    next: '/society-questions',
-                  },
-                })
-              }
+          return (
+            <div
+              key={step.id}
+              className={`track-circle ${
+                !isUnlocked ? 'locked' : ''
+              } ${isCompleted ? 'completed' : ''}`}
+              onClick={() => handleClick(step.id)}
             >
-              המשך
-            </button>
-          )}
-        </>
+              <div className="circle-number">
+                {step.id}
+              </div>
+              <div className="circle-text">
+                {step.textInCircle}
+              </div>
+            </div>
+          );
+        })}
+      </div>
+
+      {/* 🔹 מודאל קריאה רגיל לכל השלבים */}
+      {activeStep !== null &&
+        companySteps[activeStep - 1] && (
+          <>
+            <div
+              className="reading-backdrop"
+              onClick={() => setActiveStep(null)}
+            />
+
+            <div
+              className={`reading-box ${
+                showDragTextMatch ? "fullscreen-popup" : ""
+              }`}
+            >
+              <button
+                className="reading-close"
+                onClick={() => setActiveStep(null)}
+              >
+                ×
+              </button>
+
+              <h2>
+                {companySteps[activeStep - 1].title}
+              </h2>
+
+              <p>
+                {companySteps[activeStep - 1].text}
+              </p>
+
+              {/* 🔹 משחק גרירה – שלב 2 חברה ערבית */}
+              {showDragTextMatch && (
+                <DragTextMatch
+                  onComplete={() => {
+                    if (!completedSteps.includes(2)) {
+                      setCompletedSteps((prev) => [...prev, 2]);
+                    }
+                  }}
+                />
+              )}
+
+              {/* 🔹 משחק גרירה – שלב 4 חברה חרדית */}
+              {showDragGame && (
+                <DragGame
+                  onComplete={() => {
+                    if (!completedSteps.includes(4)) {
+                      setCompletedSteps((prev) => [...prev, 4]);
+                    }
+                  }}
+                />
+              )}
+            </div>
+          </>
+        )}
+
+      {allCompleted && (
+        <button
+          className="next-step-button-2 track-page"
+          onClick={() =>
+            navigate('/video-page', {
+              state: {
+                prompt,
+                videoIndex: 0,
+                next: '/society-questions',
+              },
+            })
+          }
+        >
+          המשך
+        </button>
       )}
     </div>
   );

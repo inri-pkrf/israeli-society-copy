@@ -178,36 +178,6 @@
   z-index: 2;
 }
 
-.rotate-screen {
-  height: 60vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  font-size: 1.4rem;
-}
-
-.fullscreen-reading {
-  position: absolute !important;
-  top: 50%;
-  left: 50%;
-  width: 100vw;
-  height: 100dvh;
-  background: white;
-  z-index: 10000;
-
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex-start;
-
-  padding: 2rem 1rem;
-  margin: 0 !important;
-  border-radius: 0 !important;
-
-  overflow-y: auto;
-}
-
 .fullscreen-stage {
   position: fixed;
   inset: 0;
@@ -218,17 +188,42 @@
 
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: flex-start;
   align-items: center;
 
-  padding: 1.5rem;
-  overflow: hidden; /* אין גלילה */
+  padding: 5vh 5vw 3vh 5vw;
+  box-sizing: border-box;
+
+  overflow: hidden;
 }
 
-.rotate-screen {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex: 1;
+.fullscreen-stage h2 {
+  font-size: 5vmin;
+  margin-bottom: 2vh;
   text-align: center;
+  color: #003561;
+}
+
+.fullscreen-popup {
+  position: fixed;
+
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+
+  width: 100vw;
+  height: 100dvh;
+
+  background: white;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  padding: 5vh 6vw;
+  box-sizing: border-box;
+
+  overflow: hidden;
+
+  z-index: 999999;
 }
