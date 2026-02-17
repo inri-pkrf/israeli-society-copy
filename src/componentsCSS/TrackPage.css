@@ -197,33 +197,36 @@
   overflow: hidden;
 }
 
-.fullscreen-stage h2 {
-  font-size: 5vmin;
-  margin-bottom: 2vh;
-  text-align: center;
-  color: #003561;
-}
 
 .fullscreen-popup {
   position: fixed;
-
-  top: 0;
-  left: 50%;
-  transform: translateX(-50%);
+  inset: 0;
 
   width: 100vw;
-  height: 100dvh;
+  height: 100vh;
 
   background: white;
 
   display: flex;
-  justify-content: center;
-  align-items: center;
-
-  padding: 5vh 6vw;
-  box-sizing: border-box;
-
-  overflow: hidden;
+  flex-direction: column;
 
   z-index: 999999;
+}
+
+.popup-content {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+  box-sizing: border-box;
+  color: #003561;
+}
+
+.popup-header h2 {
+  font-size: 6vmin;
+  font-weight: 700;
+  color: #003561;
+  position: relative;
+  top: 50%;
 }
