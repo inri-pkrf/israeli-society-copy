@@ -1,169 +1,127 @@
-import React, { useState, useRef, useEffect } from 'react';
-import '../componentsCSS/DragGame.css';
+import React, { useState, useEffect } from "react";
+import "../componentsCSS/DragGame.css";
 
 const titles = [
-  'ועדת המעקב העליונה',
-  'ועד ראשי הרשויות המקומיות',
-  'ארגוני חברה אזרחי',
-  'המנהיגות הפוליטית',
-  'מנהיגות דתית איסלאמית'
+  "ועדת המעקב העליונה",
+  "ועד ראשי הרשויות המקומיות",
+  "ארגוני חברה אזרחי",
+  "המנהיגות הפוליטית",
+  "מנהיגות דתית איסלאמית"
 ];
 
 const sentences = [
-  'מהווה גוף גג אזרחי המתכלל עמדות ציבוריות ומבטא סוגיות משותפות לחברה הערבית ברמה הארצית.',
-  'מייצג את ההנהגה המוניציפלית ופועל לקידום צרכים יישוביים, תשתיות ושירותים מול משרדי הממשלה.',
-  'פועלים בתחומי חינוך, רווחה, זכויות אזרח ופיתוח קהילתי.',
-  'מיוצגת בכנסת ישראל באמצעות שלוש מפלגות ערביות.',
-  'מחולקת לפלג הצפוני ולפלג הדרומי.'
+  "מהווה גוף גג אזרחי המתכלל עמדות ציבוריות ומבטא סוגיות משותפות לחברה הערבית ברמה הארצית.",
+  "מייצג את ההנהגה המוניציפלית ופועל לקידום צרכים יישוביים, תשתיות ושירותים מול משרדי הממשלה.",
+  "פועלים בתחומי חינוך, רווחה, זכויות אזרח ופיתוח קהילתי.",
+  "מיוצגת בכנסת ישראל באמצעות שלוש מפלגות ערביות.",
+  "מחולקת לפלג הצפוני ולפלג הדרומי."
 ];
 
-const correctMap = { 0:0,1:1,2:2,3:3,4:4 };
+const correctMap = { 0: 0, 1: 1, 2: 2, 3: 3, 4: 4 };
 
 export default function DragTextMatch({ onComplete }) {
-  const [draggedIdx, setDraggedIdx] = useState(null);
-  const [dragPos, setDragPos] = useState({ x: 0, y: 0 });
-  const [matches, setMatches] = useState({});
-  const [feedback, setFeedback] = useState({});
-  const offsetRef = useRef({ x: 0, y: 0 });
-  const dropRefs = useRef({});
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [status, setStatus] = useState(null); // null | 'correct' | 'wrong'
+  const [locked, setLocked] = useState(false);
 
-  // 👇 מאזינים ל-window
-  useEffect(() => {
-    const move = (e) => {
-      if (draggedIdx === null) return;
-      setDragPos({ x: e.clientX, y: e.clientY });
-    };
+  const handleAnswer = (titleIndex) => {
+    if (locked) return;
 
-    const up = () => {
-      if (draggedIdx === null) return;
+    const isCorrect = correctMap[currentIndex] === titleIndex;
 
-      const droppedOn = Object.entries(dropRefs.current).find(([idx, el]) => {
-        if (!el) return false;
-        const rect = el.getBoundingClientRect();
-        return (
-          dragPos.x >= rect.left &&
-          dragPos.x <= rect.right &&
-          dragPos.y >= rect.top &&
-          dragPos.y <= rect.bottom
-        );
-      });
+    if (isCorrect) {
+      setStatus("correct");
+      setLocked(true);
 
-      if (droppedOn) {
-        const dropIdx = Number(droppedOn[0]);
-        const isCorrect = correctMap[draggedIdx] === dropIdx;
-
-        setFeedback(prev => ({
-          ...prev,
-          [dropIdx]: isCorrect ? 'correct' : 'wrong'
-        }));
-
-        if (isCorrect) {
-          setMatches(prev => {
-            const updated = { ...prev, [dropIdx]: draggedIdx };
-            if (Object.keys(updated).length === titles.length && onComplete) {
-              onComplete();
-            }
-            return updated;
-          });
+      setTimeout(() => {
+        if (currentIndex === sentences.length - 1) {
+          onComplete && onComplete();
+        } else {
+          setCurrentIndex((prev) => prev + 1);
+          setStatus(null);
+          setLocked(false);
         }
-
-        setTimeout(() => {
-          setFeedback(prev => ({ ...prev, [dropIdx]: null }));
-        }, 800);
-      }
-
-      setDraggedIdx(null);
-    };
-
-    window.addEventListener('pointermove', move);
-    window.addEventListener('pointerup', up);
-
-    return () => {
-      window.removeEventListener('pointermove', move);
-      window.removeEventListener('pointerup', up);
-    };
-  }, [draggedIdx, dragPos, onComplete]);
-
-  const startDrag = (idx, e) => {
-    const rect = e.currentTarget.getBoundingClientRect();
-
-    offsetRef.current = {
-      x: e.clientX - rect.left,
-      y: e.clientY - rect.top
-    };
-
-    setDraggedIdx(idx);
-    setDragPos({ x: e.clientX, y: e.clientY });
+      }, 3000);
+    } else {
+      setStatus("wrong");
+    }
   };
 
   return (
-    <div className="drag-game" style={{ direction: 'rtl', touchAction: 'none' }}>
-      <h3>גררו את הכותרת למשפט המתאים</h3>
+    <div
+      className="quiz-game"
+      style={{
+        position: "relative",
+        direction: "rtl",
+        minHeight: "100dvh",
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "center",
+        alignItems: "center",
+        padding: "2rem",
+        boxSizing: "border-box",
+        textAlign: "center",
+        top: "-10vh",
+      }}
+    >
+      <h4>
+        בחרו את הכותרת המתאימה למשפט
+      </h4>
 
-      <div className="parties">
-        {titles.map((title, i) =>
-          !Object.values(matches).includes(i) && (
-            <div
-              key={i}
-              className="party-img"
-              style={{
-                background: '#fff',
-                border: '1px solid #1bbfe5',
-                borderRadius: 12,
-                padding: '0.6em 1em',
-                cursor: 'grab',
-                userSelect: 'none'
-              }}
-              onPointerDown={(e) => startDrag(i, e)}
-            >
-              {title}
-            </div>
-          )
-        )}
+      <div
+        style={{
+          maxWidth: 600,
+          width: "100%",
+          padding: "1.5rem",
+          borderRadius: 16,
+          background:
+            status === "correct"
+              ? "#d4edda"
+              : status === "wrong"
+              ? "#f8d7da"
+              : "#f4f6fb",
+          border:
+            status === "correct"
+              ? "2px solid #28a745"
+              : status === "wrong"
+              ? "2px solid #dc3545"
+              : "2px solid #1bbfe5",
+          transition: "all 0.3s ease"
+        }}
+      >
+        {sentences[currentIndex]}
       </div>
 
-      <div className="sectors">
-        {sentences.map((sentence, i) => (
-          <div
+      <div
+        style={{
+          marginTop: "2rem",
+          display: "grid",
+          gridTemplateColumns: "1fr",
+          gap: "1rem",
+          width: "100%",
+          maxWidth: 600
+        }}
+      >
+        {titles.map((title, i) => (
+          <button
             key={i}
-            ref={(el) => (dropRefs.current[i] = el)}
-            className={`sector-box ${
-              feedback[i] === 'correct'
-                ? 'correct'
-                : feedback[i] === 'wrong'
-                ? 'wrong'
-                : ''
-            }`}
-            style={{ minHeight: 80, padding: '1em', textAlign: 'right' }}
+            onClick={() => handleAnswer(i)}
+            disabled={locked}
+            style={{
+              padding: "0.9rem",
+              borderRadius: 12,
+              border: "2px solid #1bbfe5",
+              background: "#fff",
+              cursor: locked ? "default" : "pointer",
+              fontSize: "1rem",
+              fontWeight: 500,
+              transition: "all 0.2s ease"
+            }}
           >
-            {sentence}
-
-            {matches[i] !== undefined && (
-              <div style={{ fontWeight: 700, marginTop: 8 }}>
-                {titles[matches[i]]}
-              </div>
-            )}
-          </div>
+            {title}
+          </button>
         ))}
       </div>
-
-      {draggedIdx !== null && (
-        <div
-          style={{
-            position: 'fixed',
-            left: dragPos.x - offsetRef.current.x,
-            top: dragPos.y - offsetRef.current.y,
-            background: '#fff',
-            border: '1px solid #1bbfe5',
-            borderRadius: 12,
-            padding: '0.6em 1em',
-            pointerEvents: 'none',
-            zIndex: 9999
-          }}
-        >
-          {titles[draggedIdx]}
-        </div>
-      )}
     </div>
   );
 }
