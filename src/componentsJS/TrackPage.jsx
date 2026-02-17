@@ -1,24 +1,24 @@
-import React, { useState, useEffect } from 'react';
-import { useNavigate, useLocation } from 'react-router-dom';
-import '../componentsCSS/TrackPage.css';
-import stepsData from '../data/stepsData';
-import videoData from '../data/videoData';
-import SocietyHeader from './SocietyHeader';
-import DragGame from './DragGame';
-import DragTextMatch from './DragTextMatch';
+import React, { useState, useEffect } from "react";
+import { useNavigate, useLocation } from "react-router-dom";
+import "../componentsCSS/TrackPage.css";
+import stepsData from "../data/stepsData";
+import videoData from "../data/videoData";
+import SocietyHeader from "./SocietyHeader";
+import DragGame from "./DragGame";
+import DragTextMatch from "./DragTextMatch";
 
 const TrackPage = () => {
   const navigate = useNavigate();
   const location = useLocation();
 
   const prompt =
-    location.state?.prompt || sessionStorage.getItem('currentPrompt');
+    location.state?.prompt || sessionStorage.getItem("currentPrompt");
 
   const companyData = videoData[prompt];
 
   useEffect(() => {
     if (!prompt || !companyData) {
-      navigate('/subChosing');
+      navigate("/subChosing");
     }
   }, [prompt, companyData, navigate]);
 
@@ -82,8 +82,8 @@ const TrackPage = () => {
             <div
               key={step.id}
               className={`track-circle ${
-                !isUnlocked ? 'locked' : ''
-              } ${isCompleted ? 'completed' : ''}`}
+                !isUnlocked ? "locked" : ""
+              } ${isCompleted ? "completed" : ""}`}
               onClick={() => handleClick(step.id)}
             >
               <div className="circle-number">
@@ -97,20 +97,17 @@ const TrackPage = () => {
         })}
       </div>
 
-      {/* 🔹 מודאל קריאה רגיל לכל השלבים */}
+      {/* 🔹 שלב רגיל */}
       {activeStep !== null &&
-        companySteps[activeStep - 1] && (
+        companySteps[activeStep - 1] &&
+        !showDragTextMatch && (
           <>
             <div
               className="reading-backdrop"
               onClick={() => setActiveStep(null)}
             />
 
-            <div
-              className={`reading-box ${
-                showDragTextMatch ? "fullscreen-popup" : ""
-              }`}
-            >
+            <div className="reading-box">
               <button
                 className="reading-close"
                 onClick={() => setActiveStep(null)}
@@ -126,18 +123,6 @@ const TrackPage = () => {
                 {companySteps[activeStep - 1].text}
               </p>
 
-              {/* 🔹 משחק גרירה – שלב 2 חברה ערבית */}
-              {showDragTextMatch && (
-                <DragTextMatch
-                  onComplete={() => {
-                    if (!completedSteps.includes(2)) {
-                      setCompletedSteps((prev) => [...prev, 2]);
-                    }
-                  }}
-                />
-              )}
-
-              {/* 🔹 משחק גרירה – שלב 4 חברה חרדית */}
               {showDragGame && (
                 <DragGame
                   onComplete={() => {
@@ -151,15 +136,45 @@ const TrackPage = () => {
           </>
         )}
 
+      {/* 🔥 שלב 2 – מסך מלא אמיתי */}
+      {showDragTextMatch && (
+        <div className="fullscreen-popup">
+
+          <button
+            className="reading-close fullscreen-close"
+            onClick={() => setActiveStep(null)}
+          >
+            ×
+          </button>
+
+          <div className="popup-header">
+            <h2>
+              {companySteps[activeStep - 1].title}
+            </h2>
+          </div>
+
+          <div className="popup-content">
+            <DragTextMatch
+              onComplete={() => {
+                if (!completedSteps.includes(2)) {
+                  setCompletedSteps((prev) => [...prev, 2]);
+                }
+              }}
+            />
+          </div>
+
+        </div>
+      )}
+
       {allCompleted && (
         <button
           className="next-step-button-2 track-page"
           onClick={() =>
-            navigate('/video-page', {
+            navigate("/video-page", {
               state: {
                 prompt,
                 videoIndex: 0,
-                next: '/society-questions',
+                next: "/society-questions",
               },
             })
           }

@@ -12,9 +12,9 @@ const titles = [
 const sentences = [
   "מהווה גוף גג אזרחי המתכלל עמדות ציבוריות ומבטא סוגיות משותפות לחברה הערבית ברמה הארצית.",
   "מייצג את ההנהגה המוניציפלית ופועל לקידום צרכים יישוביים, תשתיות ושירותים מול משרדי הממשלה.",
-  "פועלים בתחומי חינוך, רווחה, זכויות אזרח ופיתוח קהילתי.",
-  "מיוצגת בכנסת ישראל באמצעות שלוש מפלגות ערביות.",
-  "מחולקת לפלג הצפוני ולפלג הדרומי."
+  "עוסקים בתחומי חינוך, רווחה, זכויות אזרח ופיתוח קהילתי, כאשר חלקם היו שותפים גם במרס״ל – מרכז סיוע לאזרח של פיקוד העורף – ונטלו חלק בפעילות אזרחית בשגרה ובחירום. ",
+  "מיוצגת בכנסת ישראל באמצעות שלוש מפלגות ערביות, הפועלות במסגרת הפרלמנטרית ומשקפות קולות ועמדות שונות בציבור הערבי. ",
+  "מחולקת לפלג הצפוני ולפלג הדרומי, שלה השפעה חברתית וקהילתית, בעיקר בתחומי זהות, חינוך ודת. ריבוי מוקדי המנהיגות משקף את המורכבות והגיוון בחברה הערבית ואת האופן שבו מתקיימת הנהגה רב־שכבתית"
 ];
 
 const correctMap = { 0: 0, 1: 1, 2: 2, 3: 3, 4: 4 };
@@ -41,10 +41,17 @@ export default function DragTextMatch({ onComplete }) {
           setStatus(null);
           setLocked(false);
         }
-      }, 3000);
-    } else {
-      setStatus("wrong");
-    }
+      }, 1000);
+      } else {
+        setStatus("wrong");
+        setLocked(true);
+
+        setTimeout(() => {
+          setStatus(null);   // מחזיר צבע רגיל
+          setLocked(false);  // מאפשר לענות שוב
+        }, 1000);
+      }
+
   };
 
   return (
@@ -94,12 +101,12 @@ export default function DragTextMatch({ onComplete }) {
 
       <div
         style={{
-          marginTop: "2rem",
+          marginTop: "1rem",
           display: "grid",
           gridTemplateColumns: "1fr",
           gap: "1rem",
           width: "100%",
-          maxWidth: 600
+          maxWidth: 600,
         }}
       >
         {titles.map((title, i) => (
@@ -108,14 +115,15 @@ export default function DragTextMatch({ onComplete }) {
             onClick={() => handleAnswer(i)}
             disabled={locked}
             style={{
-              padding: "0.9rem",
+              padding: "0.7rem",
               borderRadius: 12,
               border: "2px solid #1bbfe5",
               background: "#fff",
               cursor: locked ? "default" : "pointer",
               fontSize: "1rem",
               fontWeight: 500,
-              transition: "all 0.2s ease"
+              transition: "all 0.2s ease",
+              color: "#003561"
             }}
           >
             {title}
