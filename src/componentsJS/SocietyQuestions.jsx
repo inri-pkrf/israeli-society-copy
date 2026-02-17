@@ -34,7 +34,7 @@ export default function SocietyQuestions() {
           startPartThree={goToPartThree}
           scrollContainerRef={containerRef}
           renderQExplain={() => (
-            <p className='Q-explain'>בנוקודה זו נשאל כמה שאלות כדי לוודא הבנה...</p>
+            <p className='Q-explain'>בנקודה זו נשאל כמה שאלות כדי לוודא הבנה...</p>
           )}
         />
       </div>

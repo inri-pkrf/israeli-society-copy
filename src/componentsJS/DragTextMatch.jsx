@@ -68,7 +68,7 @@ export default function DragTextMatch({ onComplete }) {
         padding: "2rem",
         boxSizing: "border-box",
         textAlign: "center",
-        top: "-10vh",
+        top: "-16vh",
       }}
     >
       <h4>

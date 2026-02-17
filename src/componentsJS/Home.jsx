@@ -13,9 +13,9 @@ const Home = () => {
 
   return (
     <div className="homepage-container">
-      <h1 className='home-title'>  ברוכים וברוכות הבאים והבאות   <br></br>ללומדה על החברה הישראלית
+      <h3 className='home-title'>  ברוכים וברוכות הבאים והבאות   <br></br>לשיעור דיגיטלי על החברה הישראלית
 
- </h1>
+ </h3>
  <p className="info1">
 בסיום לומדה זו תכירו את רבדי החברה הישראלית,
 מה משפיע על החלטות ופעולות של אזרחים מהחברה הערבית והחרדית,<br/>
@@ -29,7 +29,7 @@ const Home = () => {
 
  </p>
  
- <button className='home-button' onClick={goToMenu}>קדימה להתחלה</button>
+ <button className='home-button' onClick={goToMenu}>יוצאים לדרך</button>
 
 <div className='greeting-div'>
        <img

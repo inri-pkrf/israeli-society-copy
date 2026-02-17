@@ -70,12 +70,11 @@ const TrueOrFalseGame = () => {
       <div className="true-false-page" style={{height: '100vh', overflowY: 'auto', display: 'flex', flexDirection: 'column'}}>
         <SocietyHeader imgSrc={company.imgSrc} title={prompt} />
 
-        <div id="true-false-text2">
-          <p id="text-bold">אמת או מיתוס?</p>
-          <p>יש לבחור, לגרור ולהכריע האם המידע הוא אמת או מיתוס</p>
-        </div>
-
         <div id="true-false-game">
+          <div id="true-false-text2">
+            <p>יש לבחור, לגרור ולהכריע האם המידע הוא אמת או מיתוס</p>
+          </div>
+
           <div className="tf-progress">{currentQuestion + 1}/{questions.length}</div>
 
           <div className={`tf-statement ${result ? result : ''}`}>

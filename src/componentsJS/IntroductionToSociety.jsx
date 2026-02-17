@@ -4,7 +4,6 @@ import '../componentsCSS/IntroductionToSociety.css';
 import videoData from '../data/videoData';
 import SocietyHeader from '../componentsJS/SocietyHeader';
 
-
 export default function IntroductionToSociety() {
   const location = useLocation();
   const navigate = useNavigate();
@@ -12,11 +11,7 @@ export default function IntroductionToSociety() {
 
   const companyData = videoData[prompt];
 
-  useEffect(() => {
-    if (!prompt || !companyData) {
-      navigate('/subChosing');
-    }
-  }, [prompt, companyData, navigate]);
+  /* כל ה-Hooks חייבים להיות לפני כל return */
 
   const initialSlides = companyData?.slides ?? [
     { title: companyData?.title ?? '', text: companyData?.videoInfo ?? '' },
@@ -24,54 +19,100 @@ export default function IntroductionToSociety() {
 
   const [slides] = useState(initialSlides);
   const [slideIndex, setSlideIndex] = useState(0);
+  const [hasNavigated, setHasNavigated] = useState(false);
+
+  useEffect(() => {
+    if (!prompt || !companyData) {
+      navigate('/subChosing');
+    }
+  }, [prompt, companyData, navigate]);
 
   const activeSlide = slides[slideIndex] || { title: '', text: '' };
 
-  const prevSlide = () => setSlideIndex((i) => Math.max(0, i - 1));
-  const nextSlide = () => setSlideIndex((i) => Math.min(slides.length - 1, i + 1));
+  const prevSlide = () => {
+    setSlideIndex((i) => Math.max(0, i - 1));
+    setHasNavigated(true);
+  };
+
+  const nextSlide = () => {
+    setSlideIndex((i) => Math.min(slides.length - 1, i + 1));
+    setHasNavigated(true);
+  };
 
   const goToNextStep = () => {
     navigate('/interlude', { state: { prompt } });
   };
 
+  const shouldShowButton =
+    prompt !== "החברה החרדית" || hasNavigated;
+
+  /* רק עכשיו מותר return מוקדם */
+  if (!companyData) return null;
+
   return (
     <div className="introduction-to-society">
-            <SocietyHeader 
-      className="society-header"
-      imgSrc={companyData.imgSrc} 
-      title={prompt} 
-    />
-      <div className="intro-content">
-        <h1>{companyData?.title ?? 'Introduction'}</h1>
 
-        <p className='video-info2'>{companyData?.videoInfo}</p>
+      <SocietyHeader
+        className="society-header"
+        imgSrc={companyData.imgSrc}
+        title={prompt}
+      />
+
+      <div className="intro-content">
+
+        <h1>{companyData.title ?? 'Introduction'}</h1>
+
+        <p className='video-info2'>
+          {companyData.videoInfo}
+        </p>
+
         <div className='video-content'>
           <div id="text-container">
-            {slides && slides.length > 0 && (
-              <div className="slide-indicator">{`${slideIndex + 1}/${slides.length}`}</div>
+
+            {slides.length > 0 && (
+              <div className="slide-indicator">
+                {`${slideIndex + 1}/${slides.length}`}
+              </div>
             )}
+
             <h2>{activeSlide.title}</h2>
             <p>{activeSlide.text}</p>
 
-            {slides && slides.length > 1 && (
+            {slides.length > 1 && (
               <>
                 {slideIndex > 0 && (
-                  <button className="arrow-btn arrow-left" onClick={prevSlide} aria-label="הקודם">‹</button>
+                  <button
+                    className="arrow-btn arrow-left"
+                    onClick={prevSlide}
+                    aria-label="הקודם"
+                  >
+                    ‹
+                  </button>
                 )}
+
                 {slideIndex < slides.length - 1 && (
-                  <button className="arrow-btn arrow-right" onClick={nextSlide} aria-label="הבא">›</button>
+                  <button
+                    className="arrow-btn arrow-right"
+                    onClick={nextSlide}
+                    aria-label="הבא"
+                  >
+                    ›
+                  </button>
                 )}
               </>
             )}
+
           </div>
         </div>
 
-        <button
-          className="next-step-button-2"
-          onClick={goToNextStep}
-        >
-          לשלב הבא
-        </button>
+        {shouldShowButton && (
+          <button
+            className="next-step-button-2"
+            onClick={goToNextStep}
+          >
+            לשלב הבא
+          </button>
+        )}
 
       </div>
     </div>

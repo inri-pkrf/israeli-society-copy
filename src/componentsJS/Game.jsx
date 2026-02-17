@@ -37,7 +37,7 @@ const Game = () => {
 
     if (statement.correct === isCorrectDrop) {
       setScore(prev => prev + 1);
-      setFeedback('יפה! קיבלת נקודה');
+      setFeedback('<strong>יפה!</strong><br/>קיבלת נקודה');
       setFeedbackType('correct');
     } else {
       setFeedback(`לא נכון.<br/>${statement.explanation}`);

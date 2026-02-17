@@ -4,9 +4,9 @@ import '../componentsCSS/DragGame.css';
 const publicUrl = process.env.PUBLIC_URL || '';
 
 const parties = [
-  { id: 'shas', name: 'ש"ס', img: `${publicUrl}/assets/imgs/shas.png`, sector: 'המגזר הספרדי' },
-  { id: 'utj', name: 'דגל התורה', img: `${publicUrl}/assets/imgs/degelTora.png`, sector: 'המגזר הליטאי ' },
   { id: 'aguda', name: 'אגודת ישראל', img: `${publicUrl}/assets/imgs/aguda.png`, sector: 'המגזר החסידי' },
+  { id: 'utj', name: 'דגל התורה', img: `${publicUrl}/assets/imgs/degelTora.png`, sector: 'המגזר הליטאי ' },
+  { id: 'shas', name: 'ש"ס', img: `${publicUrl}/assets/imgs/shas.png`, sector: 'המגזר הספרדי' },
 ];
 
 const sectors = [
@@ -117,7 +117,7 @@ const DragGame = ({ onComplete }) => {
       onPointerMove={moveDrag}
       onPointerUp={endDrag}
     >
-      <h3>גררו את המפלגה אל המגזר המתאים</h3>
+      <h4>גררו את המפלגה אל המגזר המתאים</h4>
 
       <div className="parties">
         {parties.map((party) => (
