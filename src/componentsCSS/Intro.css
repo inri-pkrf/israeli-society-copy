@@ -46,6 +46,7 @@
   margin-top: 3vh;
   width: 70vw;
   right: 50%;
+    top: 40vh;
   transform: translateX(50%);
 }
 
@@ -72,7 +73,7 @@
   animation: bounce2 2s ease infinite;
   height: 10vh;
   width: auto;
-  /* top: 77vh; */
+  top: 77vh;
 }
 
 .video-intro {
@@ -141,6 +142,7 @@
   margin-top: -16vh;
   width: 80vw;
   right: 50%;
+  top: 50vh;
   transform: translateX(50%);
 }
 
@@ -216,6 +218,8 @@ direction: rtl;
 margin-top: -6vh;
 width: 87vw;
 right: 50%;
+  top: 50vh;
+
 transform: translateX(50%);
 }
 

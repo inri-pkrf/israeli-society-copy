@@ -201,27 +201,18 @@
 .fullscreen-popup {
   position: fixed;
   inset: 0;
-
   width: 100vw;
-  height: 100vh;
+  height: 100dvh;
 
   background: white;
 
   display: flex;
   flex-direction: column;
 
-  z-index: 999999;
+  z-index: 2147483647;
 }
 
-.popup-content {
-  flex: 1;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 2rem;
-  box-sizing: border-box;
-  color: #003561;
-}
+
 
 .popup-header h2 {
   font-size: 6vmin;
@@ -229,4 +220,42 @@
   color: #003561;
   position: relative;
   top: 50%;
+}
+
+.popup-content {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  padding: 4vh 6vw;
+  box-sizing: border-box;
+
+  overflow: hidden;
+}
+
+/* מסך מלא לשלב 4 – בלי גלילה בכלל */
+.reading-box.fullscreen {
+  position: absolute;
+  top: 0%;
+  left: 50%;
+  transform: translateX(-50%);
+
+  width: 80vw;
+  height: 100vh;
+
+  max-height: none;      /* מבטל 70vh */
+  border-radius: 0;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+
+  overflow: hidden;      /* 🚫 אין גלילה */
+}
+
+.reading-box.fullscreen {
+  height: 85%;
+  width: 90%;
+  margin-top: 18%;
 }

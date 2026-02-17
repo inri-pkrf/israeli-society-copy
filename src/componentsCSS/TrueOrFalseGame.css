@@ -6,9 +6,9 @@
   color: #003561; /* צבע טקסט כחול כהה */
   font-family: "heebo";
   font-size: 4.5vmin;
-  top: 35%; 
+  top: 0%; 
   position: relative;
-  background-color: white;
+
 }
 
 /* Game container */
@@ -16,7 +16,7 @@
 #true-false-game {
   width: 100vw;
   max-width: 100vmin;
-  margin: 60vmin auto 0;
+  margin-top: 72% ;
   text-align: center;
   position: relative;
   z-index: 20;
@@ -27,6 +27,7 @@
   box-sizing: border-box;
   background-color: white;
   z-index: 40;
+  direction: rtl;
 
 }
 
@@ -40,6 +41,7 @@
 	background: transparent;
 	min-height: 100vh;
     font-family: "heebo";
+    direction: rtl;
 }
 
 
