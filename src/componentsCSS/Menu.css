@@ -19,7 +19,7 @@
  
 .menu-title{
     font-family: "karantina";
-    font-size: 3em;
+    font-size: 10vw;
     font-weight: 400;
     position: absolute;
     right: 50%;
@@ -31,19 +31,32 @@
 
 }
 
+.menu-title2 {
+    font-family: "karantina";
+    font-size: 15vw;
+    font-weight: 400;
+    position: absolute;
+    right: 50%;
+    transform: translateX(50%);
+    width: 90vw;
+    color: #ffffff;
+    margin-top: -35vh;
+    text-align: center;
+}
+
 .menu-list-home {
     right: 50%;
     transform: translateX(-10%);
     color: white;
     margin-bottom: 1vh;
     padding: 2vh;
-    font-size: 1.5em;
+    font-size: 6vw;
     font-family: "Heebo", Arial;
     text-align: center;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-    margin-top: 14vh;
+    margin-top: 30vh;
 
 }
 

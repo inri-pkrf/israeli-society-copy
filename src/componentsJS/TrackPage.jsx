@@ -19,7 +19,6 @@ const TrackPage = () => {
   const [activeStep, setActiveStep] = useState(null);
   const [completedSteps, setCompletedSteps] = useState([]);
 
-  /* הגדרת השלבים */
   const companySteps =
     stepsData[prompt] || stepsData[Object.keys(stepsData)[0]];
 
@@ -32,14 +31,13 @@ const TrackPage = () => {
   const showFullscreenStep4 =
     activeStep === 4 && prompt === "החברה החרדית";
 
-  /* ניווט אם אין נתונים */
   useEffect(() => {
     if (!prompt || !companyData) {
       navigate("/subChosing");
     }
   }, [prompt, companyData, navigate]);
 
-  /* ביטול גלילה רק בשלב 4 */
+  /* ביטול גלילה במסך מלא */
   useEffect(() => {
     if (showFullscreenStep4) {
       document.body.style.overflow = "hidden";
@@ -64,9 +62,19 @@ const TrackPage = () => {
     }
   };
 
+  const goToNextStep = () => {
+    if (activeStep < companySteps.length) {
+      const nextStep = activeStep + 1;
+      setActiveStep(nextStep);
+
+      if (!completedSteps.includes(nextStep)) {
+        setCompletedSteps((prev) => [...prev, nextStep]);
+      }
+    }
+  };
+
   return (
     <div id="TrackPage">
-
       <SocietyHeader
         imgSrc={companyData.imgSrc}
         title={prompt}
@@ -79,9 +87,9 @@ const TrackPage = () => {
       />
 
       <div
-        className={`track-container${
+        className={`track-container ${
           prompt === "החברה הערבית"
-            ? " arabic-company"
+            ? "arabic-company"
             : ""
         }`}
       >
@@ -112,7 +120,7 @@ const TrackPage = () => {
         })}
       </div>
 
-      {/* שלבים רגילים */}
+      {/* שלבים רגילים + חץ קדימה */}
       {activeStep !== null &&
         companySteps[activeStep - 1] &&
         !showDragTextMatch &&
@@ -124,12 +132,26 @@ const TrackPage = () => {
             />
 
             <div className="reading-box">
+              {/* חץ קדימה */}
+              {activeStep < companySteps.length && (
+                <button
+                  className="arrow-btn arrow-next"
+                  onClick={goToNextStep}
+                >
+                  ›
+                </button>
+              )}
+
               <button
                 className="reading-close"
                 onClick={() => setActiveStep(null)}
               >
                 ×
               </button>
+
+              <h1 className="number-box">
+                {activeStep}
+              </h1>
 
               <h2>
                 {companySteps[activeStep - 1].title}
@@ -142,38 +164,51 @@ const TrackPage = () => {
           </>
         )}
 
-      {/* שלב 2 רגיל */}
-      {showDragTextMatch && (
-        <>
-          <div
-            className="reading-backdrop"
-            onClick={() => setActiveStep(null)}
-          />
-
-          <div className="reading-box">
-            <button
-              className="reading-close"
+        {/* שלב 2 עם חץ קדימה – מסך מלא כמו שלב 4 */}
+        {showDragTextMatch && (
+          <>
+            <div
+              className="reading-backdrop fullscreen"
               onClick={() => setActiveStep(null)}
-            >
-              ×
-            </button>
-
-            <h2>
-              {companySteps[activeStep - 1].title}
-            </h2>
-
-            <DragTextMatch
-              onComplete={() => {
-                if (!completedSteps.includes(2)) {
-                  setCompletedSteps((prev) => [...prev, 2]);
-                }
-              }}
             />
-          </div>
-        </>
-      )}
 
-      {/* שלב 4 – מסך מלא אבל עם אותו עיצוב */}
+            <div className="reading-box fullscreen">
+              {activeStep < companySteps.length && (
+                <button
+                  className="arrow-btn arrow-next fullscreen-arrow"
+                  onClick={goToNextStep}
+                >
+                  ›
+                </button>
+              )}
+
+              <button
+                className="reading-close"
+                onClick={() => setActiveStep(null)}
+              >
+                ×
+              </button>
+
+              <h1 className="number-box">
+                {activeStep}
+              </h1>
+
+              <h2>
+                {companySteps[activeStep - 1].title}
+              </h2>
+
+              <DragTextMatch
+                onComplete={() => {
+                  if (!completedSteps.includes(2)) {
+                    setCompletedSteps((prev) => [...prev, 2]);
+                  }
+                }}
+              />
+            </div>
+          </>
+        )}
+
+      {/* שלב 4 – מסך מלא + חץ קדימה */}
       {showFullscreenStep4 && (
         <>
           <div
@@ -182,6 +217,14 @@ const TrackPage = () => {
           />
 
           <div className="reading-box fullscreen">
+            {activeStep < companySteps.length && (
+              <button
+                className="arrow-btn arrow-next fullscreen-arrow"
+                onClick={goToNextStep}
+              >
+                ›
+              </button>
+            )}
 
             <button
               className="reading-close"
@@ -190,6 +233,10 @@ const TrackPage = () => {
               ×
             </button>
 
+            <h1 className="number-box">
+                {activeStep}
+            </h1>
+            
             <h2>
               {companySteps[activeStep - 1].title}
             </h2>
@@ -205,12 +252,9 @@ const TrackPage = () => {
                 }
               }}
             />
-
           </div>
         </>
       )}
-
-
 
       {allCompleted && (
         <button
@@ -228,7 +272,6 @@ const TrackPage = () => {
           המשך
         </button>
       )}
-
     </div>
   );
 };

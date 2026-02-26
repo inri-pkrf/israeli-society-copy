@@ -20,32 +20,33 @@ position: fixed;
 
 .home-title{
     font-family: "karantina";
-    font-size: 2.5em;
+    font-size: 13vw;
     font-weight: 400;
     position: absolute;
     right: 50%;
     transform: translateX(50%);
     width: 90vw;
     color: #1bbfe5;
-    margin-top: 13vh;
+    margin-top: 35vw;
     text-align: center;
 
 }
 
 .info1{
-        font-family: "Assistant";
-        font-size: 1.3em;
+        font-family: "heebo";
+        font-size: 6vw;
         position: absolute;
         right: 50%;
         transform: translateX(50%);
         width: 90vw;
-        margin-top: 30vh;
+        margin-top: 85vw;
         text-align: right;
         direction: rtl;
+        line-height: 1.4;
 
 }
 .info2{
-    font-family: "Assistant";
+    font-family: "heebo";
     font-size: 1.3em;
     position: absolute;
     right: 50%;
@@ -56,7 +57,7 @@ position: fixed;
 
 }
 .info3{
-    font-family: "Assistant";
+    font-family: "heebo";
     font-size: 1.3em;
     position: absolute;
     right: 50%;
@@ -71,17 +72,16 @@ position: fixed;
         border: none;
         border-radius: 55px;
         width: 75vw;
-        height: 10vh;
+        height: 16vw;
         position: absolute;
-        font-size: 2em;
+        font-size: 10vw;
         font-family: "Karantina";
-        font-weight: bold;
         color: #ffffff;
-        padding: 1.5vw;
+        padding: 1vw;
         right: 50%;
         transform: translateX(50%);
-        margin-top: 165%;
-        box-shadow: 9px 10px 20px #323030, -3px -3px 5px rgba(255, 255, 255, 0.2);
+        margin-top: 230vw;
+        box-shadow: 9px 10px 20px #87b8cc, -3px -3px 5px rgba(255, 255, 255, 0.2);
 }
 
 .pakar-logo{
@@ -110,7 +110,7 @@ position: fixed;
 }
 
 .credits{
-    font-family: 'Assistant';
+    font-family: 'heebo';
     position: absolute;
     margin-top: 139vh;
     right: 50%;
@@ -122,17 +122,6 @@ position: fixed;
     text-align: center;
 }
 
-.greeting-div{
-    position: absolute;
-        width: 100vw;
-        height: 40vh;
-        background-color: rgb(238, 238, 238);
-        margin-top: 200%;
-        right: 50%;
-        transform: translateX(50%);
-        direction: rtl;
-        font-family: "Assistant";
-}
 .bold-text{
     position: absolute;
     text-align: right;
@@ -206,7 +195,7 @@ position: fixed;
     position: absolute;
     margin-top: 181vh;
     text-decoration: underline;
-    font-family: "Assistant";
+    font-family: "heebo";
     right: 50%;
     transform: translateX(50%);
     font-size: 1.2em;
@@ -248,7 +237,7 @@ position: fixed;
         }
         
         .info1{
-                   font-family: "Assistant";
+                   font-family: "heebo";
         font-size: 1.3em;
         position: absolute;
         right: 50%;
@@ -302,7 +291,7 @@ position: fixed;
         }
         
         .credits{
-            font-family: 'Assistant';
+            font-family: 'heebo';
         position: absolute;
         right: 50%;
         transform: translateX(50%);
@@ -311,18 +300,6 @@ position: fixed;
         color: #323030;
         margin-top: 20vh;
         text-align: center;
-        }
-        
-        .greeting-div{
-            position: absolute;
-            width: 100vw;
-            height: 40vh;
-            background-color: rgb(238, 238, 238);
-            margin-top: 101vh;
-            right: 50%;
-            transform: translateX(50%);
-            direction: rtl;
-            font-family: "Assistant";
         }
 
         .bold-text{
@@ -419,7 +396,7 @@ position: fixed;
         }
         
         .info1{
-            font-family: "Assistant";
+            font-family: "heebo";
             font-size: 4.5vmin;
             position: absolute;
             right: 50%;
@@ -478,7 +455,7 @@ position: fixed;
         
         
         .credits{
-       font-family: 'Assistant';
+       font-family: "heebo";
         position: absolute;
         right: 50%;
         transform: translateX(50%);
@@ -489,17 +466,6 @@ position: fixed;
         text-align: center;
         }
         
-        .greeting-div{
-       position: absolute;
-        width: 100vw;
-        height: 40vh;
-        background-color: rgb(238, 238, 238);
-        margin-top: 120vh;
-        right: 50%;
-        transform: translateX(50%);
-        direction: rtl;
-        font-family: "Assistant";
-        }
         .bold-text{
             position: absolute;
             text-align: right;
@@ -551,7 +517,7 @@ position: fixed;
             position: absolute;
             margin-top: 181vh;
             text-decoration: underline;
-            font-family: "Assistant";
+            font-family: "heebo";
             right: 50%;
             transform: translateX(50%);
             font-size: 1.2em;

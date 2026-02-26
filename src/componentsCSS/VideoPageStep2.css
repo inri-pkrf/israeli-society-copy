@@ -16,7 +16,7 @@
 .next-step-button-2{
     margin-top: 30px;
     padding: 10px 25px;
-    font-size: 1.5em;
+    font-size: 3vh;
     border-radius: 30px;
     background-color:#1bbfe5;
     color: white;
@@ -24,12 +24,13 @@
     font-family: "Heebo";
     cursor: pointer;
     width:60vw;
+    font-family: 'Heebo';
 }
 .video-play {
     width: 90vw;
     height: auto;
     object-fit: cover;
-    margin-top: 60%;
+    margin-top: 30vh;
 }
   
 }

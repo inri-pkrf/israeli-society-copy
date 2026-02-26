@@ -60,7 +60,7 @@
 	z-index: 8;
 }
 
-.arrow-btn{
+.Arrow-btn{
 	position: absolute;
 	bottom: 10px;
 	width: 44px;
@@ -78,8 +78,8 @@
 	z-index: 10;
 }
 
-.arrow-left{ right: 18px; }
-.arrow-right{ left: 18px; }
+.Arrow-left{ right: 18px; }
+.Arrow-right{ left: 18px; }
 
 .next-step-button-2{
 	margin-top: 3vh;
@@ -104,7 +104,7 @@
 	.video-content #text-container h2{ font-size: 6vmin; }
 	.video-content #text-container p{ font-size: 4.5vmin; }
 	.slide-indicator{ font-size: 3.6vmin; }
-	.arrow-btn{ width: 10vw; height: 10vw; font-size: 6vmin; }
+	.Arrow-btn{ width: 10vw; height: 10vw; font-size: 6vmin; }
 }
 
 @media screen and (min-width: 769px) and (max-width: 1024px) {
@@ -136,6 +136,6 @@
 }
 
 .next-step-button-2.True-False {
-    margin-top: 60vh;
+    margin-top: 55vh;
 }
 

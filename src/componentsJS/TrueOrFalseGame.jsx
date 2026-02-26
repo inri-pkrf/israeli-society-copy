@@ -52,19 +52,32 @@ const TrueOrFalseGame = () => {
     }
   };
 
-    const handleNextPage = () => {
-      if (prompt === 'מוגבלויות והגיל השלישי') {
-        navigate('/track-page', { state: { prompt } });
-      } else {
-        navigate('/video-page', {
-          state: {
-            prompt,
-            videoIndex: 0,
-            next: '/track-page'
-          }
-        });
-      }
-    };
+  const handleNextPage = () => {
+    // אם זה החברה החרדית או החברה הערבית → אמת או מיתוס (TrackPage)
+    if (prompt === 'החברה החרדית' || prompt === 'החברה הערבית') {
+      navigate('/track-page', { state: { prompt } });
+    } 
+    // אם זה גיל שלישי (או מוגבלויות והגיל השלישי) → סרטון
+    else if (prompt === 'מוגבלויות והגיל השלישי') {
+      navigate('/video-page', {
+        state: {
+          prompt,
+          videoIndex: 0,
+          next: '/track-page'
+        }
+      });
+    } 
+    // ברירת מחדל (אם יש עוד קטגוריות)
+    else {
+      navigate('/video-page', {
+        state: {
+          prompt,
+          videoIndex: 0,
+          next: '/track-page'
+        }
+      });
+    }
+  };
 
     return (
       <div className="true-false-page" style={{height: '100vh', overflowY: 'auto', display: 'flex', flexDirection: 'column'}}>

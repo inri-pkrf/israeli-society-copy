@@ -5,7 +5,7 @@
   text-align: center;
   color: #003561; /* צבע טקסט כחול כהה */
   font-family: "heebo";
-  font-size: 4.5vmin;
+  font-size: 2.5vh;
   top: 0%; 
   position: relative;
 
@@ -69,7 +69,7 @@
   color: #1f2937; /* אפור כהה */
   margin: 2.2vmin 0;
   box-shadow: 0 6px 18px rgba(17, 24, 39, 0.03);
-  font-size: 4.5vmin;
+  font-size: 2.5vh;
 }
 
 /* Statement card – correct/wrong */
@@ -130,7 +130,7 @@
 .tf-result {
   font-weight: 700;
   margin-top: 2vmin;
-  font-size: 5vmin;
+  font-size: 3vh;
 }
 
 .tf-result.correct { color: #059669; } /* ירוק */
@@ -146,6 +146,7 @@
   padding: 3vmin 10vmin;
   border-radius: 20px;
   font-size: 5vmin;
+  font-family: "heebo";
 }
 
 /* Media queries – נשארים רק למיקומים/רוחבים */

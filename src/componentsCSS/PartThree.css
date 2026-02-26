@@ -55,7 +55,7 @@
     right: 50%;
     transform: translateX(50%);
     width:auto;
-    height:8vh;
+    height:20vw;
 
 
 }
@@ -71,12 +71,12 @@
 }
 
 .go-next{
-    height: 20vh;
+    height: 20vw;
     width: 60vw;
     position: absolute;
     right: 50%;
     transform: translateX(50%);
-    margin-top: 61vh;
+    margin-top: 130vw;
 
 }
 .next-text{

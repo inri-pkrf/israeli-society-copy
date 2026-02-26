@@ -4,6 +4,7 @@ import '../componentsCSS/PartTwoSub.css';
 
 const PartTwoSub = () => {
   const navigate = useNavigate();
+
   const [pressedButtons, setPressedButtons] = useState({
     dos: false,
     arab: false,
@@ -17,11 +18,27 @@ const PartTwoSub = () => {
     }
   }, []);
 
+  // 🔒 לוגיקת נעילה מדורגת
+  const isLocked = (key) => {
+    if (key === 'dos') return false; // תמיד פתוח ראשון
+    if (key === 'arab') return !pressedButtons.dos; // נפתח רק אחרי חרדית
+    if (key === 'old') return !pressedButtons.arab; // נפתח רק אחרי ערבית
+    return true;
+  };
+
   const handlePress = (key, promptText) => {
+    if (isLocked(key)) return; // אם נעול – לא עושה כלום
+
     const updated = { ...pressedButtons, [key]: true };
     setPressedButtons(updated);
     sessionStorage.setItem('pressedButtons', JSON.stringify(updated));
-    navigate('/introduction-to-society', { state: { prompt: promptText } }); // מעבר לעמוד ההקדמה עם פרומפט
+
+    navigate('/introduction-to-society', { 
+      state: { 
+        prompt: promptText,
+        from: "part-two-sub"
+      } 
+    });
   };
 
   const allPressed = Object.values(pressedButtons).every(Boolean);
@@ -33,18 +50,26 @@ const PartTwoSub = () => {
   return (
     <div id="part-two-sub">
       <h3 className="part-titletwo-sub">חלק שני</h3>
-      <p className='instructions-parttwo-sub'>כאן לומדים על הנושאים הבאים, יש לסיים את שלושתם כדי להתקדם</p>
+      <p className='instructions-parttwo-sub'>
+        כאן לומדים על רבדי החברה הישראלית, יש לסיים את שלושת הנושאים כדי להתקדם
+      </p>
 
       <div className="half-circle-buttons column">
 
+        {/* החברה החרדית – תמיד פתוח */}
         <div className="button-with-text">
           <button
-            className={`half-circle-button ${pressedButtons.dos ? 'pressed' : ''}`}
+            className={`
+              half-circle-button 
+              ${pressedButtons.dos ? 'pressed' : ''} 
+              ${isLocked('dos') ? 'locked-btn' : ''}
+            `}
             onClick={() => handlePress('dos', 'החברה החרדית')}
+            disabled={isLocked('dos')}
           >
             <img
               src={`${process.env.PUBLIC_URL}/assets/imgs/cuctuseJPNG/cactusDos.png`}
-              alt="כפתור 1"
+              alt="החברה החרדית"
               className="button-img"
             />
           </button>
@@ -53,14 +78,20 @@ const PartTwoSub = () => {
           </span>
         </div>
 
+        {/* החברה הערבית – נפתח אחרי חרדית */}
         <div className="button-with-text">
           <button
-            className={`half-circle-button ${pressedButtons.arab ? 'pressed' : ''}`}
+            className={`
+              half-circle-button 
+              ${pressedButtons.arab ? 'pressed' : ''} 
+              ${isLocked('arab') ? 'locked-btn' : ''}
+            `}
             onClick={() => handlePress('arab', 'החברה הערבית')}
+            disabled={isLocked('arab')}
           >
             <img
               src={`${process.env.PUBLIC_URL}/assets/imgs/cuctuseJPNG/cactusArab.png`}
-              alt="כפתור 2"
+              alt="החברה הערבית"
               className="button-img"
             />
           </button>
@@ -69,21 +100,28 @@ const PartTwoSub = () => {
           </span>
         </div>
 
+        {/* הגיל השלישי – נפתח אחרי ערבית */}
         <div className="button-with-text">
           <button
-            className={`half-circle-button ${pressedButtons.old ? 'pressed' : ''}`}
+            className={`
+              half-circle-button 
+              ${pressedButtons.old ? 'pressed' : ''} 
+              ${isLocked('old') ? 'locked-btn' : ''}
+            `}
             onClick={() => handlePress('old', 'מוגבלויות והגיל השלישי')}
+            disabled={isLocked('old')}
           >
             <img
               src={`${process.env.PUBLIC_URL}/assets/imgs/cuctuseJPNG/cactusOld.png`}
-              alt="כפתור 3"
+              alt="מוגבלויות והגיל השלישי"
               className="button-img"
             />
           </button>
           <span className={`button-label ${pressedButtons.old ? 'label-pressed' : ''}`}>
-          מוגבלויות והגיל השלישי
+            מוגבלויות והגיל השלישי
           </span>
         </div>
+
       </div>
 
       <button

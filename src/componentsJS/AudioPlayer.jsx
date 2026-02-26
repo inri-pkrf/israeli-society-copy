@@ -80,8 +80,8 @@ const AudioPlayer = ({ src, name, onEnded, isDarkMode = false }) => {
     : `${process.env.PUBLIC_URL}/assets/imgs/stop-light.png`;
 
   const micIconImage = isDarkMode
-    ? `${process.env.PUBLIC_URL}/assets/imgs/microphone-dark.png`
-    : `${process.env.PUBLIC_URL}/assets/imgs/microphone-light.png`;
+    ? `${process.env.PUBLIC_URL}/assets/imgs/play-button.png`
+    : `${process.env.PUBLIC_URL}/assets/imgs/play-button.png`;
 
   return (
     <div className={`voiceeffect-rectangle `}>
@@ -112,6 +112,7 @@ const AudioPlayer = ({ src, name, onEnded, isDarkMode = false }) => {
     {formatTime(duration)}
   </span>
 </div>
+<img className="small-microphone" src={`${process.env.PUBLIC_URL}/assets/imgs/small-microphone.png`} />
 
 
       <audio ref={audioRef} src={src} />

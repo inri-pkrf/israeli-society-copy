@@ -4,7 +4,7 @@ import "../componentsCSS/DragGame.css";
 const titles = [
   "ועדת המעקב העליונה",
   "ועד ראשי הרשויות המקומיות",
-  "ארגוני חברה אזרחי",
+  "ארגוני חברה אזרחית",
   "המנהיגות הפוליטית",
   "מנהיגות דתית איסלאמית"
 ];
@@ -58,28 +58,29 @@ export default function DragTextMatch({ onComplete }) {
     <div
       className="quiz-game"
       style={{
+        fontFamily: "heebo",
         position: "relative",
         direction: "rtl",
-        minHeight: "100dvh",
         display: "flex",
         flexDirection: "column",
-        justifyContent: "center",
         alignItems: "center",
-        padding: "2rem",
-        boxSizing: "border-box",
         textAlign: "center",
-        top: "-16vh",
       }}
     >
-      <h4>
+      <p style={{
+        fontSize: "2vh",
+        fontWeight: "bold",
+        paddingBottom: "2vh"
+      }}>
         בחרו את הכותרת המתאימה למשפט
-      </h4>
+      </p>
 
       <div
         style={{
+          fontFamily: "heebo",
           maxWidth: 600,
-          width: "100%",
-          padding: "1.5rem",
+          width: "90%",
+          padding: "1rem",
           borderRadius: 16,
           background:
             status === "correct"
@@ -101,10 +102,11 @@ export default function DragTextMatch({ onComplete }) {
 
       <div
         style={{
+          fontFamily: "heebo",
           marginTop: "1rem",
           display: "grid",
           gridTemplateColumns: "1fr",
-          gap: "1rem",
+          gap: "0.8rem",
           width: "100%",
           maxWidth: 600,
         }}
@@ -115,7 +117,8 @@ export default function DragTextMatch({ onComplete }) {
             onClick={() => handleAnswer(i)}
             disabled={locked}
             style={{
-              padding: "0.7rem",
+              fontFamily: "heebo",
+              padding: "0.5rem",
               borderRadius: 12,
               border: "2px solid #1bbfe5",
               background: "#fff",

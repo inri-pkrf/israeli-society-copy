@@ -29,24 +29,70 @@ const VideoPage = () => {
 
 const handleNextStep = () => {
   if (!companyData) return;
-  // אם יש עוד סרטונים ברשימה, נמשיך עם videoIndex++
-  const videos = companyData.videos || [{ src: companyData.videoSrc, info: companyData.videoInfo }];
-  
-  if (location.state.videoIndex + 1 < videos.length) {
-    navigate('/video-page', { 
-      state: { 
+
+  const from = location.state?.from || "unknown";
+  const videoIndex = location.state?.videoIndex || 0;
+
+  console.log("PROMPT:", prompt);
+  console.log("FROM:", from);
+
+  // ===============================
+  // החברה הערבית / החרדית
+  // ===============================
+  if (prompt === "החברה הערבית" || prompt === "החברה החרדית") {
+
+    // הגעתי מעמוד introduction
+    if (from === "introduction-to-society") {
+      navigate("/Interlude", {
+        state: { prompt, from: "video-page" }
+      });
+      return;
+    }
+
+    // הגעתי מהמשחק (TrackPage)
+    if (from === "track-page") {
+      navigate("/society-questions", {
+        state: { prompt }
+      });
+      return;
+    }
+  }
+
+  // ===============================
+  // הגיל השלישי
+  // ===============================
+  if (prompt === "הגיל השלישי") {
+    // אם הגעתי ממשחק אמת או מיתוס
+    if (from === "true-or-false") {
+      navigate("/society-questions", {
+        state: { prompt }
+      });
+      return;
+    }
+  }
+
+  // ===============================
+  // המשך סרטונים (אם יש כמה)
+  // ===============================
+  const videos =
+    companyData.videos || [
+      { src: companyData.videoSrc, info: companyData.videoInfo },
+    ];
+
+  if (videoIndex + 1 < videos.length) {
+    navigate("/video-page", {
+      state: {
         prompt,
-        videoIndex: location.state.videoIndex + 1,
-        next: location.state.next
-      } 
+        videoIndex: videoIndex + 1,
+        from: from, // שומר מאיפה הגעת!
+      },
     });
   } else {
-    // סיום הסרטונים → נווט לעמוד הבא ב-next
-    navigate(location.state.next, { state: { prompt } });
+    navigate("/society-questions", {
+      state: { prompt }
+    });
   }
 };
-
-
   return (
     <div id="videoPage" ref={videoPageRef}>
     <SocietyHeader 

@@ -126,7 +126,8 @@ const Menu = () => {
 
   return (
     <div id="menu">
-      <h1 className="menu-title">שיעור דיגיטלי על החברה הישראלית</h1>
+      <h1 className="menu-title">שיעור דיגיטלי על</h1>
+      <h1 className="menu-title2">החברה הישראלית</h1>
       <ul className="menu-list-home">
         {parts.map((part, index) => (
           <React.Fragment key={index}>

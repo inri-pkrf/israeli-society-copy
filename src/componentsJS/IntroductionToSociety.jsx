@@ -39,9 +39,24 @@ export default function IntroductionToSociety() {
     setHasNavigated(true);
   };
 
-  const goToNextStep = () => {
-    navigate('/interlude', { state: { prompt } });
-  };
+const goToNextStep = () => {
+  if (prompt === "מוגבלויות והגיל השלישי") {
+    navigate('/interlude', { 
+      state: { 
+        prompt,
+        from: "introduction-to-society"
+      } 
+    });
+  } else {
+    navigate('/video-page', { 
+      state: { 
+        prompt,
+        videoIndex: 0,
+        from: "introduction-to-society"
+      } 
+    });
+  }
+};
 
   const shouldShowButton =
     prompt !== "החברה החרדית" || hasNavigated;
@@ -69,50 +84,20 @@ export default function IntroductionToSociety() {
         <div className='video-content'>
           <div id="text-container">
 
-            {slides.length > 0 && (
-              <div className="slide-indicator">
-                {`${slideIndex + 1}/${slides.length}`}
-              </div>
-            )}
 
             <h2>{activeSlide.title}</h2>
             <p>{activeSlide.text}</p>
-
-            {slides.length > 1 && (
-              <>
-                {slideIndex > 0 && (
-                  <button
-                    className="arrow-btn arrow-left"
-                    onClick={prevSlide}
-                    aria-label="הקודם"
-                  >
-                    ‹
-                  </button>
-                )}
-
-                {slideIndex < slides.length - 1 && (
-                  <button
-                    className="arrow-btn arrow-right"
-                    onClick={nextSlide}
-                    aria-label="הבא"
-                  >
-                    ›
-                  </button>
-                )}
-              </>
-            )}
-
           </div>
         </div>
 
-        {shouldShowButton && (
+        
           <button
             className="next-step-button-2"
             onClick={goToNextStep}
           >
             לשלב הבא
           </button>
-        )}
+        
 
       </div>
     </div>

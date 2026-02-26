@@ -39,26 +39,26 @@
 
 #introduction-sub {
   font-family: 'Heebo', sans-serif;
-  font-size: 1.2em;
+  font-size: 6vw;
   color: white;
   position: absolute;
   direction: rtl;
   margin-top: 3vh;
-  width: 70vw;
+  width: 80vw;
   right: 50%;
-    top: 40vh;
+    top: 80vw;
   transform: translateX(50%);
 }
 
 #sub-title{
   font-family: 'Karantina', Arial;
-  font-size: 3em;
+  font-size: 15vw;
   color: white;
   margin-bottom: -5vw;
   position: absolute;
   transform: translateX(50%);
   right: 50%;
-  margin-top: -19vh;
+  top: 50vw;
   width: 90vw;
 }
 
@@ -69,11 +69,11 @@
   z-index: 5;
   right: 50%;
   transform: translateX(50%);
-  bottom: 20vh;
+  bottom: 10vw;
   animation: bounce2 2s ease infinite;
-  height: 10vh;
+  height: 25vw;
   width: auto;
-  top: 77vh;
+  top: 150vw;
 }
 
 .video-intro {
