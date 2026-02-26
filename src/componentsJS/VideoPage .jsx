@@ -1,110 +1,112 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useRef, useEffect } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import '../componentsCSS/VideoPage.css';
-import secondPart from '../data/videoData';
 import VideoPageStep2 from './VideoPageStep2';
-import Questions from './Questions'; // <-- שימי לב שזה צריך להיות שם הקומפוננטה שלך
 import SocietyHeader from '../componentsJS/SocietyHeader';
+import videoData from '../data/videoData'; // מכיל imgSrc של החברה
 
+// -------------------------
+// מיפוי סרטונים לפי חברה
+// -------------------------
+const videoMapping = {
+  "החברה הערבית": [
+    `${process.env.PUBLIC_URL}/assets/media/arabVid.mp4`,
+    `${process.env.PUBLIC_URL}/assets/media/arabVid2.mp4`,
+  ],
+  "החברה החרדית": [
+    `${process.env.PUBLIC_URL}/assets/media/dosVid.mp4`,
+    `${process.env.PUBLIC_URL}/assets/media/dosVid2.mp4`,
+  ],
+  "מוגבלויות והגיל השלישי": [
+    `${process.env.PUBLIC_URL}/assets/media/dosVid.mp4`,
+    `${process.env.PUBLIC_URL}/assets/media/dosVid2.mp4`,
+  ],
+};
 
 const VideoPage = () => {
   const navigate = useNavigate();
   const location = useLocation();
-  const videoPageRef = useRef(null); // <<<<<< הוספה
+  const videoPageRef = useRef(null);
 
   const prompt = location.state?.prompt;
+  const from = location.state?.from || "unknown";
 
   useEffect(() => {
-    if (prompt) {
-      sessionStorage.setItem('currentPrompt', prompt);
-    }
+    if (prompt) sessionStorage.setItem('currentPrompt', prompt);
   }, [prompt]);
-  const companyData = secondPart[prompt];
+
+  // ----- companyData כולל imgSrc -----
+  const companyData = videoData[prompt];
+  const videos = videoMapping[prompt] || [];
 
   useEffect(() => {
-    if (!prompt || !companyData) {
+    if (!prompt || !companyData || !videos.length) {
       navigate('/subChosing');
     }
-  }, [prompt, companyData, navigate]);
+  }, [prompt, companyData, videos, navigate]);
 
-const handleNextStep = () => {
-  if (!companyData) return;
+  if (!videos.length || !companyData) return null;
 
-  const from = location.state?.from || "unknown";
-  const videoIndex = location.state?.videoIndex || 0;
+  // -------------------------
+  // קביעת אינדקס הסרטון להצגה לפי מקור
+  // -------------------------
+  let selectedVideoIndex;
 
-  console.log("PROMPT:", prompt);
-  console.log("FROM:", from);
-
-  // ===============================
-  // החברה הערבית / החרדית
-  // ===============================
-  if (prompt === "החברה הערבית" || prompt === "החברה החרדית") {
-
-    // הגעתי מעמוד introduction
-    if (from === "introduction-to-society") {
-      navigate("/Interlude", {
-        state: { prompt, from: "video-page" }
-      });
-      return;
-    }
-
-    // הגעתי מהמשחק (TrackPage)
-    if (from === "track-page") {
-      navigate("/society-questions", {
-        state: { prompt }
-      });
-      return;
-    }
-  }
-
-  // ===============================
-  // הגיל השלישי
-  // ===============================
-  if (prompt === "הגיל השלישי") {
-    // אם הגעתי ממשחק אמת או מיתוס
-    if (from === "true-or-false") {
-      navigate("/society-questions", {
-        state: { prompt }
-      });
-      return;
-    }
-  }
-
-  // ===============================
-  // המשך סרטונים (אם יש כמה)
-  // ===============================
-  const videos =
-    companyData.videos || [
-      { src: companyData.videoSrc, info: companyData.videoInfo },
-    ];
-
-  if (videoIndex + 1 < videos.length) {
-    navigate("/video-page", {
-      state: {
-        prompt,
-        videoIndex: videoIndex + 1,
-        from: from, // שומר מאיפה הגעת!
-      },
-    });
+  if (typeof location.state?.videoIndex === "number") {
+    selectedVideoIndex = location.state.videoIndex;
   } else {
-    navigate("/society-questions", {
-      state: { prompt }
-    });
+    if (from === "introduction-to-society") {
+      selectedVideoIndex = 0; // סרטון ראשון
+    } else if (from === "track-page") {
+      selectedVideoIndex = 1; // סרטון שני
+    } else {
+      selectedVideoIndex = 0; // ברירת מחדל
+    }
   }
-};
+
+  const currentVideo = videos[selectedVideoIndex];
+
+  // -------------------------
+  // ניווט לשלב הבא
+  // -------------------------
+  const handleNextStep = () => {
+    const nextIndex = selectedVideoIndex + 1;
+
+    if (nextIndex < videos.length) {
+      // ניווט לסרטון הבא
+      navigate("/video-page", {
+        state: {
+          prompt,
+          from,
+          videoIndex: nextIndex,
+        },
+      });
+      return;
+    }
+
+    // מעבר לפי סוג החברה
+    if ((prompt === "החברה הערבית" || prompt === "החברה החרדית") && from === "introduction-to-society") {
+      navigate("/Interlude", { state: { prompt, from: "video-page" } });
+      return;
+    }
+
+    if (prompt === "מוגבלויות והגיל השלישי" && from === "true-or-false") {
+      navigate("/society-questions", { state: { prompt } });
+      return;
+    }
+
+    // סיום כל הסרטונים → שאלות
+    navigate("/society-questions", { state: { prompt } });
+  };
+
   return (
     <div id="videoPage" ref={videoPageRef}>
-    <SocietyHeader 
-      imgSrc={companyData.imgSrc} 
-      title={prompt} 
-    />
-
+      {/* שולח את הלוגו הנכון */}
+      <SocietyHeader imgSrc={companyData.imgSrc} title={prompt} />
 
       <VideoPageStep2
-        className="video-componnet"
-        videoSrc={companyData.videoSrc}
-        videoInfo={companyData.videoInfo}
+        videoSrc={currentVideo}
+        videoInfo={null}
         onNextStep={handleNextStep}
       />
 

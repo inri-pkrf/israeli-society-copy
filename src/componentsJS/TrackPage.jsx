@@ -256,22 +256,32 @@ const TrackPage = () => {
         </>
       )}
 
-      {allCompleted && (
-        <button
-          className="next-step-button-2 track-page"
-          onClick={() =>
-            navigate("/video-page", {
-              state: {
-                prompt,
-                videoIndex: 0,
-                next: "/society-questions",
-              },
-            })
-          }
-        >
-          המשך
-        </button>
-      )}
+{allCompleted && (
+  <button
+    className="next-step-button-2 track-page"
+    onClick={() => {
+      // קביעת אינדקס הסרטון לפי מקור
+      const from = "track-page"; // או תוכל להעביר מה-state אם צריך
+      let videoIndex = 0; // ברירת מחדל
+
+      if (from === "track-page") {
+        videoIndex = 1; // סרטון שני
+      } else if (from === "introduction-to-society") {
+        videoIndex = 0; // סרטון ראשון
+      }
+
+      navigate("/video-page", {
+        state: {
+          prompt,
+          from,
+          videoIndex,
+        },
+      });
+    }}
+  >
+    המשך
+  </button>
+)}
     </div>
   );
 };

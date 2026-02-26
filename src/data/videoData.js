@@ -3,7 +3,10 @@ const videoData = {
     title: "החברה החרדית",
     imgSrc:`${process.env.PUBLIC_URL}/assets/imgs/cuctuseJPNG/cactusDos.png`,
     videoInfo:`יחידה זו נועדה להסביר על ההבדלים והאתגרים בחברה החרדית, בסיומה, נשאל שאלות להבנה.`,
-    videoSrc: `${process.env.PUBLIC_URL}/assets/media/dosVid.mp4`,
+    videos: [
+      `${process.env.PUBLIC_URL}/assets/media/dosVid.mp4`,
+      `${process.env.PUBLIC_URL}/assets/media/dosVid2.mp4`
+    ],
     slides: [
       {
         title: "הקדמה:",
@@ -62,7 +65,10 @@ const videoData = {
     title: "החברה הערבית",     
      imgSrc:`${process.env.PUBLIC_URL}/assets/imgs/cuctuseJPNG/cactusArab.png`,
      videoInfo:`יחידה זו נועדה להסביר על ההבדלים והאתגרים בחברה הערבית, בסיומה, נשאל שאלות להבנה.`,
-    videoSrc: `${process.env.PUBLIC_URL}/assets/media/arabVid.mp4`,
+    videos: [
+      `${process.env.PUBLIC_URL}/assets/media/arabVid.mp4`,
+      `${process.env.PUBLIC_URL}/assets/media/arabVid2.mp4`
+    ],
     slides: [
       {
         title: "הקדמה:",
