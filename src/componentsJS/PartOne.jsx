@@ -34,8 +34,7 @@ const PartOne = () => {
           </button>
         )}
       </div>
-
-      <div className="footer-1"></div>
+      
     </div>
   );
 };
