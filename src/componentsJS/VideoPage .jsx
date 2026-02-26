@@ -18,8 +18,7 @@ const videoMapping = {
     `${process.env.PUBLIC_URL}/assets/media/dosVid2.mp4`,
   ],
   "מוגבלויות והגיל השלישי": [
-    `${process.env.PUBLIC_URL}/assets/media/dosVid.mp4`,
-    `${process.env.PUBLIC_URL}/assets/media/dosVid2.mp4`,
+    `${process.env.PUBLIC_URL}/assets/media/oldVid.mp4`
   ],
 };
 
