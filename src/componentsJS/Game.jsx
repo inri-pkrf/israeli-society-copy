@@ -225,7 +225,7 @@ const Game = () => {
           <p className="game-over-txt1">כל הכבוד!</p>
           <p className="game-over-txt2">
             הצלחת לזהות<br />
-            {score} / {statements.length} מאפיינים מקבילים בין החברה החרדית לערבית<br />
+            {statements.length} / {score} מאפיינים מקבילים בין החברה החרדית לערבית<br />
             בשבילנו את/ה צבר אמיתי!
           </p>
 
