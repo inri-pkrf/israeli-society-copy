@@ -2,9 +2,8 @@
 
 .summary-card {
     width: 100%;
-    height: 120vh;
-    max-width: 400px;
-    padding: 5vw;
+    height: 100vh;
+    overflow: hidden;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     text-align: center;
     direction: rtl;
@@ -17,7 +16,7 @@
     font-size: 12vw;
     font-weight: bold;
     color: white;
-    left: 9vw;
+    left: 5vw;
     font-family: 'Heebo';
     margin-top: 0vw;
     position: absolute;
@@ -27,8 +26,8 @@
     font-size: 12vw;
     font-weight: bold;
     text-align: right;
-    margin-top: 15vw;
-    padding-right:18vw;
+    margin-top: 20vw;
+    padding-right:15vw;
     font-family: "Karantina";
     z-index: 1000;
     position: absolute;
@@ -46,7 +45,6 @@
     justify-content: space-between;
     align-items: center;
     margin-bottom: 3vw;   
- padding-right: 5vw;
   }
   
   .card-section p {
@@ -64,12 +62,12 @@
   }
   
   .card-arrows {
-    position: absolute;
-    top: 180vw;
+    position: fixed;
+    bottom: 11px;
     width: 100%;
     display: flex;
     justify-content: center;
-    gap: 8vw;
+    gap: 30px;
     pointer-events: none;
   }
   
@@ -102,10 +100,10 @@
   }
   .point-num{
     font-family: "Karantina";
-    position: fixed;
+    position: absolute;
     color: white;
     top: -42vw;
-    right: 16vw;
+    right: 8vw;
     font-size: 55vw;
     font-weight: bold;
     z-index: 8;
