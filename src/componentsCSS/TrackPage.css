@@ -84,7 +84,9 @@
   left: 0;
   width: 100vw;
   height: 150vh;
-  background: rgba(0, 0, 0, 0.5);
+  background-image: url("/public/assets/imgs/Bg2.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
   z-index: 25;
   overflow-y: auto;     /* 👈 allow vertical scroll */
   overflow-x: hidden;  /* 👈 avoid sideways scroll */
@@ -178,7 +180,7 @@
 }
 .reading-box {
   position: relative;
-  top: 25vw;
+  top: 35vw;
   right: 50%;
   transform: translateX(50%);
   width: 45vh;
