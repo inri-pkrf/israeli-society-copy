@@ -19,17 +19,17 @@
 
 /* כותרת של השאלה */
 .question-number-q {
-  font-size: 4em;
+  font-size: 15vw;
   font-family: "karantina";
   color: rgb(86, 195, 232);
-  margin-top: 10vh;
+  margin-top: 25vw;
 }
 
 /* שאלה */
 .question-q {
-  margin-top: 3vh;
+  margin-top: 6vw;
   direction: rtl;
-  font-size: 1.2em;
+  font-size: 5vw;
   color: rgb(89, 89, 89);
   font-family: "Heebo";
   text-align: center;
@@ -39,11 +39,11 @@
   direction: rtl;
   position: relative;
   width: 90%;
-  height: 10px;
+  height: 3vw;
   background-color: #ccc;
   cursor: pointer;
-  border-radius: 40px;
-  margin-top: 10px;
+  border-radius: 4vw;
+  margin-top: -5vw;
 }
 
 .progress-bar-q {
@@ -58,19 +58,19 @@
 .answers-q {
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 2vw;
   width: 90%;
   align-items: center;
-  margin-top: 2vh;
+  margin-top: 2vw;
 }
 
 .answer-button-q {
-  padding: 10px;
-  font-size: 1.2em;
+  padding: 3vw;
+  font-size: 5vw;
   text-align: center;
   font-family: "Heebo";
-  border: 1px solid #ddd;
-  border-radius: 50px;
+  border: 0.5vw solid #ddd;
+  border-radius: 50vw;
   width: 100%;
   max-width: 500px;
   cursor: pointer;
@@ -89,17 +89,17 @@
   justify-content: space-between;
   width: 90%;
   max-width: 500px;
-  margin: 2em auto;
+  margin: 8vw auto;
 }
 
 .prev-button,
 .next-button,
 .button-disabled {
-  padding: 10px 20px;
-  font-size: 1.2em;
+  padding: 3vw 4vw;
+  font-size: 5vw;
   font-family: "Heebo";
   border: none;
-  border-radius: 50px;
+  border-radius: 50vw;
   color: white;
   cursor: pointer;
 }
@@ -120,16 +120,18 @@
 
 
 .results {
-    height: 100vh;
-    font-size: 1.2em;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100vw;
+  height: 100vh;
+    font-size: 5vw;
     direction: rtl;
     text-align: center;
-    position: fixed;
     top: 0vh;
-    width: 100vw;
-    right: 0vw;
     background-size: cover;
     background-repeat: no-repeat;
+    background-position: center center;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -182,15 +184,15 @@
     background-color: rgb(33, 173, 216);
     color: white;
     border: none;
-    border-radius: 50px;
-    padding: 10px 20px;
-    font-size: 6vmin;
+    border-radius: 5vw;
+    padding: 2vw 5vw;
+    font-size: 5vmin;
     font-family: "Heebo";
-    width: 77%;
+    width: 50%;
     position: absolute;
     right: 50%;
     transform: translateX(50%);
-    margin-top: 15vh;
+    margin-top: 32vw;
     cursor: pointer;
     display: block;
 }
@@ -201,14 +203,14 @@
     background-color: #2858ab;
     color: white;
     border: none;
-    border-radius: 50px;
-    padding: 10px 20px;
-    font-size: 1.2em;
+    border-radius: 6vw;
+    padding: 2vw 5vw;
+    font-size: 6vw;
     font-family: "Assistant", Arial;
     width: 50%;
     right: 50%;
     transform: translateX(50%);
-    margin-top: 28vh;
+    margin-top: 48vw;
     cursor: pointer;
     display: block;
 }
@@ -220,13 +222,13 @@
     color: white;
     border: none;
     border-radius: 50px;
-    padding: 10px 20px;
-    font-size: 1.2em;
+    padding: 2vw 5vw;
+    font-size: 6vw;
     font-family: "Assistant", Arial;
     width: 50%;
     right: 50%;
     transform: translateX(50%);
-    margin-top: 39vh;
+    margin-top: 65vw;
     cursor: pointer;
     display: block;
 
@@ -235,13 +237,13 @@
      background-color: rgb(80 131 221);
     color: white;
     border: none;
-    border-radius: 50px;
-    padding: 10px 20px;
-    font-size: 1.2em;
+    border-radius: 5vw;
+    padding: 2vw 5vw;
+    font-size: 6vw;
     font-family: "Heebo";
     width: 45%;
     position: absolute;
-    margin: 2em auto;
+    margin: 20vw auto;
     cursor: pointer;
     right: 28vw;
     display: block;
@@ -253,30 +255,30 @@
     background-color: rgb(33, 173, 216);
     color: white;
     border: none;
-    border-radius: 50px;
-    padding: 10px 20px;
-    font-size: 1.2em;
+    border-radius: 8vw;
+    padding: 2vw 5vw;
+    font-size: 6vw;
     font-family: "Heebo";
     width: 45%;
     position: absolute;
     right: 28vw;
     top: 57vh;
-    margin: 2em auto;
+    margin: 20vw auto;
     cursor: pointer;
     display: block;
 }
 
 .container-endBtn{
  position: fixed;
-    top: 10vh;
+    bottom: 0vh;
     width: 100vw;
     background-color: white;
-    height: 10vh;
+    height: 18vw;
 }
 
 .container-mistakes{
-position: relative;
-    margin-top: 12vh;
+position: absolute;
+    margin-top: 40vw;
     text-align: right;
     font-family: 'ASSISTANT';
     width: 90vw;
@@ -302,17 +304,28 @@ position: relative;
 }
 
 .back-btn-mis{
-height: 6vh;
-    margin-top: 2vh;
-    padding: 10px 20px;
-    font-size: 1.2em;
+height: 12vw;
+    margin-top: 3vw;
+    padding: 2vw 5vw;
+    font-size: 5vw;
     font-family: "Heebo";
     border: none;
-    border-radius: 50px;
+    border-radius: 5vw;
     color: white;
     cursor: pointer;
     background-color: rgb(33, 173, 216);
 
 }
 
+#title-mistakes {
+  top: 20vw;
+  position: absolute;
+  font-family: 'karantina';
+  text-align: center;
+  width: 100vw;
+  color:  rgb(33, 173, 216);
+  padding-bottom: 5vw;
+  font-size: 12vw;
+  direction: rtl;
+}
  

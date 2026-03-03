@@ -122,15 +122,15 @@ const Game = () => {
                   onTouchMove={onTouchMove}
                   onTouchEnd={onTouchEnd}
                   style={{
-                    position: dragging ? 'fixed' : 'relative',
+                    position: dragging ? 'fixed' : 'absolute',
                     left: dragging ? dragPos.x - offset.x : '50%',
-                    top: dragging ? dragPos.y - offset.y : 'auto',
+                    top: dragging ? dragPos.y - offset.y : '54vw',
                     transform: dragging ? 'none' : 'translateX(-50%)',
                     zIndex: dragging ? 1000 : 1,
                     touchAction: 'none',
                     backgroundColor: '#66c0f4',
-                    borderRadius: '12px',
-                    padding: '20px',
+                    borderRadius: '4vw',
+                    padding: '4vw',
                     color: 'white',
                     cursor: 'grab',
                     width: '60vw',
@@ -140,7 +140,7 @@ const Game = () => {
                     justifyContent: 'center',
                     alignItems: 'center',
                     textAlign: 'center',
-                    fontSize: '1.4em',
+                    fontSize: '6vw',
                     fontFamily: 'Heebo',
                   }}
                 >
@@ -163,7 +163,7 @@ const Game = () => {
 
           <div
             className="dropzones"
-            style={{ display: 'flex', justifyContent: 'space-between', marginTop: '13vh', gap: '15vw' }}
+            style={{ display: 'flex', justifyContent: 'space-between', gap: '10vw', top: '120vw', position: 'absolute', left: '50%', transform: 'translateX(-50%)' }}
           >
             <div
               ref={incorrectRef}
@@ -174,7 +174,7 @@ const Game = () => {
                 handleDrop(false);
               }}
               style={{
-                width: '45%',
+                width: '35vw',
                 padding: '5vw',
                 backgroundColor: 'transparent',
                 border: 'none',
@@ -185,7 +185,7 @@ const Game = () => {
               <img
                 src={`${process.env.PUBLIC_URL}/assets/imgs/catuseWrong.png`}
                 alt="ממש לא"
-                style={{ maxWidth: '100px', marginBottom: '10px' }}
+                style={{ maxWidth: '30vw', marginBottom: '2vw' }}
               />
               <p className='wrong-txt'>ממש לא</p>
             </div>
@@ -199,7 +199,7 @@ const Game = () => {
                 handleDrop(true);
               }}
               style={{
-                width: '45%',
+                width: '35vw',
                 padding: '5vw',
                 backgroundColor: 'transparent',
                 border: 'none',
@@ -210,7 +210,7 @@ const Game = () => {
               <img
                 src={`${process.env.PUBLIC_URL}/assets/imgs/cactuseCorrect.png`}
                 alt="ברור שכן!"
-                style={{ maxWidth: '100px', marginBottom: '10px' }}
+                style={{ maxWidth: '30vw', marginBottom: '2vw' }}
               />
               <p className='correct-txt'>ברור שכן!</p>
             </div>

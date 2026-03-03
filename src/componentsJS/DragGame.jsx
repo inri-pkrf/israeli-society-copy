@@ -117,7 +117,7 @@ const DragGame = ({ onComplete }) => {
       onPointerMove={moveDrag}
       onPointerUp={endDrag}
     >
-      <h4>גררו את המפלגה אל המגזר המתאים</h4>
+      <p id='title-drag-game'>גררו את המפלגה אל המגזר המתאים</p>
 
       <div className="parties">
         {parties.map((party) => (

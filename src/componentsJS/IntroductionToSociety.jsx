@@ -92,7 +92,7 @@ const goToNextStep = () => {
 
         
           <button
-            className="next-step-button-2"
+            className="introduction-to-society next-step-button-2"
             onClick={goToNextStep}
           >
             לשלב הבא

@@ -5,7 +5,7 @@
   text-align: center;
   color: #003561; /* צבע טקסט כחול כהה */
   font-family: "heebo";
-  font-size: 2.5vh;
+  font-size: 5vw;
   top: 0%; 
   position: relative;
 
@@ -16,7 +16,7 @@
 #true-false-game {
   width: 100vw;
   max-width: 100vmin;
-  margin-top: 72% ;
+  margin-top: 72vw ;
   text-align: center;
   position: relative;
   z-index: 20;
@@ -31,28 +31,14 @@
 
 }
 
-.introduction-to-society {
-	display: flex;
-	justify-content: center;
-	align-items: flex-start;
-	padding: 6vh 2vw;
-	box-sizing: border-box;
-	direction: rtl;
-	background: transparent;
-	min-height: 100vh;
-    font-family: "heebo";
-    direction: rtl;
-}
-
-
 /* Progress pill */
 .tf-progress {
   position: relative;
   background: #F2F2FF; /* אפור בהיר */
   display: inline-block;
-  padding: 1.2vmin 2.2vmin;
-  border-radius: 2.6vmin;
-  font-size: 4vmin;
+  padding: 1.2vw 2.2vw;
+  border-radius: 2.6vw;
+  font-size: 4vw;
   right: 50%;
   transform: translateX(50%);
 }
@@ -60,16 +46,16 @@
 /* Statement card */
 .tf-statement {
   background: #F2F2FF; /* אפור בהיר */
-  border-radius: 2.6vmin;
-  padding: 3vmin 3.5vmin;
-  min-height: 12vmin;
+  border-radius: 2.6vw;
+  padding: 3vw 3.5vw;
+  min-height: 12vw;
   display: flex;
   align-items: center;
   justify-content: center;
   color: #1f2937; /* אפור כהה */
-  margin: 2.2vmin 0;
+  margin: 2.2vw 0;
   box-shadow: 0 6px 18px rgba(17, 24, 39, 0.03);
-  font-size: 2.5vh;
+  font-size: 5vw;
 }
 
 /* Statement card – correct/wrong */
@@ -88,15 +74,15 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 3vmin;
-  margin: 3vmin 0 5vmin 0;
+  gap: 3vw;
+  margin: 3vw 0 5vw 0;
 }
 
 .label-left,
 .label-right {
   width: 20%;
   font-weight: 700;
-  font-size: 5vmin;
+  font-size: 5vw;
 }
 
 .label-left { color: #ef4444; } /* אדום */
@@ -106,7 +92,7 @@
 .tf-range {
   -webkit-appearance: none;
   width: 60%;
-  height: 2.6vmin;
+  height: 2.6vw;
   border-radius: 2vmin;
   background: #d1d5db; /* אפור בינוני */
   outline: none;
@@ -114,8 +100,8 @@
 
 .tf-range::-webkit-slider-thumb {
   -webkit-appearance: none;
-  width: 6vmin;
-  height: 6vmin;
+  width: 6vw;
+  height: 6vw;
   max-width: 44px;
   max-height: 44px;
   border-radius: 50%;
@@ -129,31 +115,31 @@
 /* Result text */
 .tf-result {
   font-weight: 700;
-  margin-top: 2vmin;
-  font-size: 3vh;
+  margin-top: 2vw;
+  font-size: 6vw;
 }
 
 .tf-result.correct { color: #059669; } /* ירוק */
 .tf-result.wrong { color: #ef4444; } /* אדום */
 
 /* Actions container */
-.tf-actions { margin-top: 4vmin; }
+.tf-actions { margin-top: 4vw; }
 
 .tf-reset {
   background: #1bbfe5; /* תכלת */
   color: white;
   border: none;
-  padding: 3vmin 10vmin;
+  padding: 3vw 10vw;
   border-radius: 20px;
-  font-size: 5vmin;
+  font-size: 5vw;
   font-family: "heebo";
 }
 
 /* Media queries – נשארים רק למיקומים/רוחבים */
 @media screen and (min-width: 769px) {
-  #true-false-game { margin-top: 6vmin; max-width: 110vmin; }
+  #true-false-game { margin-top: 6vw; max-width: 110vw; }
 }
 
 @media screen and (min-width: 1025px) {
-  #true-false-game { margin-top: 5vmin; }
+  #true-false-game { margin-top: 5vw; }
 }

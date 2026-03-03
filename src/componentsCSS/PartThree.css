@@ -2,7 +2,7 @@
 
 #part-three {
     position: fixed;
-    top: 10vh;
+    top: 0vh;
     left: 0;
     width: 100vw;
     height: 100vh;
@@ -16,32 +16,22 @@
  
 .Partthree-title{
     font-family: "karantina";
-    font-size: 3em;
+    font-size: 15vw;
     font-weight: 400;
     position: absolute;
     right: 50%;
     transform: translateX(50%);
     width: 90vw;
     color: #ffffff;
-    margin-top: 15vh;
+    margin-top: 35vw;
     text-align: center;
 
-}
-.part-titlethree{
-    font-family: "heebo";
-    margin-top: 8vh;
-    right: 50%;
-    transform: translateX(50%);
-    width: 100vw;
-    color: #ffffff;
-    text-align: center;
-    position: absolute;
 }
 
 .instructions-partthree{
     font-family: "heebo";
-    margin-top: 34vh;
-    font-size: 1.6em;
+    margin-top: 70vw;
+    font-size: 8vw;
     right: 50%;
     transform: translateX(50%);
     width: 85vw;
@@ -63,10 +53,10 @@
 .next-arrow{
     position: absolute;
     width:auto;
-    height:8vh;
+    height:15vw;
     transform: rotate(200deg);
-    right:10vw;
-    bottom:5vh;
+    right:0vw;
+    top: 8vw;
 
 }
 
@@ -81,11 +71,11 @@
 }
 .next-text{
     position:absolute;
-    bottom:-3vh;
+    top: 20vw;
     font-family:"Heebo";
     color:white;
-    right:1vw;
-
+    right:-15vw;
+    font-size: 5vw;
 }
 }
 @media screen and (min-width: 1025px) {

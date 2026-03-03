@@ -21,7 +21,7 @@
 }
 .hamburger-line.open:nth-child(1) {
     background-color: white;
-    transform: rotate(45deg) translate(2px, 2px);
+    transform: rotate(45deg) translate(2vw, 2vw);
 }
 
 .hamburger-line.open:nth-child(2) {
@@ -30,7 +30,7 @@
 
 .hamburger-line.open:nth-child(3) {
   background-color: white;
-  transform: rotate(-45deg) translate(14px, -12px);
+  transform: rotate(-45deg) translate(3vw, -4vw);
 }
 
 .menu {
@@ -67,12 +67,15 @@
     color: white;
     text-align: center;
     list-style: none;
-    margin-top: 17vh;
+    margin-top: 40vw;
     font-family: "Heebo", Arial;
-    position: absolute;
-    transform: translateX(50%);
-    right: 54%;
 
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+
+    padding: 0;   /* 👈 FIX */
+    margin-left: 0; /* 👈 extra safety */
 }
 
 .submenu {
@@ -83,9 +86,9 @@
 
 .menu-item {
     color: white;
-    margin-bottom: 2vh; /* ריווח בין פריטים */
-    padding: 2vh;
-    font-size: 1.3em;
+    margin-bottom: 4vw; /* ריווח בין פריטים */
+    padding: 4vw;
+    font-size: 6vw;
     font-family: "Heebo", Arial;
     text-align: center;
     white-space: nowrap;  /* מונע מהמילים לעבור לשורה הבאה */
@@ -94,7 +97,7 @@
 }
 
 .whiteLogoHam {
-    height: 16vh;
+    height: 22vw;
     width: auto;
     position: absolute;
     transform: translateX(50%);
@@ -153,10 +156,10 @@ li[style*="not-allowed"] {
 
 .dropdown-arrow {
     transform: rotate(180deg);
-    height: 3vh;
+    height: 6vw;
     width: auto;
-    padding-left: 5vw;
     display: inline-block;
+    margin-right: 5vw
 }
 
 .dropdown-arrow.open {

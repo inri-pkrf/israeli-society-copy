@@ -123,7 +123,7 @@ const TrueOrFalseGame = () => {
             )}
 
             {locked && currentQuestion === questions.length - 1 && (
-              <div style={{ marginTop: '10px', fontWeight: 'bold' }}>
+              <div style={{ marginTop: '10px', fontWeight: 'bold', fontSize: '5vw' }}>
                 סיימת את כל השאלות 🎉
                 <br />
                 <button className="tf-reset" onClick={handleNextPage} style={{ marginTop: '10px' }}>המשך</button>

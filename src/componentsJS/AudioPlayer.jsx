@@ -76,7 +76,7 @@ const AudioPlayer = ({ src, name, onEnded, isDarkMode = false }) => {
   };
 
   const playButtonImage = isDarkMode
-    ? `${process.env.PUBLIC_URL}/assets/imgs/stop-dark.png`
+    ? `${process.env.PUBLIC_URL}/assets/imgs/stop-light.png`
     : `${process.env.PUBLIC_URL}/assets/imgs/stop-light.png`;
 
   const micIconImage = isDarkMode

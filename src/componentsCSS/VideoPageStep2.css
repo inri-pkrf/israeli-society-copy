@@ -2,7 +2,7 @@
 
 .video-step2 {
     position: fixed;
-    top: 10vh;
+    top: 0vh;
     left: 0;
     width: 100vw;
     height: 100vh;
@@ -14,9 +14,12 @@
 }
 
 .next-step-button-2{
-    margin-top: 30px;
-    padding: 10px 25px;
-    font-size: 3vh;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 140vw;
+    padding: 5vw 5vw;
+    font-size: 6vw;
     border-radius: 30px;
     background-color:#1bbfe5;
     color: white;
@@ -30,7 +33,10 @@
     width: 90vw;
     height: auto;
     object-fit: cover;
-    margin-top: 30vh;
+    top: 80vw;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
 }
   
 }

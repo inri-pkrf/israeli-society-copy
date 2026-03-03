@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import '../componentsCSS/Quiz.css';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import quizData from '../data/quizData';
 import html2canvas from 'html2canvas';
 
-const Quiz = ({ onReset }) => {
+const Quiz = () => {
   const location = useLocation();
+  const navigate = useNavigate();
+
   const { firstName, lastName } = location.state || {};
 
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -59,6 +61,10 @@ const Quiz = ({ onReset }) => {
     setShowMistakes(false);
   };
 
+  const resetToStart = () => {
+    navigate('/'); // 🔥 goes back to home page
+  };
+
   const captureAndShareScreenshot = () => {
     const element = document.querySelector('.results');
 
@@ -91,7 +97,9 @@ const Quiz = ({ onReset }) => {
     <div className="quiz-container">
       {!isSubmitted ? (
         <div id="quiz">
-          <p className="question-number-q">שאלה {currentIndex + 1} מתוך {quizData.length}</p>
+          <p className="question-number-q">
+            שאלה {currentIndex + 1} מתוך {quizData.length}
+          </p>
 
           <div className="progress-bar-container-q">
             <div className="progress-bar-q" style={{ width: progressWidth }}></div>
@@ -104,7 +112,9 @@ const Quiz = ({ onReset }) => {
               <button
                 key={index}
                 onClick={() => handleAnswerSelect(answer)}
-                className={`answer-button-q ${selectedAnswers[currentIndex] === answer ? 'selected' : ''}`}
+                className={`answer-button-q ${
+                  selectedAnswers[currentIndex] === answer ? 'selected' : ''
+                }`}
               >
                 {answer}
               </button>
@@ -113,71 +123,126 @@ const Quiz = ({ onReset }) => {
 
           <div className="navigation-buttons">
             <button
-              className={`${currentIndex === 0 ? 'button-disabled' : 'prev-button'}`}
+              className={currentIndex === 0 ? 'button-disabled' : 'prev-button'}
               onClick={prevQuestion}
               disabled={currentIndex === 0}
             >
               שאלה קודמת
             </button>
+
             <button
-              className={`${selectedAnswers[currentIndex] === undefined ? 'button-disabled' : 'next-button'}`}
-              onClick={currentIndex === quizData.length - 1 ? finishQuiz : nextQuestion}
+              className={
+                selectedAnswers[currentIndex] === undefined
+                  ? 'button-disabled'
+                  : 'next-button'
+              }
+              onClick={
+                currentIndex === quizData.length - 1
+                  ? finishQuiz
+                  : nextQuestion
+              }
               disabled={selectedAnswers[currentIndex] === undefined}
             >
-              {currentIndex === quizData.length - 1 ? 'סיים את המשחק' : 'שאלה הבאה'}
+              {currentIndex === quizData.length - 1
+                ? 'סיים את המשחק'
+                : 'שאלה הבאה'}
+            </button>
+          </div>
+        </div>
+      ) : showMistakes && score < 100 ? (
+        <div className="mistakes-container">
+          <h2 id="title-mistakes">איפה טעית?</h2>
+
+          <div className="container-mistakes">
+            {quizData
+              .map((question, index) => ({ question, index }))
+              .filter(
+                ({ question, index }) =>
+                  selectedAnswers[index] !== question.correctAnswer
+              )
+              .map(({ question, index }) => {
+                const userAnswer = selectedAnswers[index];
+                const correctAnswer = question.correctAnswer;
+
+                return (
+                  <div key={index} className="mistake-item wrong">
+                    <p className="mistake-q wrong">
+                      <strong>שאלה {index + 1}:</strong> {question.question}
+                    </p>
+                    <p className="ans-mis">
+                      ענית לא נכון: {userAnswer || 'לא ענית'}
+                    </p>
+                    <p className="ans-mis-cor">
+                      תשובה נכונה: {correctAnswer}
+                    </p>
+                  </div>
+                );
+              })}
+          </div>
+
+          <div className="container-endBtn">
+            <button
+              onClick={() => setShowMistakes(false)}
+              className="back-btn-mis"
+            >
+              חזרה למסך סיום
             </button>
           </div>
         </div>
       ) : (
-        showMistakes && score<100 ? (
-          <div className="mistakes-container">
-            <h2>איפה טעית?</h2>
-            <div className='container-mistakes'>
-           {quizData
-          .map((question, index) => ({ question, index }))
-          .filter(({ question, index }) => selectedAnswers[index] !== question.correctAnswer)
-          .map(({ question, index }) => {
-            const userAnswer = selectedAnswers[index];
-            const correctAnswer = question.correctAnswer;
+        <div className="results">
+          <p className="score">ציון: {score}</p>
+          <p className="user-name">
+            שם: {firstName} {lastName}
+          </p>
 
-            return (
-              <div key={index} className="mistake-item wrong">
-                <p className="mistake-q wrong">
-                  <strong>שאלה {index + 1}:</strong> {question.question}
-                </p>
-                <p className="ans-mis"> ענית לא נכון:{userAnswer || 'לא ענית'}</p>
-                <p className="ans-mis-cor">תשובה נכונה: {correctAnswer}</p>
-              </div>
-            );
-          })}
+          {score >= 70 ? (
+            <div>
+              <p className="message">
+                מזל טוב!<br />
+                סיימת את הבוחן בהצלחה!
+              </p>
 
+              <button className="share-btn" onClick={captureAndShareScreenshot}>
+                שתפו צילום מסך
+              </button>
+
+              <button className="try-button" onClick={retryQuiz}>
+                נסו שוב
+              </button>
+
+              <button onClick={resetToStart} className="reset-btn">
+                להתחלת מחדש
+              </button>
+
+              <button
+                onClick={() => setShowMistakes(true)}
+                className="mistakes-btn"
+              >
+                איפה טעיתי?
+              </button>
             </div>
-             <div className='container-endBtn'>
+          ) : (
+            <div>
+              <p className="message">אוי, לא נורא</p>
 
-            <button onClick={() => setShowMistakes(false)} className="back-btn-mis" >  חזרה למסך סיום </button>
-          </div>
-          </div>
-        ) : (
-          <div className="results">
-            <p className='score'>ציון: {score}</p>
-            <p className="user-name">שם: {firstName} {lastName}</p>
-            {score >= 70 ? (
-              <div>
-                <p className='message'>מזל טוב!<br /> סיימת את הבוחן בהצלחה!</p>
-                <button className='share-btn' onClick={captureAndShareScreenshot}>שתפו צילום מסך</button>
-                <button className='try-button' onClick={retryQuiz}>נסו שוב</button>
-                <button onClick={onReset} className="reset-btn">להתחלת מחדש</button>
-                <button onClick={() => setShowMistakes(true)} className="mistakes-btn">איפה טעיתי?</button>
-              </div>
-            ) : (
-              <div>
-                <p className='message'>אוי, לא נורא</p>
-                <button className='end-btn' onClick={retryQuiz}>נסו שוב</button>
-                <button onClick={() => setShowMistakes(true)} className="mistakes-btn">איפה טעיתי?</button>
-              </div>
-            )}
-          </div>
-        )
+              <button className="end-btn" onClick={retryQuiz}>
+                נסו שוב
+              </button>
+
+              <button
+                onClick={() => setShowMistakes(true)}
+                className="mistakes-btn"
+              >
+                איפה טעיתי?
+              </button>
+
+              <button onClick={resetToStart} className="reset-btn">
+                להתחלה מחדש
+              </button>
+            </div>
+          )}
+        </div>
       )}
     </div>
   );

@@ -2,45 +2,42 @@
 
 .summary-card {
     width: 100%;
-    height: 98vh;
+    height: 120vh;
     max-width: 400px;
-    margin: 20px auto;
-    padding: 20px;
-    border-radius: 20px;
+    padding: 5vw;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     text-align: center;
     direction: rtl;
-    top: -4vh;
+    top: 0vh;
     position: relative;
     z-index: 10000;
   }
 
   .closeCard{
-    font-size: 3em;
+    font-size: 12vw;
     font-weight: bold;
     color: white;
     left: 9vw;
     font-family: 'Heebo';
-    margin-top: -1vh;
+    margin-top: 0vw;
     position: absolute;
   }
   
   .card-title {
-    font-size: 3em;
+    font-size: 12vw;
     font-weight: bold;
-
     text-align: right;
-    margin-top: 10vh;
+    margin-top: 15vw;
     padding-right:18vw;
     font-family: "Karantina";
     z-index: 1000;
     position: absolute;
   }
   .card-sections-wrapper {
-    margin-top: 25vh; /* משנה את המיקום של כל שלושת הסקשנים יחד */
+    margin-top: 50vw; /* משנה את המיקום של כל שלושת הסקשנים יחד */
     display: flex;
     flex-direction: column;
-    gap: 4vh; /* רווח בין השלושה */
+    gap: 6vw; /* רווח בין השלושה */
   }
   
   .card-section {
@@ -48,13 +45,13 @@
     flex-direction: row-reverse; /* מוסיף את זה */
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 3vh;   
+    margin-bottom: 3vw;   
  padding-right: 5vw;
   }
   
   .card-section p {
     flex: 1;
-    font-size: 1.2em;
+    font-size: 5vw;
     margin: 0;
     font-family: "Heebo";
     padding-right: 5vw;
@@ -67,12 +64,12 @@
   }
   
   .card-arrows {
-    position: fixed;
-    bottom: 91px;
+    position: absolute;
+    top: 180vw;
     width: 100%;
     display: flex;
     justify-content: center;
-    gap: 30px;
+    gap: 8vw;
     pointer-events: none;
   }
   
@@ -87,16 +84,16 @@
   
   /* חץ קדימה */
   .card-arrows button.forward {
-    border-top: 20px solid transparent;
-    border-bottom: 20px solid transparent;
-    border-right: 25px solid white;
+    border-top: 6vw solid transparent;
+    border-bottom: 6vw solid transparent;
+    border-right: 6vw solid white;
   }
   
   /* חץ אחורה */
   .card-arrows button.backward {
-    border-top: 20px solid transparent;
-    border-bottom: 20px solid transparent;
-    border-left: 25px solid white;
+    border-top: 6vw solid transparent;
+    border-bottom: 6vw solid transparent;
+    border-left: 6vw solid white;
   }
   
   .card-arrows button:disabled {
@@ -107,9 +104,9 @@
     font-family: "Karantina";
     position: fixed;
     color: white;
-    top: -24vh;
+    top: -42vw;
     right: 16vw;
-    font-size: 13em;
+    font-size: 55vw;
     font-weight: bold;
     z-index: 8;
 

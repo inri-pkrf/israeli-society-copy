@@ -1,6 +1,3 @@
-/* ========================= */
-/* משחק גרירה – שורה אחת, ללא חיתוך וללא ירידת שורה */
-/* ========================= */
 .drag-game {
   display: flex;
   flex-direction: column;
@@ -8,12 +5,12 @@
   text-align: center;
   touch-action: none;
   position: relative;
-
+  justify-content: center;
   background-color: #F2F2FF;
-  padding: 2vh 3vw 3vh;
-  margin-top: 2vh;
-  border-radius: 2vh;
-
+  padding: 2vw 3vw 3vw;
+  margin-top: 2vw;
+  border-radius: 4vw;
+  gap: 4vw;
   height: 100%;
   max-height: 65dvh;
   width: 100%;
@@ -21,48 +18,19 @@
   box-sizing: border-box;
   overflow: hidden; /* חשוב לגרירה */
 }
-/* ========================= */
-/* שורת המפלגות – שורה אחת בלבד ממורכזת */
-/* ========================= */
+
 .parties {
   display: flex;
-  justify-content: center; /* ממקם באמצע */
+  justify-content: center;
   align-items: center;
-  gap: 3vh;
-  width: 100%;
-  padding-bottom:4vh;
-  padding-top: 4vh;
-  flex-wrap: nowrap; /* ❗ מבטל ירידת שורה */
-  overflow-x: auto;  /* ❗ מונע חיתוך במסכים קטנים */
-  overflow-y: hidden;
-  scrollbar-width: none; /* מסתיר גלילה בפיירפוקס */
+  gap: 6vw;
+  width: 80%;
 }
 
-.parties::-webkit-scrollbar {
-  display: none; /* מסתיר גלילה בכרום */
-}
-
-/* ========================= */
-/* תמונות לגרירה – רספונסיביות לפי גובה מסך */
-/* ========================= */
 .party-img {
-  width: clamp(55px, 8vh, 95px);
-  height: auto;
-  user-select: none;
-  cursor: grab;
-  transition: transform 0.2s ease;
-  object-fit: contain;
-  flex-shrink: 0; /* ❗ מונע דחיסה וחיתוך */
+  width: 18vw; 
 }
 
-.party-img:active {
-  cursor: grabbing;
-  transform: scale(1.08);
-}
-
-/* ========================= */
-/* אזור הסקטורים */
-/* ========================= */
 .sectors {
   display: flex;
   justify-content: space-evenly;
@@ -71,24 +39,16 @@
   width: 100%;
 }
 
-/* ========================= */
-/* קופסאות יעד – רספונסיביות אמיתית עם VH */
-/* ========================= */
 .sector-box {
-  flex: 1;
-  max-width: 22vw;
-  min-width: 18vw;
-  min-height: clamp(90px, 14vh, 180px);
-
+  width: 22vw;
+  height: 32vw;
   border: 0.4vh dashed #1bbfe5;
-  border-radius: 2vh;
-
+  border-radius: 5vw;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-
-  padding: 1.5vh 1vw;
+  padding: 4vw 1vw;
   transition: background 0.3s, border 0.3s, transform 0.2s;
   box-sizing: border-box;
 }
@@ -109,46 +69,19 @@
 /* כותרת */
 .sector-title {
   font-weight: bold;
-  font-size: clamp(14px, 1.8vh, 22px);
+  font-size: 4vw;
   text-align: center;
 }
 
-/* התמונה שנגררת מעל הכל */
 .dragging-img {
   position: absolute;
-  width: clamp(60px, 9vh, 110px);
+  width: 20vw;
   height: auto;
   pointer-events: none;
   z-index: 9999;
 }
 
-/* ========================= */
-/* התאמה למסכים נמוכים (טלפונים קטנים) */
-/* ========================= */
-@media (max-height: 700px) {
-  .drag-game {
-    max-height: 70dvh;
-    gap: 2vh;
-  }
-
-  .party-img {
-    width: 8vh;
-  }
-
-  .sector-box {
-    min-height: 12vh;
-  }
-}
-
-/* ========================= */
-/* התאמה למסכים רחבים מאוד */
-/* ========================= */
-@media (min-width: 1200px) {
-  .drag-game {
-    max-height: 60dvh;
-  }
-
-  .sector-box {
-    max-width: 12vw;
-  }
+#title-drag-game {
+  font-size: 4vw;
+  font-weight: bold;
 }

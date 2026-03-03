@@ -1,5 +1,5 @@
  .Gamepage-container {
-position: relative;
+  position: fixed;
   top: 0;
   left: 0;
   width: 100%;
@@ -7,35 +7,31 @@ position: relative;
   background-color: #ffffff;
   z-index: 2000; /* Ensure it appears above the header */
   text-align: right;
-  padding-top: 2vh;
   overflow: hidden;
 }
 
-
-
-
 .Game-title{
     font-family: "karantina";
-    font-size: 3.5em;
+    font-size: 12vw;
     font-weight: 400;
     position: absolute;
     right: 50%;
     transform: translateX(50%);
     width: 90vw;
     color: #1bbfe5;
-    margin-top: 13vh;
+    margin-top: 25vw;
     text-align: center;
 
 }
 
 .info-game{
     font-family: "Heebo";
-    font-size: 1.3em;
+    font-size: 5vw;
     position: fixed;
     right: 50%;
     transform: translateX(50%);
     width: 90vw;
-    margin-top: 22vh;
+    margin-top: 40vw;
     text-align: center;
 
 }
@@ -44,20 +40,21 @@ position: relative;
     font-family: "Heebo";
     transform: rotate(-26deg);
     text-align: right;
-    font-size: 1.2em;
-    font-weight: 300;
+    font-size: 5vw;
+    font-weight: 600;
   }
   
   .wrong-txt{
     font-family: "Heebo";
     transform: rotate(24deg);
     text-align: left;
-    font-size: 1.2em;
-    font-weight: 300;
+    font-size: 5vw;
+    font-weight: 600;
 }
   
 .game-orders{
-       position: fixed;
+       position: absolute;
+       top: 95vw;
     font-family: "Heebo";
     text-align: center;
     direction: rtl;
@@ -65,26 +62,26 @@ position: relative;
     right: 50%;
     transform: translateX(50%);
     color: rgb(105, 105, 105);
-    font-size: 7vmin;
+    font-size: 6vw;
     font-weight: bold;
 }
 .feedback {
-    position: fixed;
-    margin-top: -22vh;
+    position: absolute;
+    margin-top: -40vw;
     left: 50%;
     transform: translateX(-50%);
     color: white;
-    padding: 12px 20px;
-    border-radius: 24px;
+    padding: 4vw 4vw;
+    border-radius: 5vw;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap: 12px;
-    font-size: 7vmin;
+    gap: 3vw;
+    font-size: 7vw;
     max-width: 79vw;
     z-index: 2000;
-    height: 61vh;
+    height: 110vw;
     -webkit-user-select: none;
     user-select: none;
     text-align: center;
@@ -96,7 +93,7 @@ position: relative;
     color: rgb(255, 255, 255);
   .feedback.correct {
     font-family: "Karantina";
-    font-size: 4rem;
+    font-size: 4vw;
     font-weight: lighter;
   }
   }
@@ -113,76 +110,81 @@ position: relative;
   /* ניתן להוריד את margin-top השלילי כי לא צריך אותו עם עיצוב זה */
   .close-feedback {
     position: absolute;
-    top: 8px;
-    right: 12px;
+    top: 2vw;
+    right: 2vw;
     background: transparent;
     border: none;
     color: rgb(255, 255, 255);
-    font-size: 5rem;
+    font-size: 15vw;
     cursor: pointer;
     line-height: 1;
     transition: color 0.3s ease;
   }
   .score-game{
-    position: fixed;
+    position: absolute;
     text-align:center;
     left: 50%;
     transform: translateX(-50%);
     font-family: "Karantina";
-    font-size: 2.5em;
+    font-size: 10vw;
     direction: rtl;
-    margin-top: -14vh;
+    top: 150vw;
     color: #515151;
   }
   .game-over-txt2{
-    margin-top: -9vh;
+    margin-top: 55vw;
     text-align: center;
-    font-size: 1.8rem;
+    font-size: 6vw;
     color:  #515151;
-    padding: 20px;
-    border-radius: 12px;
-    width: 90vw;
-    margin-left: auto;
-    margin-right: auto;
+    padding: 4vw;
+    border-radius: 5vw;
+    width: 100vw;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
     direction: rtl;
     font-family: "Heebo";
     user-select: none;
   }
   .game-over-txt1{
-    margin-top: 22vh;
+    margin-top: 42vw;
     text-align: center;
-    font-size: 3rem;
+    font-size: 9vw;
     color:  #515151;
-    padding: 20px;
-    border-radius: 12px;
-    width: 90vw;
-    margin-left: auto;
-    margin-right: auto;
+    padding: 2vw;
+    border-radius: 2vw;
+    width: 100vw;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
     direction: rtl;
     font-family: "Karantina";
     user-select: none;
   }
   .end-images-row {
+    position: absolute;
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 10px; /* רווח בין התמונות */
-    margin-top: 20px;
+    gap: 4vw; /* רווח בין התמונות */
+    margin-top: 100vw;
+    left: 50%;
+    transform: translateX(-50%);
   }
   
   .end-img {
-    max-width: 100px;
+    max-width: 20vw;
     height: auto;
   }
   .next-button-game {
-    position: fixed;
-    margin-top: 4vh;
-    padding: 10px 20px;
-    font-size: 1.3em;
+    position: absolute;
+    margin-top: 130vw;
+    padding: 3vw 5vw;
+    font-size: 5vw;
     background-color: #1bbfe5;
     color: white;
     border: none;
-    border-radius: 15px;
+    border-radius: 3vw;
     cursor: pointer;
     font-family: "Heebo";
     right:50%;

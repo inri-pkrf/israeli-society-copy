@@ -6,8 +6,7 @@
   
   .voiceeffect-text {
     display: block;
-    font-size: 16px;
-    margin-bottom: 8px;
+    font-size: 6vw;
     word-wrap: break-word;
   }
 
@@ -15,19 +14,19 @@
     width: 4.5vw;
     height: auto;
     position: absolute;
-    right: 8%;
-    top: 78%;
+    right: 0vw;
+    top: 36vw;
 }
   
   .audio-button {
-    font-size: 15px;
-    padding: 8px 12px;
+    font-size: 7vw;
+    padding: 2vw 4vw;
     background-color: transparent;
     border: none;
     color: white;
-    border-radius: 50px;
+    border-radius: 5vw;
     cursor: pointer;
-    margin-bottom: 12px;
+    margin-bottom: 4vw;
     width: 50%;
     height:50%;
   }
@@ -39,8 +38,7 @@
     height: 4vw;
     background-color: #ccc;
     cursor: pointer;
-    border-radius: 40px;
-    margin-top: 10px;
+    border-radius: 4vw;
   }
   
   .progress {
@@ -48,12 +46,13 @@
     background-color: #1bbfe5;
     transition: width 0.1s linear;
   }
-  .mic-icon{
+
+  .mic-icon {
     width:auto;
     height: 20vw;
   }
   .time-display {
-    margin-top: 8px;
+    margin-top: 2vw;
     font-size: 5vw;
     color: #333;
     text-align: left;
@@ -61,7 +60,7 @@
   }
   
 .time-current.dark {
-  color: #eee; /* בהיר יותר במצב כהה */
+  color: #4e4e4e; /* בהיר יותר במצב כהה */
   font-weight: bold;
 }
 
@@ -75,11 +74,13 @@
 }
 
 .time-duration.light {
-  color: #ffffff; /* גוון ביניים בהיר יותר במצב בהיר */
+  color: #4e4e4e; /* גוון ביניים בהיר יותר במצב בהיר */
 }
+
+
 }
   /* רספונסיביות למובייל */
-  @media (max-width: 480px) {
+  /* @media (max-width: 480px) {
     .voiceeffect-rectangle {
       padding: 12px;
     }
@@ -93,8 +94,8 @@
       padding: 6px 10px;
     }
   }
-  
-  @media screen and (min-width: 769px) and (max-width: 1024px)  {
+   */
+  /* @media screen and (min-width: 769px) and (max-width: 1024px)  {
     .audio-player {
       width: 90%;
       max-width: 320px;
@@ -159,27 +160,27 @@
     }
     
   .time-current.dark {
-    color: #eee; /* בהיר יותר במצב כהה */
+    color: #eee;
     font-weight: bold;
   }
   
   .time-current.light {
-    color: #4e4e4e; /* כהה במצב בהיר */
+    color: #4e4e4e; 
     font-weight: bold;
   }
   
   .time-duration.dark {
-    color:  #4e4e4e; /* גוון ביניים במצב כהה */
+    color:  #4e4e4e;
   }
   
   .time-duration.light {
-    color: #ffffff; /* גוון ביניים בהיר יותר במצב בהיר */
+    color: #ffffff; 
   }
-  }
+  } */
 
 
 
-  @media screen and (min-width: 1025px) {
+  /* @media screen and (min-width: 1025px) {
     .audio-player {
       width: 90%;
       max-width: 320px;
@@ -244,20 +245,20 @@
     }
     
   .time-current.dark {
-    color: #eee; /* בהיר יותר במצב כהה */
+    color: #eee; 
     font-weight: bold;
   }
   
   .time-current.light {
-    color: #4e4e4e; /* כהה במצב בהיר */
+    color: #4e4e4e;
     font-weight: bold;
   }
   
   .time-duration.dark {
-    color:  #4e4e4e; /* גוון ביניים במצב כהה */
+    color:  #4e4e4e; 
   }
   
   .time-duration.light {
-    color: #ffffff; /* גוון ביניים בהיר יותר במצב בהיר */
+    color: #ffffff; 
   }
-  }
+  } */

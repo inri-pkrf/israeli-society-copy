@@ -2,7 +2,7 @@
 
 #game-intro {
     position: fixed;
-    top: 10vh;
+    top: 0vh;
     left: 0;
     width: 100vw;
     height: 100vh;
@@ -14,16 +14,20 @@
     direction: rtl;
 }
  
+#game-intro .small-microphone {
+    top: 41vw;
+    right: 4vw;
+}
 .GameInto-title{
     font-family: "karantina";
-    font-size: 3em;
+    font-size: 12vw;
     font-weight: 400;
     position: absolute;
     right: 50%;
     transform: translateX(50%);
     width: 90vw;
     color: #ffffff;
-    margin-top: 15vh;
+    margin-top: 38vw;
     text-align: center;
 
 }
@@ -32,7 +36,10 @@
     right: 50%;
     transform: translateX(50%);
     width: 90vw;
-    margin-top: 30vh;
+    margin-top: 70vw;
+    background-color: rgb(255, 255, 255);
+    border-radius: 5vw;
+    padding: 3vw;
 
 }
 .pod-explain{
@@ -42,17 +49,17 @@
     position: absolute;
     right: 50%;
     transform: translateX(50%);
-    font-size: 1.2em;
-    margin-top: 60vh;
+    font-size: 5vw;
+    top: 120vw;
 }
 .next-button-game-intro{
-    margin-top: 77vh;
-    padding: 10px 20px;
-    font-size: 1.3em;
+    margin-top: 140vw;
+    padding: 3vw 6vw;
+    font-size: 5vw;
     background-color: #1bbfe5;
     color: white;
     border: none;
-    border-radius: 15px;
+    border-radius: 8vw;
     cursor: pointer;
     font-family: "Heebo";
 }

@@ -37,18 +37,6 @@ const TrackPage = () => {
     }
   }, [prompt, companyData, navigate]);
 
-  /* ביטול גלילה במסך מלא */
-  useEffect(() => {
-    if (showFullscreenStep4) {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "auto";
-    }
-
-    return () => {
-      document.body.style.overflow = "auto";
-    };
-  }, [showFullscreenStep4]);
 
   if (!companyData) return null;
 
@@ -74,7 +62,7 @@ const TrackPage = () => {
   };
 
   return (
-    <div id="TrackPage">
+    <div id="TrackPage" className={activeStep ? "reading-open" : ""}>
       <SocietyHeader
         imgSrc={companyData.imgSrc}
         title={prompt}

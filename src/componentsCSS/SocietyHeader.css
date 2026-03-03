@@ -2,7 +2,7 @@
     position: fixed;
     top: 0vh;
     left: 0;
-    width: 100vw;
+    width: 100%;
     height: 100vh;
     background-size: cover;
     background-repeat: no-repeat;
@@ -20,12 +20,12 @@
     border-bottom-left-radius: 0;
     border-bottom-right-radius: 0;
     background-color: white;
-    height: 136vh;
-    width: 107vh;
+    height: 1000vw;
+    width: 180vw;
     right: 50%;
     transform: translateX(50%);
     position: absolute;
-    margin-top: 63vh;
+    top: 45vw;
   }
   
 
@@ -33,16 +33,16 @@
     position: absolute;
     right: 50%;
     transform: translateX(50%);
-    height: 12vh;
+    height: 20vw;
     width: auto;
-    margin-top: -61vh;
+    top: 24vw;
     z-index: 100000;
 
 }
 .page-title-video{
     font-family: "karantina";
     color:rgb(40, 40, 134);
-    font-size: 2.5em;
-    margin-top: 15vh;
+    font-size: 12vw;
+    margin-top: 10vw;
 }
 

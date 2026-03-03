@@ -1,27 +1,32 @@
 #TrackPage {
-	display: flex;
-	justify-content: center;
-	align-items: flex-start;
-	padding: 6vh 2vw;
-	box-sizing: border-box;
-	direction: rtl;
-	background: transparent;
-	min-height: 100vh;
-  font-family: "heebo";
+  width: 100vw;
+  max-width: 100vmin;
+  margin-top: 72vw ;
+  text-align: center;
+  position: relative;
+  z-index: 20;
+  background: transparent;
+  min-height: 100vh;
+  height: auto;
+  overflow-y: auto;
+  box-sizing: border-box;
+  background-color: white;
+  z-index: 40;
+  direction: rtl;
 }
 
 .track-container {
   position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
   width: 100vw;
-  height: 60vh;
-  margin-top: 35vh;
-  margin-bottom: 50%;
-  background-color: white;
+  top: 0vw;
+  z-index: 10;
 }
 
 .track-circle {
-  width: 11vh;
-  height: 11vh;
+  width: 25vw;
+  height: 25vw;
   border-radius: 50%;
   background: #d8d8d8;
   display: flex;
@@ -35,29 +40,29 @@
   z-index: 15;
 }
 
-.track-circle:nth-child(1) { top: 5%; left: 65%; background: #9fd18b; }
-.track-circle:nth-child(2) { top: 20%; left: 10%; background: #f0d57a; }
-.track-circle:nth-child(3) { top: 25%; left: 50%; background: #e8c79c; }
-.track-circle:nth-child(4) { top: 50%; left: 40%; background: #d88c8c; }
-.track-circle:nth-child(5) { top: 70%; left: 10%; background: #d46f5e; }
-.track-circle:nth-child(6) { top: 75%; left: 65%; background: #9baeee; }
+.track-circle:nth-child(1) { top: 5vw; left: 65vw; background: #9fd18b; }
+.track-circle:nth-child(2) { top: 25vw; left: 10vw; background: #f0d57a; }
+.track-circle:nth-child(3) { top: 40vw; left: 50vw; background: #e8c79c; }
+.track-circle:nth-child(4) { top: 70vw; left: 40vw; background: #d88c8c; }
+.track-circle:nth-child(5) { top: 80vw; left: 10vw; background: #d46f5e; }
+.track-circle:nth-child(6) { top: 100vw; left: 65vw; background: #9baeee; }
 
 /* מיקומים ייחודיים לעיגולים עבור החברה הערבית */
-.arabic-company .track-circle:nth-child(1) { top: 5%; left: 65%; }
-.arabic-company .track-circle:nth-child(2) { top: 25%; left: 20%; }
-.arabic-company .track-circle:nth-child(3) { top: 80%; left: 65%; }
+.arabic-company .track-circle:nth-child(1) { top: 5vw; left: 65vw; }
+.arabic-company .track-circle:nth-child(2) { top: 30vw; left: 20vw; }
+.arabic-company .track-circle:nth-child(3) { top: 90vw; left: 65vw; }
 
 .circle-number {
-  font-size: 8vh;
+  font-size: 20vw;
   font-weight: lighter;
   font-family: "karantina";
   position: absolute;
-  top: -3vh; 
-    left: 80%;
+  top: -7vw; 
+  left: 82%;
 }
 
 .circle-text {
-  font-size: 2vh;
+  font-size: 5vw;
   font-weight: normal;
   text-align: center;
   font-family: 'heebo';
@@ -74,33 +79,20 @@
 }
 
 .reading-backdrop {
-  position: fixed;
-  top: 0;
+  position: absolute;
+  top: 0vh;
   left: 0;
   width: 100vw;
-  height: 100vh;
+  height: 150vh;
   background: rgba(0, 0, 0, 0.5);
   z-index: 25;
+  overflow-y: auto;     /* 👈 allow vertical scroll */
+  overflow-x: hidden;  /* 👈 avoid sideways scroll */
+  -webkit-overflow-scrolling: touch; /* smooth scroll on iOS */
 }
 
-.reading-box {
-  position: fixed;
-  top: 52%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 45vh;
-  max-width: 75vw;
-  max-height: 70vh;
-  overflow-y: auto;
-  background: white;
-  padding: 4vh;
-  padding-bottom: 10vh;
-  border-radius: 24px;
-  text-align: right;
-  z-index: 35;
-  color: #003561;
-  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
-  animation: popupFadeIn 0.3s ease-out;
+#TrackPage.reading-open {
+  margin-top: 0vw;
 }
 
 @keyframes popupFadeIn {
@@ -117,20 +109,19 @@
 .number-box {
   position: absolute;
   font-family: karantina;
-  font-size: 8vh;
-  top: -4vh;
+  font-size: 15vw;
+  top: -8vw;
 }
 
 .reading-close {
   position: absolute;
-  top: 3%;
-  left: 3%;
+  top: 0vw;
+  left: 0vw;
   background: none;
   border: none;
-  font-size: 2.5rem;
+  font-size: 12vw;
   color: #003561;
   cursor: pointer;
-  padding: 0;
   width: 3rem;
   height: 3rem;
   display: flex;
@@ -145,7 +136,7 @@
 
 .reading-box h2 { 
   font-size: 5vw; 
-  margin: 8vh 0 2vh 0; 
+  margin: 8vw 0 vw 0; 
   font-weight: 700;
 }
 
@@ -159,17 +150,17 @@
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
-  top: 105%;
-  padding: 0.8rem 2.4rem;
-  font-size: 5vmin;
+  top: 130vw;
+  padding: 0.8vw 2.4vw;
+  font-size: 7vw;
   border: none;
   background: #1bbfe5;
   color: white;
-  border-radius: 30px;
+  border-radius: 30vw;
   cursor: pointer;
   font-family: "Heebo";
   z-index: 10;
-  height: 8vh;
+  height: 20vw;
   width: 60vw;
   max-width: 400px;
   text-align: center;
@@ -178,102 +169,65 @@
 
 #rode-img {
   position: absolute;
-  height: 45vh;   /* נמתח לפי גובה המסך */
+  height: 90vw;   /* נמתח לפי גובה המסך */
   width: auto;    /* שומר על פרופורציות */
-  top: 70%;
+  top: 65vw;
   left: 45%;
   transform: translate(-50%, -50%);
-  z-index: 2;
+  z-index: 1;
 }
-
-.fullscreen-stage {
-  position: fixed;
-  inset: 0;
-  width: 100vw;
-  height: 100dvh;
-  background: white;
-  z-index: 9999;
-
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: center;
-
-  padding: 5vh 5vw 3vh 5vw;
-  box-sizing: border-box;
-
-  overflow: hidden;
-}
-
-
-.fullscreen-popup {
-  position: fixed;
-  inset: 0;
-  width: 100vw;
-  height: 100dvh;
-
-  background: white;
-
-  display: flex;
-  flex-direction: column;
-
-  z-index: 2147483647;
-}
-
-
-
-.popup-header h2 {
-  font-size: 6vmin;
-  font-weight: 700;
-  color: #003561;
+.reading-box {
   position: relative;
-  top: 50%;
-}
-
-.popup-content {
-  flex: 1;
+  top: 25vw;
+  right: 50%;
+  transform: translateX(50%);
+  width: 45vh;
+  max-width: 80vw;
+  max-height: 80vh;
+  background: white;
+  padding: 15vw 10vw 8vw 8vw;
+  border-radius: 24px;
+  text-align: right;
+  z-index: 35;
+  color: #003561;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+  animation: popupFadeIn 0.3s ease-out;
   display: flex;
+  flex-direction: column;
   justify-content: center;
-  align-items: center;
-
-  padding: 4vh 6vw;
-  box-sizing: border-box;
-
-  overflow: hidden;
+  z-index: 9999;   
+  height: auto;
 }
 
 /* מסך מלא – רחב יותר וממורכז (שלב 2 ו-4) */
 .reading-box.fullscreen {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%); /* מרכוז אמיתי */
+  position: relative;
+  top: 30vw;
+  right: 50%;
+  transform: translateX(50%);
   width: 96vw;          /* ← רחב יותר */
   max-width: 1200px;    /* שלא יהיה ענק במסכים גדולים */
-  height: 90dvh;        /* גובה דינמי בלי חיתוך */
+  height: 150vw;        /* גובה דינמי בלי חיתוך */
   max-height: 100dvh;
-  padding: 4vh 4vw 10vh 4vw;
-  border-radius: 28px;
-  margin-top: 5vh;
+  padding: 15vw 10vw 8vw 8vw;
+  border-radius: 10vw;
   display: flex;
   flex-direction: column;
-  overflow: hidden;
   box-sizing: border-box;
-   justify-content: center;
+    overflow-y: auto;                
+  -webkit-overflow-scrolling: touch;
+  max-height: 90vh;
 }
 
 /* חץ קדימה בתוך ה-reading box */
 .arrow-btn {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  width: clamp(38px, 8vmin, 80px);
-  height: clamp(38px, 8vmin, 80px);
+  width: 10vw;
+  height: 10vw;
   border-radius: 50%;
   border: none;
   background: #1bbfe5;
   color: white;
-  font-size: clamp(28px, 6vmin, 46px);
+  font-size: 10vw;
   cursor: pointer;
   z-index: 1000;
   display: flex;
@@ -281,34 +235,8 @@
   justify-content: center;
   box-shadow: 0 6px 25px rgba(0, 0, 0, 0.25);
   transition: 0.2s ease;
-}
-
-.arrow-btn:hover {
-  transform: translateY(-50%) scale(1.12);
-  background: #159fc0;
-}
-
-/* מיקום רגיל */
-.arrow-next {
+  bottom: 4vw;
+  left: 5vw;
   position: absolute;
-  top: 82%;
-  margin-top: 5vh;
 }
 
-/* מיקום מיוחד למסך מלא (שלב 4) */
-.fullscreen-arrow {
-  left: 3vw;
-  top: 85%;
-  margin-top: 5vh;
-}
-
-/* התאמה למסכים קטנים (טלפונים) */
-@media (max-width: 600px) {
-  .arrow-next {
-    left: 4vw;
-  }
-
-  .fullscreen-arrow {
-    left: 5vw;
-  }
-}

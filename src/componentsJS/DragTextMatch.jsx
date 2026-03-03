@@ -68,9 +68,9 @@ export default function DragTextMatch({ onComplete }) {
       }}
     >
       <p style={{
-        fontSize: "2vh",
+        fontSize: "4vw",
         fontWeight: "bold",
-        paddingBottom: "2vh"
+        paddingBottom: "2vw"
       }}>
         בחרו את הכותרת המתאימה למשפט
       </p>
@@ -80,8 +80,9 @@ export default function DragTextMatch({ onComplete }) {
           fontFamily: "heebo",
           maxWidth: 600,
           width: "90%",
-          padding: "1rem",
-          borderRadius: 16,
+          padding: "3vw",
+          fontSize: "4vw",
+          borderRadius: '4vw',
           background:
             status === "correct"
               ? "#d4edda"
@@ -90,10 +91,10 @@ export default function DragTextMatch({ onComplete }) {
               : "#f4f6fb",
           border:
             status === "correct"
-              ? "2px solid #28a745"
+              ? "0.5vw solid #28a745"
               : status === "wrong"
-              ? "2px solid #dc3545"
-              : "2px solid #1bbfe5",
+              ? "0.5vw solid #dc3545"
+              : "0.5vw solid #1bbfe5",
           transition: "all 0.3s ease"
         }}
       >
@@ -103,11 +104,11 @@ export default function DragTextMatch({ onComplete }) {
       <div
         style={{
           fontFamily: "heebo",
-          marginTop: "1rem",
+          marginTop: "3vw",
           display: "grid",
           gridTemplateColumns: "1fr",
           gap: "0.8rem",
-          width: "100%",
+          width: "70%",
           maxWidth: 600,
         }}
       >
@@ -118,12 +119,12 @@ export default function DragTextMatch({ onComplete }) {
             disabled={locked}
             style={{
               fontFamily: "heebo",
-              padding: "0.5rem",
-              borderRadius: 12,
-              border: "2px solid #1bbfe5",
+              padding: "2vw",
+              borderRadius: '3vw',
+              border: "0.5vw solid #1bbfe5",
               background: "#fff",
               cursor: locked ? "default" : "pointer",
-              fontSize: "1rem",
+              fontSize: "4vw",
               fontWeight: 500,
               transition: "all 0.2s ease",
               color: "#003561"
