@@ -212,7 +212,7 @@ const Quiz = () => {
               </button>
 
               <button onClick={resetToStart} className="reset-btn">
-                להתחלת מחדש
+                התחלה מחדש
               </button>
 
               <button
