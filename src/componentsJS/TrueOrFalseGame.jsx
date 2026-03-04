@@ -53,12 +53,9 @@ const TrueOrFalseGame = () => {
   };
 
   const handleNextPage = () => {
-    // אם זה החברה החרדית או החברה הערבית → אמת או מיתוס (TrackPage)
     if (prompt === 'החברה החרדית' || prompt === 'החברה הערבית') {
       navigate('/track-page', { state: { prompt } });
-    } 
-    // אם זה גיל שלישי (או מוגבלויות והגיל השלישי) → סרטון
-    else if (prompt === 'מוגבלויות והגיל השלישי') {
+    } else if (prompt === 'מוגבלויות והגיל השלישי') {
       navigate('/video-page', {
         state: {
           prompt,
@@ -66,9 +63,7 @@ const TrueOrFalseGame = () => {
           next: '/track-page'
         }
       });
-    } 
-    // ברירת מחדל (אם יש עוד קטגוריות)
-    else {
+    } else {
       navigate('/video-page', {
         state: {
           prompt,
@@ -79,60 +74,76 @@ const TrueOrFalseGame = () => {
     }
   };
 
-    return (
-      <div className="true-false-page" style={{height: '100vh', overflowY: 'auto', display: 'flex', flexDirection: 'column'}}>
-        <SocietyHeader imgSrc={company.imgSrc} title={prompt} />
+  // --- Helper function to bold key words inline and add a line break ---
+  const formatFeedback = (text) => {
+    if (!text) return '';
 
-        <div id="true-false-game">
-          <div id="true-false-text2">
-            <p>יש לבחור, לגרור ולהכריע האם המידע הוא אמת או מיתוס</p>
-          </div>
+    // Bold keywords inline without breaking the sentence
+    return text
+      .replace(/(תשובה נכונה, המשפט מיתוס,)/g, '<strong>$1</strong>')
+      .replace(/(המשפט אמת,)/g, '<strong>$1</strong>')
+      .replace(/(המשפט מיתוס,)/g, '<strong>$1</strong>')
+      .replace(/(תשובה נכונה, זו אמת,)/g, '<strong>$1</strong>');
+  };
+  return (
+    <div className="true-false-page" style={{height: '100vh', overflowY: 'auto', display: 'flex', flexDirection: 'column'}}>
+      <SocietyHeader imgSrc={company.imgSrc} title={prompt} />
 
-          <div className="tf-progress">{currentQuestion + 1}/{questions.length}</div>
+      <div id="true-false-game">
+        <div id="true-false-text2">
+          <p>יש לבחור, לגרור ולהכריע האם המידע הוא אמת או מיתוס</p>
+        </div>
 
-          <div className={`tf-statement ${result ? result : ''}`}>
-            {result ? questions[currentQuestion].feedback[result] : questions[currentQuestion].statement}
-          </div>
+        <div className="tf-progress">{currentQuestion + 1}/{questions.length}</div>
 
-          {result && (
-            <div className={`tf-result ${result}`}>{result === 'correct' ? 'נכון!' : 'לא נכון'}</div>
+        <div
+          className={`tf-statement ${result ? result : ''}`}
+          dangerouslySetInnerHTML={{
+            __html: result
+              ? formatFeedback(questions[currentQuestion].feedback[result])
+              : formatFeedback(questions[currentQuestion].statement)
+          }}
+        ></div>
+
+        {result && (
+          <div className={`tf-result ${result}`}>{result === 'correct' ? 'נכון!' : 'לא נכון'}</div>
+        )}
+
+        <div className="tf-slider-wrap">
+          <div className="label-left">מיתוס</div>
+
+          <input
+            ref={inputRef}
+            type="range"
+            min="0"
+            max="100"
+            value={value}
+            className={`tf-range ${!locked ? '' : value < 50 ? 'left-selected' : 'right-selected'}`}
+            onChange={handleChange}
+            onMouseUp={handleMouseUp}
+            onTouchEnd={handleTouchEnd}
+            disabled={locked}
+          />
+
+          <div className="label-right">אמת!</div>
+        </div>
+
+        <div className="tf-actions">
+          {locked && currentQuestion < questions.length - 1 && (
+            <button className="tf-reset" onClick={nextQuestion}>לשאלה הבאה</button>
           )}
 
-          <div className="tf-slider-wrap">
-            <div className="label-left">מיתוס</div>
-
-            <input
-              ref={inputRef}
-              type="range"
-              min="0"
-              max="100"
-              value={value}
-              className={`tf-range ${!locked ? '' : value < 50 ? 'left-selected' : 'right-selected'}`}
-              onChange={handleChange}
-              onMouseUp={handleMouseUp}
-              onTouchEnd={handleTouchEnd}
-              disabled={locked}
-            />
-
-            <div className="label-right">אמת!</div>
-          </div>
-
-          <div className="tf-actions">
-            {locked && currentQuestion < questions.length - 1 && (
-              <button className="tf-reset" onClick={nextQuestion}>לשאלה הבאה</button>
-            )}
-
-            {locked && currentQuestion === questions.length - 1 && (
-              <div style={{ marginTop: '10px', fontWeight: 'bold', fontSize: '5vw' }}>
-                סיימת את כל השאלות 🎉
-                <br />
-                <button className="tf-reset" onClick={handleNextPage} style={{ marginTop: '10px' }}>המשך</button>
-              </div>
-            )}
-          </div>
+          {locked && currentQuestion === questions.length - 1 && (
+            <div style={{ marginTop: '10px', fontWeight: 'bold', fontSize: '5vw' }}>
+              סיימת את כל השאלות 🎉
+              <br />
+              <button className="tf-reset" onClick={handleNextPage} style={{ marginTop: '10px' }}>המשך</button>
+            </div>
+          )}
         </div>
       </div>
-    );
+    </div>
+  );
 };
 
 export default TrueOrFalseGame;

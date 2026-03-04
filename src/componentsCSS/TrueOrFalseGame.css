@@ -50,12 +50,15 @@
   padding: 3vw 3.5vw;
   min-height: 12vw;
   display: flex;
-  align-items: center;
-  justify-content: center;
+flex-direction: column; /* stack children vertically */
+  align-items: flex-start; /* left-align text inside the column */
+  justify-content: flex-start; 
   color: #1f2937; /* אפור כהה */
   margin: 2.2vw 0;
   box-shadow: 0 6px 18px rgba(17, 24, 39, 0.03);
-  font-size: 5vw;
+  font-size: 5vw;  
+  direction: rtl; /* right-to-left text */
+  text-align: right;
 }
 
 /* Statement card – correct/wrong */
