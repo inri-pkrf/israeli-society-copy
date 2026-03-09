@@ -4,7 +4,7 @@
   top: 0;
   left: 0;
   width: 100vw;
-  height: 140vh;
+  height: 100vh;
   background-size: cover;
   background-repeat: no-repeat;
   background-color: #fff;
@@ -135,13 +135,12 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    background-image: url("/public/assets/imgs/Bg4.png");
+    background-image: url("/public/assets/imgs/Bg3.jpg");
     overflow-y: scroll;
     overflow-x: hidden;
     font-family: "Assistant";
     z-index: 10000;
 }
-
 
 
 /* ניקוד */

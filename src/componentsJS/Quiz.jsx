@@ -3,6 +3,8 @@ import '../componentsCSS/Quiz.css';
 import { useLocation, useNavigate } from 'react-router-dom';
 import quizData from '../data/quizData';
 import html2canvas from 'html2canvas';
+import Header from './Header';
+
 
 const Quiz = () => {
   const location = useLocation();
@@ -190,6 +192,7 @@ const Quiz = () => {
           </div>
         </div>
       ) : (
+        
         <div className="results">
           <p className="score">ציון: {score}</p>
           <p className="user-name">

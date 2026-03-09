@@ -51,7 +51,7 @@ const SummaryCards = ({ onExitToSummary }) => {
         <p>{currentCard.Dos}</p>
         <img src={`${process.env.PUBLIC_URL}/assets/imgs/cuctuseJPNG/cactusDos.png`} alt="קקטוס חרדי" />
       </div>
-      <div className="card-section">
+      <div className="card-section card-old">
         <p>{currentCard.Old}</p>
         <img src={`${process.env.PUBLIC_URL}/assets/imgs/cuctuseJPNG/cactusOld.png`} alt="קקטוס כללי" />
       </div>

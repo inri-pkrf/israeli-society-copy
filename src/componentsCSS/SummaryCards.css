@@ -10,6 +10,8 @@
     top: 0vh;
     position: relative;
     z-index: 10000;
+        overflow-y: scroll;
+    overflow-x: hidden;
   }
 
   .closeCard{
@@ -45,6 +47,10 @@
     justify-content: space-between;
     align-items: center;
     margin-bottom: 3vw;   
+  }
+
+  .card-section.card-old {
+    padding-bottom: 20%;
   }
   
   .card-section p {

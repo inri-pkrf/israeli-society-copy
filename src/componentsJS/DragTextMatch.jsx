@@ -24,35 +24,35 @@ export default function DragTextMatch({ onComplete }) {
   const [status, setStatus] = useState(null); // null | 'correct' | 'wrong'
   const [locked, setLocked] = useState(false);
 
-  const handleAnswer = (titleIndex) => {
-    if (locked) return;
+const handleAnswer = (titleIndex) => {
+  if (locked) return;
 
-    const isCorrect = correctMap[currentIndex] === titleIndex;
+  const isCorrect = correctMap[currentIndex] === titleIndex;
 
-    if (isCorrect) {
-      setStatus("correct");
-      setLocked(true);
+  if (isCorrect) {
+    setStatus("correct");
+    setLocked(true);
 
-      setTimeout(() => {
-        if (currentIndex === sentences.length - 1) {
-          onComplete && onComplete();
-        } else {
-          setCurrentIndex((prev) => prev + 1);
-          setStatus(null);
-          setLocked(false);
-        }
-      }, 1000);
+    setTimeout(() => {
+      if (currentIndex === sentences.length - 1) {
+        // ✅ Only mark complete after last question is correct
+        onComplete && onComplete();
       } else {
-        setStatus("wrong");
-        setLocked(true);
-
-        setTimeout(() => {
-          setStatus(null);   // מחזיר צבע רגיל
-          setLocked(false);  // מאפשר לענות שוב
-        }, 1000);
+        setCurrentIndex((prev) => prev + 1);
+        setStatus(null);
+        setLocked(false);
       }
+    }, 1000);
+  } else {
+    setStatus("wrong");
+    setLocked(true);
 
-  };
+    setTimeout(() => {
+      setStatus(null);   // Reset color
+      setLocked(false);  // Allow retry
+    }, 1000);
+  }
+};
 
   return (
     <div
@@ -67,14 +67,29 @@ export default function DragTextMatch({ onComplete }) {
         textAlign: "center",
       }}
     >
-      <p style={{
-        fontSize: "4vw",
-        fontWeight: "bold",
-        paddingBottom: "2vw"
-      }}>
+      {/* Title */}
+      <p
+        style={{
+          fontSize: "4vw",
+          fontWeight: "bold",
+          paddingBottom: "2vw",
+        }}
+      >
         בחרו את הכותרת המתאימה למשפט
       </p>
 
+      {/* Question counter */}
+      <p
+        style={{
+          fontSize: "3vw",
+          fontWeight: "bold",
+          paddingBottom: "1vw",
+        }}
+      >
+        שאלה {currentIndex + 1} מתוך {sentences.length}
+      </p>
+
+      {/* Sentence box */}
       <div
         style={{
           fontFamily: "heebo",
@@ -82,7 +97,7 @@ export default function DragTextMatch({ onComplete }) {
           width: "90%",
           padding: "3vw",
           fontSize: "4vw",
-          borderRadius: '4vw',
+          borderRadius: "4vw",
           background:
             status === "correct"
               ? "#d4edda"
@@ -95,12 +110,13 @@ export default function DragTextMatch({ onComplete }) {
               : status === "wrong"
               ? "0.5vw solid #dc3545"
               : "0.5vw solid #1bbfe5",
-          transition: "all 0.3s ease"
+          transition: "all 0.3s ease",
         }}
       >
         {sentences[currentIndex]}
       </div>
 
+      {/* Answer buttons */}
       <div
         style={{
           fontFamily: "heebo",
@@ -120,14 +136,14 @@ export default function DragTextMatch({ onComplete }) {
             style={{
               fontFamily: "heebo",
               padding: "2vw",
-              borderRadius: '3vw',
+              borderRadius: "3vw",
               border: "0.5vw solid #1bbfe5",
               background: "#fff",
               cursor: locked ? "default" : "pointer",
               fontSize: "4vw",
               fontWeight: 500,
               transition: "all 0.2s ease",
-              color: "#003561"
+              color: "#003561",
             }}
           >
             {title}

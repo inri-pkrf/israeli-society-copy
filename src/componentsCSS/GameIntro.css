@@ -12,6 +12,8 @@
     z-index: 9990;
     background-image: url('/public/assets/imgs/Bg2.png');
     direction: rtl;
+        overflow-y: scroll;
+    overflow-x: hidden;
 }
  
 #game-intro .small-microphone {

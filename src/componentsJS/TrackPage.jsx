@@ -19,6 +19,10 @@ const TrackPage = () => {
   const [activeStep, setActiveStep] = useState(null);
   const [completedSteps, setCompletedSteps] = useState([]);
 
+  // Local state to track completion of game steps
+  const [dragTextMatchCompleted, setDragTextMatchCompleted] = useState(false);
+  const [dragGameCompleted, setDragGameCompleted] = useState(false);
+
   const companySteps =
     stepsData[prompt] || stepsData[Object.keys(stepsData)[0]];
 
@@ -37,13 +41,11 @@ const TrackPage = () => {
     }
   }, [prompt, companyData, navigate]);
 
-
   if (!companyData) return null;
 
   const handleClick = (stepId) => {
     if (stepId === 1 || completedSteps.includes(stepId - 1)) {
       setActiveStep(stepId);
-
       if (!completedSteps.includes(stepId)) {
         setCompletedSteps((prev) => [...prev, stepId]);
       }
@@ -54,7 +56,6 @@ const TrackPage = () => {
     if (activeStep < companySteps.length) {
       const nextStep = activeStep + 1;
       setActiveStep(nextStep);
-
       if (!completedSteps.includes(nextStep)) {
         setCompletedSteps((prev) => [...prev, nextStep]);
       }
@@ -68,12 +69,6 @@ const TrackPage = () => {
         title={prompt}
       />
 
-      <img
-        src={`${process.env.PUBLIC_URL}/assets/imgs/rode.png`}
-        alt="rode"
-        id="rode-img"
-      />
-
       <div
         className={`track-container ${
           prompt === "החברה הערבית"
@@ -81,6 +76,11 @@ const TrackPage = () => {
             : ""
         }`}
       >
+        <img
+          src={`${process.env.PUBLIC_URL}/assets/imgs/rode.png`}
+          alt="rode"
+          id="rode-img"
+        />
         {companySteps.map((step) => {
           const isUnlocked =
             step.id === 1 ||
@@ -92,35 +92,23 @@ const TrackPage = () => {
           return (
             <div
               key={step.id}
-              className={`track-circle ${
-                !isUnlocked ? "locked" : ""
-              } ${isCompleted ? "completed" : ""}`}
+              className={`track-circle ${!isUnlocked ? "locked" : ""} ${isCompleted ? "completed" : ""}`}
               onClick={() => handleClick(step.id)}
             >
-              <div className="circle-number">
-                {step.id}
-              </div>
-              <div className="circle-text">
-                {step.textInCircle}
-              </div>
+              <div className="circle-number">{step.id}</div>
+              <div className="circle-text">{step.textInCircle}</div>
             </div>
           );
         })}
       </div>
 
-      {/* שלבים רגילים + חץ קדימה */}
+      {/* Regular steps with arrow */}
       {activeStep !== null &&
         companySteps[activeStep - 1] &&
         !showDragTextMatch &&
         !showFullscreenStep4 && (
-          <>
-            <div
-              className="reading-backdrop"
-              onClick={() => setActiveStep(null)}
-            />
-
+          <div className="reading-backdrop">
             <div className="reading-box">
-              {/* חץ קדימה */}
               {activeStep < companySteps.length && (
                 <button
                   className="arrow-btn arrow-next"
@@ -137,67 +125,15 @@ const TrackPage = () => {
                 ×
               </button>
 
-              <h1 className="number-box">
-                {activeStep}
-              </h1>
-
-              <h2>
-                {companySteps[activeStep - 1].title}
-              </h2>
-
-              <p>
-                {companySteps[activeStep - 1].text}
-              </p>
+              <h1 className="number-box">{activeStep}</h1>
+              <h2>{companySteps[activeStep - 1].title}</h2>
+              <p>{companySteps[activeStep - 1].text}</p>
             </div>
-          </>
+          </div>
         )}
 
-        {/* שלב 2 עם חץ קדימה – מסך מלא כמו שלב 4 */}
-        {showDragTextMatch && (
-          <>
-            <div
-              className="reading-backdrop fullscreen"
-              onClick={() => setActiveStep(null)}
-            />
-
-            <div className="reading-box fullscreen">
-              {activeStep < companySteps.length && (
-                <button
-                  className="arrow-btn arrow-next fullscreen-arrow"
-                  onClick={goToNextStep}
-                >
-                  ›
-                </button>
-              )}
-
-              <button
-                className="reading-close"
-                onClick={() => setActiveStep(null)}
-              >
-                ×
-              </button>
-
-              <h1 className="number-box">
-                {activeStep}
-              </h1>
-
-              <h2>
-                {companySteps[activeStep - 1].title}
-              </h2>
-
-              <DragTextMatch
-                onComplete={() => {
-                  if (!completedSteps.includes(2)) {
-                    setCompletedSteps((prev) => [...prev, 2]);
-                  }
-                }}
-              />
-            </div>
-          </>
-        )}
-
-      {/* שלב 4 – מסך מלא + חץ קדימה */}
-      {showFullscreenStep4 && (
+      {/* Step 2 – DragTextMatch */}
+      {showDragTextMatch && (
         <>
           <div
             className="reading-backdrop fullscreen"
@@ -205,7 +141,8 @@ const TrackPage = () => {
           />
 
           <div className="reading-box fullscreen">
-            {activeStep < companySteps.length && (
+            {/* Arrow appears only after completing DragTextMatch */}
+            {dragTextMatchCompleted && activeStep < companySteps.length && (
               <button
                 className="arrow-btn arrow-next fullscreen-arrow"
                 onClick={goToNextStep}
@@ -221,22 +158,14 @@ const TrackPage = () => {
               ×
             </button>
 
-            <h1 className="number-box">
-                {activeStep}
-            </h1>
-            
-            <h2>
-              {companySteps[activeStep - 1].title}
-            </h2>
+            <h1 className="number-box">{activeStep}</h1>
+            <h2>{companySteps[activeStep - 1].title}</h2>
 
-            <p>
-              {companySteps[activeStep - 1].text}
-            </p>
-
-            <DragGame
+            <DragTextMatch
               onComplete={() => {
-                if (!completedSteps.includes(4)) {
-                  setCompletedSteps((prev) => [...prev, 4]);
+                setDragTextMatchCompleted(true);
+                if (!completedSteps.includes(2)) {
+                  setCompletedSteps((prev) => [...prev, 2]);
                 }
               }}
             />
@@ -244,32 +173,60 @@ const TrackPage = () => {
         </>
       )}
 
-{allCompleted && (
-  <button
-    className="next-step-button-2 track-page"
-    onClick={() => {
-      // קביעת אינדקס הסרטון לפי מקור
-      const from = "track-page"; // או תוכל להעביר מה-state אם צריך
-      let videoIndex = 0; // ברירת מחדל
+      {/* Step 4 – DragGame */}
+      {showFullscreenStep4 && (
+        <div className="reading-backdrop fullscreen">
+          <div className="reading-box fullscreen">
+            {/* Arrow appears only after completing DragGame */}
+            {dragGameCompleted && activeStep < companySteps.length && (
+              <button
+                className="arrow-btn arrow-next fullscreen-arrow"
+                onClick={goToNextStep}
+              >
+                ›
+              </button>
+            )}
 
-      if (from === "track-page") {
-        videoIndex = 1; // סרטון שני
-      } else if (from === "introduction-to-society") {
-        videoIndex = 0; // סרטון ראשון
-      }
+            <button
+              className="reading-close"
+              onClick={() => setActiveStep(null)}
+            >
+              ×
+            </button>
 
-      navigate("/video-page", {
-        state: {
-          prompt,
-          from,
-          videoIndex,
-        },
-      });
-    }}
-  >
-    המשך
-  </button>
-)}
+            <h1 className="number-box">{activeStep}</h1>
+            <h2>{companySteps[activeStep - 1].title}</h2>
+            <p>{companySteps[activeStep - 1].text}</p>
+
+            <DragGame
+              onComplete={() => {
+                setDragGameCompleted(true);
+                if (!completedSteps.includes(4)) {
+                  setCompletedSteps((prev) => [...prev, 4]);
+                }
+              }}
+            />
+          </div>
+        </div>
+      )}
+
+      {allCompleted && (
+        <button
+          className="next-step-button-2 track-page"
+          onClick={() => {
+            const from = "track-page";
+            let videoIndex = 0;
+            if (from === "track-page") videoIndex = 1;
+            else if (from === "introduction-to-society") videoIndex = 0;
+
+            navigate("/video-page", {
+              state: { prompt, from, videoIndex },
+            });
+          }}
+        >
+          המשך
+        </button>
+      )}
     </div>
   );
 };

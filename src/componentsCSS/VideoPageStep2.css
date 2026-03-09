@@ -11,6 +11,8 @@
     align-items: center;
     z-index: 9990;
     direction: rtl;
+    overflow-y: scroll;
+    overflow-x: hidden;
 }
 
 .next-step-button-2{
@@ -18,7 +20,7 @@
     left: 50%;
     transform: translateX(-50%);
     top: 140vw;
-    padding: 5vw 5vw;
+    padding: 3vw 5vw;
     font-size: 6vw;
     border-radius: 30px;
     background-color:#1bbfe5;

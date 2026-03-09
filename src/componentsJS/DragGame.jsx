@@ -96,7 +96,7 @@ const DragGame = ({ onComplete }) => {
             (sector) => updated[sector.name]?.sector === sector.name
           );
 
-          if (allCorrect && onComplete) onComplete();
+          if (allCorrect && onComplete) onComplete(); // ✅ trigger only when fully correct
 
           return updated;
         });

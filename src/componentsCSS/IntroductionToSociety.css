@@ -1,6 +1,7 @@
 .introduction-to-society {
 	direction: rtl;
-}
+	overflow-y: scroll;
+    overflow-x: hidden;}
 
 
 
@@ -13,7 +14,7 @@
     right: 50%;
     transform: translateX(50%);
     width: 100vw;
-	height: 20vw;
+	height: 50vw;
     color: #535353;
     text-align: center;
     top: 66vw;
@@ -41,6 +42,7 @@
 	top: 175vw;
 	left: 50%;
 	transform: translateX(-50%);
+
 }
 
 .intro-content { padding-bottom: 5vh; }
@@ -62,7 +64,8 @@
     text-align: center;
     top: 80vw;
     font-size: 6vw;
-    width: 80%;
+    width: 100%;
+	background-color: white;
 }
 
 .next-step-button-2.True-False {
