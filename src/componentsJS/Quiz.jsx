@@ -50,7 +50,19 @@ const Quiz = () => {
     }
   };
 
-  const finishQuiz = () => setIsSubmitted(true);
+  const finishQuiz = () => {
+    setIsSubmitted(true);
+    if (typeof window.reportComplete === "function") {
+      window.reportComplete();
+    } else {
+      console.log("SCORM לא זמין כרגע");
+    }
+    if (typeof window.finishTestSCROM === "function") {
+      window.finishTestSCROM(score, 70);
+    } else {
+      console.log("finishTestSCROM לא זמין כרגע");
+    }
+  };
 
   const retryQuiz = () => {
     setScore(0);
