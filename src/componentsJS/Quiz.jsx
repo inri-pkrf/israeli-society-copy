@@ -76,7 +76,14 @@ const Quiz = () => {
 
   const captureAndShareScreenshot = () => {
     const element = document.querySelector('.results');
-    html2canvas(element).then((canvas) => {
+    html2canvas(element, {
+      useCORS: true,
+      allowTaint: false,
+      scale: 1.3,
+      logging: false,
+      // Tell html2canvas to ignore elements that would cause CORS issues
+      ignoreElements: (el) => el.classList?.contains('share-ignore'),
+    }).then((canvas) => {
       const dataUrl = canvas.toDataURL('image/png');
       const byteString = atob(dataUrl.split(',')[1]);
       const arrayBuffer = new ArrayBuffer(byteString.length);
@@ -85,16 +92,19 @@ const Quiz = () => {
         uintArray[i] = byteString.charCodeAt(i);
       }
       const blob = new Blob([uintArray], { type: 'image/png' });
-      const file = new File([blob], "screenshot.png", { type: 'image/png' });
-      if (navigator.share) {
+      const file = new File([blob], 'screenshot.png', { type: 'image/png' });
+      if (navigator.share && navigator.canShare && navigator.canShare({ files: [file] })) {
         navigator.share({ title: 'תוצאת הבוחן', text: 'הנה תוצאת הבוחן שלי!', files: [file] })
+          .catch((error) => console.log('שיתוף נכשל:', error));
+      } else if (navigator.share) {
+        navigator.share({ title: 'תוצאת הבוחן', text: `השגתי ${score}/100 בבוחן החברה הישראלית!\nשם: ${firstName} ${lastName}` })
           .catch((error) => console.log('שיתוף נכשל:', error));
       } else {
         alert('הדפדפן שלך לא תומך בשיתוף');
       }
     });
   };
-
+  
   return (
     <div className="quiz-container">
       {!isSubmitted ? (
