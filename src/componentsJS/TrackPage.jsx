@@ -19,21 +19,16 @@ const TrackPage = () => {
   const [activeStep, setActiveStep] = useState(null);
   const [completedSteps, setCompletedSteps] = useState([]);
 
-  // Local state to track completion of game steps
   const [dragTextMatchCompleted, setDragTextMatchCompleted] = useState(false);
   const [dragGameCompleted, setDragGameCompleted] = useState(false);
 
   const companySteps =
     stepsData[prompt] || stepsData[Object.keys(stepsData)[0]];
 
-  const allCompleted =
-    completedSteps.length === companySteps.length;
+  const allCompleted = completedSteps.length === companySteps.length;
 
-  const showDragTextMatch =
-    activeStep === 2 && prompt === "החברה הערבית";
-
-  const showFullscreenStep4 =
-    activeStep === 4 && prompt === "החברה החרדית";
+  const showDragTextMatch = activeStep === 2 && prompt === "החברה הערבית";
+  const showFullscreenStep4 = activeStep === 4 && prompt === "החברה החרדית";
 
   useEffect(() => {
     if (!prompt || !companyData) {
@@ -62,18 +57,20 @@ const TrackPage = () => {
     }
   };
 
+  /* ── shared header rendered inside every backdrop ── */
+  const ReadingHeader = () => (
+    <div className="reading-header">
+      <img src={companyData.imgSrc} alt={prompt} className="reading-header-img" />
+    </div>
+  );
+
   return (
     <div id="TrackPage" className={activeStep ? "reading-open" : ""}>
-      <SocietyHeader
-        imgSrc={companyData.imgSrc}
-        title={prompt}
-      />
+      <SocietyHeader imgSrc={companyData.imgSrc} title={prompt} />
 
       <div
         className={`track-container ${
-          prompt === "החברה הערבית"
-            ? "arabic-company"
-            : ""
+          prompt === "החברה הערבית" ? "arabic-company" : ""
         }`}
       >
         <img
@@ -83,16 +80,15 @@ const TrackPage = () => {
         />
         {companySteps.map((step) => {
           const isUnlocked =
-            step.id === 1 ||
-            completedSteps.includes(step.id - 1);
-
-          const isCompleted =
-            completedSteps.includes(step.id);
+            step.id === 1 || completedSteps.includes(step.id - 1);
+          const isCompleted = completedSteps.includes(step.id);
 
           return (
             <div
               key={step.id}
-              className={`track-circle ${!isUnlocked ? "locked" : ""} ${isCompleted ? "completed" : ""}`}
+              className={`track-circle ${!isUnlocked ? "locked" : ""} ${
+                isCompleted ? "completed" : ""
+              }`}
               onClick={() => handleClick(step.id)}
             >
               <div className="circle-number">{step.id}</div>
@@ -102,54 +98,13 @@ const TrackPage = () => {
         })}
       </div>
 
-      {/* Regular steps with arrow */}
+      {/* ── Regular reading steps ── */}
       {activeStep !== null &&
         companySteps[activeStep - 1] &&
         !showDragTextMatch &&
         !showFullscreenStep4 && (
           <div className="reading-backdrop">
-            <div className="reading-box">
-              {activeStep < companySteps.length && (
-                <button
-                  className="arrow-btn arrow-next"
-                  onClick={goToNextStep}
-                >
-                  ›
-                </button>
-              )}
-
-              <button
-                className="reading-close"
-                onClick={() => setActiveStep(null)}
-              >
-                ×
-              </button>
-
-              <h1 className="number-box">{activeStep}</h1>
-              <h2>{companySteps[activeStep - 1].title}</h2>
-              <p>{companySteps[activeStep - 1].text}</p>
-            </div>
-          </div>
-        )}
-
-      {/* Step 2 – DragTextMatch */}
-      {showDragTextMatch && (
-        <>
-          <div
-            className="reading-backdrop fullscreen"
-            onClick={() => setActiveStep(null)}
-          />
-
-          <div className="reading-box fullscreen">
-            {/* Arrow appears only after completing DragTextMatch */}
-            {dragTextMatchCompleted && activeStep < companySteps.length && (
-              <button
-                className="arrow-btn arrow-next fullscreen-arrow"
-                onClick={goToNextStep}
-              >
-                ›
-              </button>
-            )}
+            <ReadingHeader />
 
             <button
               className="reading-close"
@@ -158,6 +113,33 @@ const TrackPage = () => {
               ×
             </button>
 
+            <div className="reading-box">
+              <h1 className="number-box">{activeStep}</h1>
+              <h2>{companySteps[activeStep - 1].title}</h2>
+              <p>{companySteps[activeStep - 1].text}</p>
+            </div>
+
+            {activeStep < companySteps.length && (
+              <button className="arrow-btn" onClick={goToNextStep}>
+                ›
+              </button>
+            )}
+          </div>
+        )}
+
+      {/* ── Step 2 – DragTextMatch ── */}
+      {showDragTextMatch && (
+        <div className="reading-backdrop">
+          <ReadingHeader />
+
+          <button
+            className="reading-close"
+            onClick={() => setActiveStep(null)}
+          >
+            ×
+          </button>
+
+          <div className="reading-box game-page">
             <h1 className="number-box">{activeStep}</h1>
             <h2>{companySteps[activeStep - 1].title}</h2>
 
@@ -170,30 +152,28 @@ const TrackPage = () => {
               }}
             />
           </div>
-        </>
+
+          {dragTextMatchCompleted && activeStep < companySteps.length && (
+            <button className="arrow-btn" onClick={goToNextStep}>
+              ›
+            </button>
+          )}
+        </div>
       )}
 
-      {/* Step 4 – DragGame */}
+      {/* ── Step 4 – DragGame ── */}
       {showFullscreenStep4 && (
-        <div className="reading-backdrop fullscreen">
-          <div className="reading-box fullscreen">
-            {/* Arrow appears only after completing DragGame */}
-            {dragGameCompleted && activeStep < companySteps.length && (
-              <button
-                className="arrow-btn arrow-next fullscreen-arrow"
-                onClick={goToNextStep}
-              >
-                ›
-              </button>
-            )}
+        <div className="reading-backdrop">
+          <ReadingHeader />
 
-            <button
-              className="reading-close"
-              onClick={() => setActiveStep(null)}
-            >
-              ×
-            </button>
+          <button
+            className="reading-close"
+            onClick={() => setActiveStep(null)}
+          >
+            ×
+          </button>
 
+          <div className="reading-box game-page">
             <h1 className="number-box">{activeStep}</h1>
             <h2>{companySteps[activeStep - 1].title}</h2>
             <p>{companySteps[activeStep - 1].text}</p>
@@ -207,6 +187,12 @@ const TrackPage = () => {
               }}
             />
           </div>
+
+          {dragGameCompleted && activeStep < companySteps.length && (
+            <button className="arrow-btn" onClick={goToNextStep}>
+              ›
+            </button>
+          )}
         </div>
       )}
 
@@ -214,13 +200,8 @@ const TrackPage = () => {
         <button
           className="next-step-button-2 track-page"
           onClick={() => {
-            const from = "track-page";
-            let videoIndex = 0;
-            if (from === "track-page") videoIndex = 1;
-            else if (from === "introduction-to-society") videoIndex = 0;
-
             navigate("/video-page", {
-              state: { prompt, from, videoIndex },
+              state: { prompt, from: "track-page", videoIndex: 1 },
             });
           }}
         >

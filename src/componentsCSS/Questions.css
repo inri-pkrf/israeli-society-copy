@@ -1,4 +1,3 @@
-
 @media screen and (max-width: 768px) {
   .Q-explain {
     z-index: 1000;
@@ -6,7 +5,7 @@
     font-size: 5vw;
   }
 
-.questions {
+  .questions {
     position: absolute;
     top: 75vw;
     left: 50%;
@@ -17,7 +16,11 @@
     background-repeat: no-repeat;
     direction: rtl;
     background-color: white;
+    max-width: 600px;
+    margin: 0 auto;
+    font-family: "Heebo";
   }
+
   .questions-card {
     position: relative;
     margin-top: 15vw;
@@ -26,23 +29,15 @@
     width: 96vw;
     padding: 5vw 5vw;
     border-radius: 10vw;
-    background-color: none;
+    background-color: white;
     z-index: 1000;
     box-sizing: border-box;
     min-height: 30vh;
     border: dotted 1.2vw #203160;
     scroll-margin-top: 20vw;
   }
-  
 
-
-.questions {
-    max-width: 600px;
-    margin: 0 auto;
-    font-family: "Heebo";
-    
-  }
-  .Question-t{
+  .Question-t {
     font-family: "Heebo";
     font-size: 5vw;
     width: 74vw;
@@ -52,21 +47,22 @@
     text-align: center;
     font-weight: 200;
     color: #282886;
-
-
   }
+
   .answers {
     display: flex;
-        flex-direction: column;
-        gap: 3vw;
+    flex-direction: column;
+    gap: 3vw;
   }
-  
+
   .answer-button {
     display: flex;
     align-items: center;
     justify-content: center;
     font-size: 4.5vw;
-    background-color: transparent;
+    background-color: white;        /* was transparent — caused invisible bg */
+    color: #535353;                 /* explicit dark color — was inheriting blue */
+    border: 1.5px solid #535353;   /* was missing entirely */
     width: 87vw;
     height: 22vw;
     border-radius: 6vw;
@@ -76,43 +72,51 @@
     transform: translateX(50%);
     cursor: pointer;
     padding: 8vw 4vw;
+    box-sizing: border-box;
+    -webkit-appearance: none;
+    appearance: none;
+    text-decoration: none;
   }
-  
+
   .answer-button.selected {
     background-color: #d3d3d3;
+    color: #535353;
   }
-  
+
   .next-button {
     padding: 2vw 4vw;
     font-size: 4vw;
     cursor: pointer;
   }
+
   .feedback-Q {
     margin-top: 2vw;
     font-size: 5vw;
     font-weight: bold;
   }
-  
+
   .feedback-Q.correct {
-    color: #4caf50; /* ירוק */
+    color: #4caf50;
   }
-  
+
   .feedback-Q.wrong {
-    color: #f44336; /* אדום */
+    color: #f44336;
   }
+
   .next-step-button-Q {
     margin-top: 5vw;
     padding: 3vw 5vw;
     font-size: 4vw;
     border-radius: 30px;
-    background-color:#1bbfe5;
+    background-color: #1bbfe5;
     color: white;
     border: none;
     font-family: "Heebo";
     cursor: pointer;
-    width:60vw;
+    width: 60vw;
   }
-  .excelent{
+
+  .excelent {
     font-family: "Karantina";
     font-size: 10vw;
     font-weight: 400;
@@ -124,7 +128,8 @@
     text-align: center;
     margin-top: 10vw;
   }
-  .Q-title{
+
+  .Q-title {
     font-family: "karantina";
     font-size: 5vw;
     font-weight: 400;
@@ -137,7 +142,8 @@
     text-align: center;
   }
 }
-@media screen and (min-width: 769px) and (max-width: 1024px)  {
+
+@media screen and (min-width: 769px) and (max-width: 1024px) {
 
   .questions {
     position: relative;
@@ -148,7 +154,12 @@
     background-size: cover;
     background-repeat: no-repeat;
     direction: rtl;
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    font-family: "Heebo";
   }
+
   .questions-card {
     position: relative;
     margin-top: 6vh;
@@ -157,24 +168,15 @@
     width: 96vw;
     padding: 20px 10px;
     border-radius: 30px;
-    background-color: none;
+    background-color: white;
     z-index: 1000;
     box-sizing: border-box;
     min-height: 30vh;
     border: dotted 4px #203160;
     scroll-margin-top: 10vh;
   }
-  
 
-
-.questions {
-    max-width: 600px;
-    margin: 0 auto;
-    padding: 20px;
-    font-family: "Heebo";
-    
-  }
-  .Question-t{
+  .Question-t {
     font-family: "Heebo";
     font-size: 1.4em;
     width: 74vw;
@@ -184,21 +186,22 @@
     text-align: center;
     font-weight: 200;
     color: #282886;
-
-
   }
+
   .answers {
     display: flex;
-        flex-direction: column;
-        gap: 10px;
-        margin-top: -2vh;
-        margin-bottom: 20px;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: -2vh;
+    margin-bottom: 20px;
   }
-  
+
   .answer-button {
     padding: 10px;
     font-size: 1.1em;
-    background-color: transparent;
+    background-color: white;
+    color: #535353;
+    border: 1.5px solid #535353;
     width: 87vw;
     height: 11vh;
     border-radius: 30px;
@@ -207,43 +210,50 @@
     right: 50%;
     transform: translateX(50%);
     cursor: pointer;
+    -webkit-appearance: none;
+    appearance: none;
+    text-decoration: none;
   }
-  
+
   .answer-button.selected {
     background-color: #d3d3d3;
+    color: #535353;
   }
-  
+
   .next-button {
     padding: 10px 20px;
     font-size: 16px;
     cursor: pointer;
   }
+
   .feedback-Q {
     margin-top: 10px;
     font-size: 1.2em;
     font-weight: bold;
   }
-  
+
   .feedback-Q.correct {
-    color: #4caf50; /* ירוק */
+    color: #4caf50;
   }
-  
+
   .feedback-Q.wrong {
-    color: #f44336; /* אדום */
+    color: #f44336;
   }
+
   .next-step-button-Q {
     margin-top: 30px;
     padding: 10px 25px;
     font-size: 1.5em;
     border-radius: 30px;
-    background-color:#1bbfe5;
+    background-color: #1bbfe5;
     color: white;
     border: none;
     font-family: "Heebo";
     cursor: pointer;
-    width:60vw;
+    width: 60vw;
   }
-  .excelent{
+
+  .excelent {
     font-family: "Karantina";
     font-size: 2.7em;
     font-weight: 400;
@@ -255,7 +265,8 @@
     text-align: center;
     margin-top: 18vh;
   }
-  .Q-title{
+
+  .Q-title {
     font-family: "karantina";
     font-size: 2em;
     font-weight: 400;
@@ -267,8 +278,122 @@
     margin-top: -6vh;
     text-align: center;
   }
-
 }
+
 @media screen and (min-width: 1025px) {
 
+  .questions {
+    direction: rtl;
+    font-family: "Heebo";
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 40px 20px;
+  }
+
+  .questions-card {
+    position: relative;
+    margin-top: 4vh;
+    right: 50%;
+    transform: translateX(50%);
+    width: 70vw;
+    max-width: 700px;
+    padding: 30px 20px;
+    border-radius: 20px;
+    background-color: white;
+    z-index: 1000;
+    box-sizing: border-box;
+    min-height: 20vh;
+    border: dotted 3px #203160;
+  }
+
+  .Question-t {
+    font-family: "Heebo";
+    font-size: 1.4em;
+    text-align: center;
+    font-weight: 200;
+    color: #282886;
+    margin-bottom: 2vh;
+  }
+
+  .answers {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 20px;
+  }
+
+  .answer-button {
+    padding: 14px 20px;
+    font-size: 1.1em;
+    background-color: white;
+    color: #535353;
+    border: 1.5px solid #535353;
+    width: 60vw;
+    max-width: 580px;
+    border-radius: 20px;
+    font-family: "Heebo";
+    position: relative;
+    right: 50%;
+    transform: translateX(50%);
+    cursor: pointer;
+    -webkit-appearance: none;
+    appearance: none;
+    text-decoration: none;
+    transition: background-color 0.15s ease;
+  }
+
+  .answer-button:hover {
+    background-color: #f0f0f0;
+  }
+
+  .answer-button.selected {
+    background-color: #d3d3d3;
+    color: #535353;
+  }
+
+  .feedback-Q {
+    margin-top: 12px;
+    font-size: 1.2em;
+    font-weight: bold;
+  }
+
+  .feedback-Q.correct { color: #4caf50; }
+  .feedback-Q.wrong   { color: #f44336; }
+
+  .next-step-button-Q {
+    margin-top: 24px;
+    padding: 12px 28px;
+    font-size: 1.4em;
+    border-radius: 30px;
+    background-color: #1bbfe5;
+    color: white;
+    border: none;
+    font-family: "Heebo";
+    cursor: pointer;
+    width: 40vw;
+    max-width: 320px;
+  }
+
+  .excelent {
+    font-family: "Karantina";
+    font-size: 3em;
+    font-weight: 400;
+    color: #535353;
+    text-align: center;
+    margin-top: 6vh;
+  }
+
+  .Q-title {
+    font-family: "karantina";
+    font-size: 2em;
+    font-weight: 400;
+    color: #535353;
+    text-align: center;
+    margin-bottom: 2vh;
+  }
+
+  .Q-explain {
+    font-size: 1.2em;
+    text-align: center;
+  }
 }

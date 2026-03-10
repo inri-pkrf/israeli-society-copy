@@ -31,7 +31,7 @@ export default function Interlude() {
         <h1>{companyData.title}</h1>
         <div id='TrueFalseText'>
             <h2>אמת או מיתוס</h2>
-            <p>בחלק זה, יש לבחור, לגרור ולהכריע האם המידע הוא אמת או מיתוס</p>
+            <p>בחלק זה, יש לקבוע האם המשפט הוא אמת או מיתוס וללחוץ על האייקון המתאים</p>
         </div>
           <button className="next-step-button-2 True-False" onClick={handleContinue}>המשך</button>
       </div>

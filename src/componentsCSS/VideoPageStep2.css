@@ -32,6 +32,7 @@
     font-family: 'Heebo';
 }
 .video-play {
+    background-color: #c5c5c5;
     width: 90vw;
     height: auto;
     object-fit: cover;

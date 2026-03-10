@@ -1,3 +1,4 @@
+/* ── ROOT CONTAINER ── */
 #intro-lomda {
   position: fixed;
   top: 0;
@@ -6,6 +7,7 @@
   height: 100vh;
   background-size: cover;
   background-repeat: no-repeat;
+  background-position: center center;
   z-index: 10000;
   overflow-y: auto;
   overflow-x: hidden;
@@ -13,133 +15,226 @@
   -webkit-overflow-scrolling: touch;
 }
 
-/* ── inner layout: normal flow so small phones can scroll ── */
+/* ── INNER LAYOUT ── */
 .intro-inner {
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
   text-align: center;
-  min-height: 100%;
-  padding: 8vw 5vw 25vw;
+  min-height: 100vh;
+  padding: 8vh 6vw 10vh;
   box-sizing: border-box;
-  gap: 4vw;
+  gap: 4vh;
 }
 
-#logo-white {
+/* ── SECTION WRAPPERS ── */
+.logo-wrapper {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.title-wrapper {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.text-wrapper {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  max-width: 75vw;
+}
+
+.arrow-wrapper {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin-top: 2vh;
+}
+
+/* ── DIVIDER ── */
+.divider {
   width: 40vw;
-  max-width: 180px;
+  height: 0.2vh;
+  min-height: 1.5px;
+  background: rgba(255, 255, 255, 0.4);
+  border-radius: 2px;
+  margin: 0 auto;
+}
+
+/* ── LOGO ── */
+#logo-white {
+  width: 35vw;
+  max-width: 25vh;
   height: auto;
   z-index: 5;
+  filter: drop-shadow(0 0.4vh 1.6vh rgba(0, 0, 0, 0.3));
 }
 
+/* ── MAIN TITLE ── */
 #sub-title {
-  font-family: 'Karantina', Arial;
-  font-size: 15vw;
+  font-family: 'Karantina', Arial, sans-serif;
+  font-size: 13vw;
   color: white;
   line-height: 1;
   margin: 0;
-  width: 90vw;
   direction: rtl;
+  text-shadow:
+    0 0.2vh 0.4vh rgba(0, 0, 0, 0.4),
+    0 0.8vh 3.2vh rgba(0, 0, 0, 0.2);
+  letter-spacing: 0.01em;
 }
 
-#welcome-text-intro {
-  color: white;
-  font-family: "Karantina", Arial;
-  font-size: 10vw;
-  direction: rtl;
-  width: 90vw;
-  margin: 0;
-  line-height: 1.2;
-}
-
+/* ── BODY TEXT ── */
 #introduction-sub {
   font-family: 'Heebo', sans-serif;
-  font-size: 5vw;
-  color: white;
+  font-size: 5.2vw;
+  color: rgba(255, 255, 255, 0.92);
   direction: rtl;
-  width: 85vw;
+  width: 100%;
   margin: 0;
-  line-height: 1.6;
+  line-height: 1.85;
+  text-shadow: 0 0.1vh 0.6vh rgba(0, 0, 0, 0.35);
+  font-weight: 400;
+  letter-spacing: 0.02em;
 }
 
+/* ── ARROW / NEXT BUTTON ── */
 .hpArrow-intro {
-  height: 18vw;
+  height: 12vw;
   width: auto;
   animation: bounce2 2s ease infinite;
   cursor: pointer;
-  margin-top: 2vw;
+  filter: drop-shadow(0 0.4vh 1.2vh rgba(0, 0, 0, 0.3));
+  transition: transform 0.2s ease, filter 0.2s ease;
 }
 
+.hpArrow-intro:hover {
+  filter: drop-shadow(0 0.6vh 2vh rgba(255, 255, 255, 0.35));
+}
+
+/* ── VIDEO ── */
 .video-intro {
   position: absolute;
   top: 0;
   left: 0;
   width: 100vw;
   height: 100vh;
-  object-fit: cover;   /* fills screen cleanly without stretching */
+  object-fit: cover;
 }
 
-/* ── skip button: always visible, white text ── */
+/* ── SKIP BUTTON ── */
 .skip {
   position: fixed;
-  top: 4vw;
-  left: 4vw;
+  top: 3vw;
+  left: 3vw;
   background-color: rgba(0, 0, 0, 0.35);
   border: 1.5px solid rgba(255, 255, 255, 0.5);
-  border-radius: 8vw;
+  border-radius: 10vw;
   font-family: 'Assistant', sans-serif;
-  font-size: 5vw;
-  color: white;                  /* ← always visible */
+  font-size: 3.8vw;
+  color: white;
   z-index: 9999999;
-  padding: 1.5vw 4vw;
+  padding: 1.2vw 3.5vw;
   font-weight: bold;
   cursor: pointer;
+  transition: background-color 0.2s ease;
+  backdrop-filter: blur(4px);
 }
 
 .skip:hover {
   background-color: rgba(255, 255, 255, 0.2);
 }
 
-/* ── tablet ── */
+/* ── TABLET (769px – 1024px) ── */
 @media screen and (min-width: 769px) and (max-width: 1024px) {
   .intro-inner {
-    padding: 6vw 5vw 15vw;
-    gap: 3vw;
+    gap: 3.5vh;
+    padding: 8vh 8vw 10vh;
   }
 
-  #logo-white   { width: 25vw; }
-  #sub-title    { font-size: 8vw; }
-  #welcome-text-intro { font-size: 7vw; }
-  #introduction-sub   { font-size: 3vw; }
-  .hpArrow-intro      { height: 10vw; }
-  .skip               { font-size: 3vw; top: 2vw; left: 2vw; }
+  #logo-white {
+    width: 20vw;
+  }
+
+  #sub-title {
+    font-size: 9vw;
+  }
+
+  #introduction-sub {
+    font-size: 2.8vw;
+    line-height: 1.9;
+  }
+
+  .text-wrapper {
+    max-width: 60vw;
+  }
+
+  .hpArrow-intro {
+    height: 8vw;
+  }
+
+  .skip {
+    font-size: 2.2vw;
+    top: 2vw;
+    left: 2vw;
+    padding: 0.8vw 2.2vw;
+  }
+
+  .divider {
+    width: 10vw;
+  }
 }
 
-/* ── desktop ── */
+/* ── DESKTOP (1025px+) ── */
 @media screen and (min-width: 1025px) {
   .intro-inner {
-    padding: 4vw 5vw 12vw;
-    gap: 2vw;
+    gap: 3vh;
+    padding: 8vh 10vw 10vh;
+    justify-content: center;
   }
 
-  #logo-white         { width: 14vw; }
-  #sub-title          { font-size: 7vw; }
-  #welcome-text-intro { font-size: 5vw; }
-  #introduction-sub   { font-size: 2vw; width: 60vw; }
-  .hpArrow-intro      { height: 8vw; }
-  .skip               { font-size: 2vw; top: 2vw; left: 2vw; padding: 0.8vw 2vw; }
+  #logo-white {
+    width: 12vw;
+  }
+
+  #sub-title {
+    font-size: 7vw;
+  }
+
+  #introduction-sub {
+    font-size: 1.6vw;
+    line-height: 2;
+  }
+
+  .text-wrapper {
+    max-width: 45vw;
+  }
+
+  .hpArrow-intro {
+    height: 6vw;
+  }
 
   .video-intro {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
     object-fit: contain;
+  }
+
+  .divider {
+    width: 7vw;
+  }
+
+  .skip {
+    font-size: 1.4vw;
+    top: 1.5vw;
+    left: 1.5vw;
+    padding: 0.6vw 1.8vw;
   }
 }
 
-/* ── animations ── */
+/* ── ANIMATIONS ── */
 @keyframes fadeOut {
   from { opacity: 1; }
   to   { opacity: 0; }
@@ -151,15 +246,17 @@
 
 .intro-text-slide-in {
   animation: slide-in-from-top 1.5s forwards;
+  width: 100%;
+  min-height: 100%;
 }
 
 @keyframes slide-in-from-top {
-  0%   { opacity: 0; }
-  100% { opacity: 1; }
+  0%   { opacity: 0; transform: translateY(1.2vh); }
+  100% { opacity: 1; transform: translateY(0); }
 }
 
 @keyframes bounce2 {
   0%   { transform: translateY(0); }
-  50%  { transform: translateY(-8px); }
+  50%  { transform: translateY(-1vh); }
   100% { transform: translateY(0); }
 }

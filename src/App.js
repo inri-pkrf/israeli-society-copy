@@ -22,6 +22,7 @@ import SummaryPoints from './componentsJS/SummaryPoints'
 import FinalScreen from './componentsJS/FinalScreen'
 import Quiz from './componentsJS/Quiz'
 
+
 // mobile only until the design is complete
 
 function useIsPortraitAndSmallScreen() {
@@ -88,7 +89,6 @@ function App() {
         <Route path="/summary-points" element={<SummaryPoints/>} />
         <Route path="/final-screen" element={<FinalScreen/>} />
         <Route path="/test" element={<Quiz/>} />
-
 
         </Routes>
     </div>

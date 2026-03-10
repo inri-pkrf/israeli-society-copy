@@ -97,8 +97,8 @@
   cursor: pointer;
 }
 
-.prev-button  { background-color: rgb(28, 180, 227); }
-.next-button  { background-color: #2858ab; }
+.prev-button     { background-color: rgb(28, 180, 227); }
+.next-button     { background-color: #2858ab; }
 .button-disabled {
   background-color: rgb(102, 102, 102);
   opacity: 0.3;
@@ -123,13 +123,12 @@
   -webkit-overflow-scrolling: touch;
 }
 
-/* inner scroll content — normal flow, no absolute positioning */
 .results-inner {
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
-  padding: 28vw 5vw 20vw;   /* top clears the fixed header */
+  padding: 28vw 5vw 20vw;
   gap: 4vw;
   box-sizing: border-box;
   min-height: 100%;
@@ -162,7 +161,7 @@
   margin: 0;
 }
 
-/* all result buttons — same width, stacked cleanly */
+/* ── all result buttons ── */
 .share-btn,
 .try-button,
 .end-btn,
@@ -186,6 +185,18 @@
 .mistakes-btn { background-color: rgb(80, 131, 221); }
 .reset-btn    { background-color: #2858ab; }
 
+/* ── share error/status message ── */
+.share-msg {
+  color: white;
+  font-size: 4vw;
+  font-family: "Heebo";
+  background: rgba(0, 0, 0, 0.3);
+  padding: 2vw 4vw;
+  border-radius: 3vw;
+  max-width: 80vw;
+  text-align: center;
+}
+
 /* ── mistakes screen ── */
 #title-mistakes {
   top: 20vw;
@@ -206,14 +217,14 @@
   font-family: 'ASSISTANT';
   width: 90vw;
   padding-right: 4vw;
-  padding-bottom: 25vw;   /* clears the fixed bottom button */
+  padding-bottom: 35vw;
   direction: rtl;
 }
 
-.mistake-q.wrong  { color: #f86363; font-size: 6vmin; }
+.mistake-q.wrong   { color: #f86363; font-size: 6vmin; }
 .mistake-q.correct { color: #2b8f96; font-size: 6vmin; }
-.ans-mis     { font-size: 5vmin; }
-.ans-mis-cor { font-size: 5vmin; font-weight: 200; }
+.ans-mis           { font-size: 5vmin; }
+.ans-mis-cor       { font-size: 5vmin; font-weight: 200; }
 
 .container-endBtn {
   position: fixed;
@@ -238,6 +249,7 @@
   padding-bottom: 20vw;
   box-sizing: border-box;
 }
+
 .back-btn-mis {
   height: 12vw;
   padding: 2vw 5vw;
