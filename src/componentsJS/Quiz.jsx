@@ -79,7 +79,6 @@ const Quiz = () => {
     html2canvas(element, {
       useCORS: true,
       allowTaint: false,
-      scale: 1.3,
       logging: false,
       // Tell html2canvas to ignore elements that would cause CORS issues
       ignoreElements: (el) => el.classList?.contains('share-ignore'),
