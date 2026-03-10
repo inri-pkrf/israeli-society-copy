@@ -69,19 +69,6 @@ const VideoPage = () => {
   // ניווט לשלב הבא
   // -------------------------
   const handleNextStep = () => {
-    const nextIndex = selectedVideoIndex + 1;
-
-    if (nextIndex < videos.length) {
-      // ניווט לסרטון הבא
-      navigate("/video-page", {
-        state: {
-          prompt,
-          from,
-          videoIndex: nextIndex,
-        },
-      });
-      return;
-    }
 
     // מעבר לפי סוג החברה
     if ((prompt === "החברה הערבית" || prompt === "החברה החרדית") && from === "introduction-to-society") {

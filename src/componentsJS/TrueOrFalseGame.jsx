@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import '../componentsCSS/VideoPageStep2.css';
 import '../componentsCSS/TrueOrFalseGame.css';
@@ -15,39 +15,24 @@ const TrueOrFalseGame = () => {
   const questions = trueFalseData[prompt] || trueFalseData['החברה החרדית'];
   const company = videoData[prompt] || videoData['החברה החרדית'];
 
-  const cactusMap = {
-    'החברה החרדית': 'cactusDos.png',
-    'החברה הערבית': 'cactusArab.png',
-    'מוגבלויות והגיל השלישי': 'cactusOld.png'
-  };
-  const cactusSrc = `${process.env.PUBLIC_URL}/assets/imgs/cuctuseJPNG/${cactusMap[prompt] || 'cactusDos.png'}`;
-
   const [currentQuestion, setCurrentQuestion] = useState(0);
-  const [value, setValue] = useState(50);
-  const [result, setResult] = useState(null);
+  const [result, setResult] = useState(null); // null | 'correct' | 'wrong'
+  const [chosen, setChosen] = useState(null); // 'true' | 'false'
   const [locked, setLocked] = useState(false);
 
-  const inputRef = useRef(null);
-
-  const handleChange = (e) => {
+  const handleAnswer = (answer) => {
     if (locked) return;
-    setValue(Number(e.target.value));
-  };
-
-  const evaluate = () => {
-    const answer = value >= 50 ? 'true' : 'false';
-    setResult(answer === questions[currentQuestion].correct ? 'correct' : 'wrong');
+    const isCorrect = answer === questions[currentQuestion].correct;
+    setChosen(answer);
+    setResult(isCorrect ? 'correct' : 'wrong');
     setLocked(true);
   };
-
-  const handleMouseUp = () => { if (!locked) evaluate(); };
-  const handleTouchEnd = () => { if (!locked) evaluate(); };
 
   const nextQuestion = () => {
     if (currentQuestion < questions.length - 1) {
       setCurrentQuestion(currentQuestion + 1);
-      setValue(50);
       setResult(null);
+      setChosen(null);
       setLocked(false);
     }
   };
@@ -55,92 +40,90 @@ const TrueOrFalseGame = () => {
   const handleNextPage = () => {
     if (prompt === 'החברה החרדית' || prompt === 'החברה הערבית') {
       navigate('/track-page', { state: { prompt } });
-    } else if (prompt === 'מוגבלויות והגיל השלישי') {
-      navigate('/video-page', {
-        state: {
-          prompt,
-          videoIndex: 0,
-          next: '/track-page'
-        }
-      });
     } else {
-      navigate('/video-page', {
-        state: {
-          prompt,
-          videoIndex: 0,
-          next: '/track-page'
-        }
-      });
+      navigate('/video-page', { state: { prompt, videoIndex: 0, next: '/track-page' } });
     }
   };
 
-  // --- Helper function to bold key words inline and add a line break ---
   const formatFeedback = (text) => {
     if (!text) return '';
-
-    // Bold keywords inline without breaking the sentence
     return text
-      .replace(/(תשובה נכונה, המשפט מיתוס,)/g, '<strong>$1</strong>')
-      .replace(/(המשפט אמת,)/g, '<strong>$1</strong>')
-      .replace(/(המשפט מיתוס,)/g, '<strong>$1</strong>')
-      .replace(/(תשובה נכונה, זו אמת,)/g, '<strong>$1</strong>');
+      .replace(/(תשובה נכונה, המשפט מיתוס,)/g, '<strong>$1</strong><br/>')
+      .replace(/(המשפט אמת,)/g, '<strong>$1</strong><br/>')
+      .replace(/(המשפט מיתוס,)/g, '<strong>$1</strong><br/>')
+      .replace(/(תשובה נכונה, זו אמת,)/g, '<strong>$1</strong><br/>');
   };
+
+  const correctSrc = `${process.env.PUBLIC_URL}/assets/imgs/cactuseCorrect.png`;
+  const wrongSrc   = `${process.env.PUBLIC_URL}/assets/imgs/catuseWrong.png`;
+
   return (
-    <div className="true-false-page" style={{height: '100vh', overflowY: 'auto', display: 'flex', flexDirection: 'column'}}>
+    <div className="true-false-page">
       <SocietyHeader imgSrc={company.imgSrc} title={prompt} />
 
       <div id="true-false-game">
+
         <div id="true-false-text2">
-          <p>יש לבחור, לגרור ולהכריע האם המידע הוא אמת או מיתוס</p>
+          <p>לחצו על הקקטוס המתאים – אמת או מיתוס?</p>
         </div>
 
         <div className="tf-progress">{currentQuestion + 1}/{questions.length}</div>
 
+        {/* Statement card */}
         <div
-          className={`tf-statement ${result ? result : ''}`}
+          className={`tf-statement ${result || ''}`}
           dangerouslySetInnerHTML={{
             __html: result
               ? formatFeedback(questions[currentQuestion].feedback[result])
-              : formatFeedback(questions[currentQuestion].statement)
+              : questions[currentQuestion].statement
           }}
-        ></div>
+        />
 
+        {/* Result label */}
         {result && (
-          <div className={`tf-result ${result}`}>{result === 'correct' ? 'נכון!' : 'לא נכון'}</div>
+          <div className={`tf-result ${result}`}>
+            {result === 'correct' ? '✓ נכון!' : '✗ לא נכון'}
+          </div>
         )}
 
-        <div className="tf-slider-wrap">
-          <div className="label-left">מיתוס</div>
+        {/* Cactus buttons */}
+        <div className="tf-cactus-row">
 
-          <input
-            ref={inputRef}
-            type="range"
-            min="0"
-            max="100"
-            value={value}
-            className={`tf-range ${!locked ? '' : value < 50 ? 'left-selected' : 'right-selected'}`}
-            onChange={handleChange}
-            onMouseUp={handleMouseUp}
-            onTouchEnd={handleTouchEnd}
+          {/* TRUE cactus */}
+          <button
+            className={`tf-cactus-btn ${chosen === 'true' ? (result === 'correct' ? 'picked-correct' : 'picked-wrong') : ''} ${locked && chosen !== 'true' ? 'dimmed' : ''}`}
+            onClick={() => handleAnswer('true')}
             disabled={locked}
-          />
+          >
+            <img src={correctSrc} alt="אמת" className="tf-cactus-img" />
+            <span className="tf-cactus-label true-label">אמת!</span>
+          </button>
 
-          <div className="label-right">אמת!</div>
+          {/* FALSE cactus */}
+          <button
+            className={`tf-cactus-btn ${chosen === 'false' ? (result === 'correct' ? 'picked-correct' : 'picked-wrong') : ''} ${locked && chosen !== 'false' ? 'dimmed' : ''}`}
+            onClick={() => handleAnswer('false')}
+            disabled={locked}
+          >
+            <img src={wrongSrc} alt="מיתוס" className="tf-cactus-img" />
+            <span className="tf-cactus-label false-label">מיתוס</span>
+          </button>
+
         </div>
 
+        {/* Actions */}
         <div className="tf-actions">
           {locked && currentQuestion < questions.length - 1 && (
             <button className="tf-reset" onClick={nextQuestion}>לשאלה הבאה</button>
           )}
-
           {locked && currentQuestion === questions.length - 1 && (
-            <div style={{ marginTop: '10px', fontWeight: 'bold', fontSize: '5vw' }}>
-              סיימת את כל השאלות 🎉
-              <br />
-              <button className="tf-reset" onClick={handleNextPage} style={{ marginTop: '10px' }}>המשך</button>
+            <div className="tf-finished">
+              <p>סיימת את כל השאלות 🎉</p>
+              <button className="tf-reset" onClick={handleNextPage}>המשך</button>
             </div>
           )}
         </div>
+
       </div>
     </div>
   );

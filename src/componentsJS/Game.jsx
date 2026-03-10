@@ -18,8 +18,9 @@ const Game = () => {
   const [offset, setOffset] = useState({ x: 0, y: 0 });
 
   const [feedback, setFeedback] = useState('');
-  const [feedbackType, setFeedbackType] = useState(''); 
+  const [feedbackType, setFeedbackType] = useState('');
   const [gameOver, setGameOver] = useState(false);
+  const [pendingGameOver, setPendingGameOver] = useState(false); // ← new
 
   const dragItemRef = useRef(null);
   const correctRef = useRef(null);
@@ -35,24 +36,33 @@ const Game = () => {
     const statement = statements[currentIndex];
     if (!statement) return;
 
+    const isLast = currentIndex >= statements.length - 1;
+
     if (statement.correct === isCorrectDrop) {
       setScore(prev => prev + 1);
       setFeedback('<strong>יפה!</strong><br/>קיבלת נקודה');
       setFeedbackType('correct');
     } else {
-      setFeedback(`לא נכון.<br/>${statement.explanation}`);
+      setFeedback(`<strong>לא נכון.</strong><br/>${statement.explanation}`);
       setFeedbackType('incorrect');
     }
 
-    if (currentIndex < statements.length - 1) {
+    if (!isLast) {
       setCurrentIndex(prev => prev + 1);
     } else {
-      setGameOver(true);
+      setPendingGameOver(true); // wait for feedback to be closed
     }
 
     setDragging(false);
     setDragPos({ x: 0, y: 0 });
     setOffset({ x: 0, y: 0 });
+  };
+
+  const closeFeedback = () => {
+    setFeedback('');
+    if (pendingGameOver) {
+      setGameOver(true);
+    }
   };
 
   const onTouchStart = (e) => {
@@ -104,7 +114,7 @@ const Game = () => {
               direction: 'rtl',
             }}
           >
-            {statements[currentIndex] && (
+            {statements[currentIndex] && !pendingGameOver && (
               <>
                 <div
                   style={{
@@ -157,7 +167,7 @@ const Game = () => {
           {feedback && (
             <div className={`feedback ${feedbackType}`}>
               <span dangerouslySetInnerHTML={{ __html: feedback }} />
-              <button onClick={() => setFeedback('')} className="close-feedback" aria-label="סגור הודעה">×</button>
+              <button onClick={closeFeedback} className="close-feedback" aria-label="סגור הודעה">×</button>
             </div>
           )}
 
@@ -169,24 +179,10 @@ const Game = () => {
               ref={incorrectRef}
               className="dropzone incorrect"
               onDragOver={(e) => e.preventDefault()}
-              onDrop={(e) => {
-                e.preventDefault();
-                handleDrop(false);
-              }}
-              style={{
-                width: '35vw',
-                padding: '5vw',
-                backgroundColor: 'transparent',
-                border: 'none',
-                color: '#DA6C6C',
-                direction: 'rtl',
-              }}
+              onDrop={(e) => { e.preventDefault(); handleDrop(false); }}
+              style={{ width: '35vw', padding: '5vw', backgroundColor: 'transparent', border: 'none', color: '#DA6C6C', direction: 'rtl' }}
             >
-              <img
-                src={`${process.env.PUBLIC_URL}/assets/imgs/catuseWrong.png`}
-                alt="ממש לא"
-                style={{ maxWidth: '30vw', marginBottom: '2vw' }}
-              />
+              <img src={`${process.env.PUBLIC_URL}/assets/imgs/catuseWrong.png`} alt="ממש לא" style={{ maxWidth: '30vw', marginBottom: '2vw' }} />
               <p className='wrong-txt'>ממש לא</p>
             </div>
 
@@ -194,24 +190,10 @@ const Game = () => {
               ref={correctRef}
               className="dropzone correct"
               onDragOver={(e) => e.preventDefault()}
-              onDrop={(e) => {
-                e.preventDefault();
-                handleDrop(true);
-              }}
-              style={{
-                width: '35vw',
-                padding: '5vw',
-                backgroundColor: 'transparent',
-                border: 'none',
-                color: '#03A791',
-                direction: 'rtl',
-              }}
+              onDrop={(e) => { e.preventDefault(); handleDrop(true); }}
+              style={{ width: '35vw', padding: '5vw', backgroundColor: 'transparent', border: 'none', color: '#03A791', direction: 'rtl' }}
             >
-              <img
-                src={`${process.env.PUBLIC_URL}/assets/imgs/cactuseCorrect.png`}
-                alt="ברור שכן!"
-                style={{ maxWidth: '30vw', marginBottom: '2vw' }}
-              />
+              <img src={`${process.env.PUBLIC_URL}/assets/imgs/cactuseCorrect.png`} alt="ברור שכן!" style={{ maxWidth: '30vw', marginBottom: '2vw' }} />
               <p className='correct-txt'>ברור שכן!</p>
             </div>
           </div>
@@ -228,23 +210,10 @@ const Game = () => {
             {statements.length} / {score} מאפיינים מקבילים בין החברה החרדית לערבית<br />
             בשבילנו את/ה צבר אמיתי!
           </p>
-
           <div className="end-images-row">
-            <img
-              src={`${process.env.PUBLIC_URL}/assets/imgs/cuctuseJPNG/cactusOld.png`}
-              alt="כפתור 3"
-              className="end-img"
-            />
-            <img
-              src={`${process.env.PUBLIC_URL}/assets/imgs/cuctuseJPNG/cactusDos.png`}
-              alt="כפתור 3"
-              className="end-img"
-            />
-            <img
-              src={`${process.env.PUBLIC_URL}/assets/imgs/cuctuseJPNG/cactusArab.png`}
-              alt="כפתור 3"
-              className="end-img"
-            />
+            <img src={`${process.env.PUBLIC_URL}/assets/imgs/cuctuseJPNG/cactusOld.png`} alt="כפתור 3" className="end-img" />
+            <img src={`${process.env.PUBLIC_URL}/assets/imgs/cuctuseJPNG/cactusDos.png`} alt="כפתור 3" className="end-img" />
+            <img src={`${process.env.PUBLIC_URL}/assets/imgs/cuctuseJPNG/cactusArab.png`} alt="כפתור 3" className="end-img" />
           </div>
           <button className="next-button-game" onClick={() => navigate('/summary-points')}>
             מעבר לנושא הבא

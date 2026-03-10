@@ -1,48 +1,77 @@
 #SocietyHeader {
-    position: fixed;
-    top: 0vh;
-    left: 0;
-    width: 100%;
-    height: 100vh;
-    background-size: cover;
-    background-repeat: no-repeat;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-image: url("/public/assets/imgs/Bg2.jpg");
-    direction: rtl;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 65vw;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-image: url("/public/assets/imgs/Bg2.jpg");
+  background-position: center;
+  direction: rtl;
+  z-index: 30;
+  overflow: hidden;
+  margin: 0;
+  padding: 0;
+  display: block;
 }
 
+/* NOT a circle — a very wide rectangle with only top corners rounded */
+/* This avoids the bottom "line" that a circle always has */
 .circle-div-video {
-    border: 1px solid white;
-    border-top-left-radius: 53.5vh;
-    border-top-right-radius: 53.5vh;
-    border-bottom-left-radius: 0;
-    border-bottom-right-radius: 0;
-    background-color: white;
-    height: 1000vw;
-    width: 180vw;
-    right: 50%;
-    transform: translateX(50%);
-    position: absolute;
-    top: 45vw;
-  }
-  
-
-.cactus-img{
-    position: absolute;
-    right: 50%;
-    transform: translateX(50%);
-    height: 20vw;
-    width: auto;
-    top: 24vw;
-    z-index: 100000;
-
-}
-.page-title-video{
-    font-family: "karantina";
-    color:rgb(40, 40, 134);
-    font-size: 12vw;
-    margin-top: 10vw;
+  position: absolute;
+  right: 50%;
+  transform: translateX(50%);
+  width: 160vw;
+  height: 2000vw;            /* extremely tall — bottom edge never visible */
+  background-color: white;
+  border-top-left-radius: 80vw;
+  border-top-right-radius: 80vw;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+  top: 42vw;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding-top: 10vw;
 }
 
+.cactus-img {
+  position: absolute;
+  right: 50%;
+  transform: translateX(50%);
+  height: 20vw;
+  width: auto;
+  top: 20vw;
+  z-index: 100;
+}
+
+.page-title-video {
+  font-family: "karantina";
+  color: rgb(40, 40, 134);
+  font-size: 12vw;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+  line-height: 1;
+}
+
+/* kill any browser default margin on h1 inside the header */
+#SocietyHeader h1 {
+  margin: 0;
+  padding: 0;
+}
+
+@media screen and (min-width: 769px) {
+  #SocietyHeader    { height: 25vw; }
+  .cactus-img       { height: 14vw; top: 6vw; }
+  .page-title-video { font-size: 6vw; }
+  .circle-div-video { top: 14vw; border-top-left-radius: 50vw; border-top-right-radius: 50vw; padding-top: 4vw; }
+}
+
+@media screen and (min-width: 1025px) {
+  #SocietyHeader    { height: 22vw; }
+  .cactus-img       { height: 12vw; top: 4vw; }
+  .page-title-video { font-size: 5vw; }
+  .circle-div-video { top: 12vw; border-top-left-radius: 40vw; border-top-right-radius: 40vw; padding-top: 3vw; }
+}

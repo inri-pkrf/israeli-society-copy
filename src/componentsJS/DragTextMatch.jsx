@@ -1,20 +1,20 @@
-import React, { useState, useEffect } from "react";
-import "../componentsCSS/DragGame.css";
+import React, { useState } from "react";
+import "../componentsCSS/DragTextMatch.css";
 
 const titles = [
   "ועדת המעקב העליונה",
   "ועד ראשי הרשויות המקומיות",
   "ארגוני חברה אזרחית",
   "המנהיגות הפוליטית",
-  "מנהיגות דתית איסלאמית"
+  "מנהיגות דתית איסלאמית",
 ];
 
 const sentences = [
   "מהווה גוף גג אזרחי המתכלל עמדות ציבוריות ומבטא סוגיות משותפות לחברה הערבית ברמה הארצית.",
   "מייצג את ההנהגה המוניציפלית ופועל לקידום צרכים יישוביים, תשתיות ושירותים מול משרדי הממשלה.",
-  "עוסקים בתחומי חינוך, רווחה, זכויות אזרח ופיתוח קהילתי, כאשר חלקם היו שותפים גם במרס״ל – מרכז סיוע לאזרח של פיקוד העורף – ונטלו חלק בפעילות אזרחית בשגרה ובחירום. ",
-  "מיוצגת בכנסת ישראל באמצעות שלוש מפלגות ערביות, הפועלות במסגרת הפרלמנטרית ומשקפות קולות ועמדות שונות בציבור הערבי. ",
-  "מחולקת לפלג הצפוני ולפלג הדרומי, שלה השפעה חברתית וקהילתית, בעיקר בתחומי זהות, חינוך ודת. ריבוי מוקדי המנהיגות משקף את המורכבות והגיוון בחברה הערבית ואת האופן שבו מתקיימת הנהגה רב־שכבתית"
+  "עוסקים בתחומי חינוך, רווחה, זכויות אזרח ופיתוח קהילתי, כאשר חלקם היו שותפים גם במרס״ל – מרכז סיוע לאזרח של פיקוד העורף – ונטלו חלק בפעילות אזרחית בשגרה ובחירום.",
+  "מיוצגת בכנסת ישראל באמצעות שלוש מפלגות ערביות, הפועלות במסגרת הפרלמנטרית ומשקפות קולות ועמדות שונות בציבור הערבי.",
+  "מחולקת לפלג הצפוני ולפלג הדרומי, שלה השפעה חברתית וקהילתית, בעיקר בתחומי זהות, חינוך ודת. ריבוי מוקדי המנהיגות משקף את המורכבות והגיוון בחברה הערבית ואת האופן שבו מתקיימת הנהגה רב־שכבתית.",
 ];
 
 const correctMap = { 0: 0, 1: 1, 2: 2, 3: 3, 4: 4 };
@@ -24,132 +24,79 @@ export default function DragTextMatch({ onComplete }) {
   const [status, setStatus] = useState(null); // null | 'correct' | 'wrong'
   const [locked, setLocked] = useState(false);
 
-const handleAnswer = (titleIndex) => {
-  if (locked) return;
+  const handleAnswer = (titleIndex) => {
+    if (locked) return;
+    const isCorrect = correctMap[currentIndex] === titleIndex;
 
-  const isCorrect = correctMap[currentIndex] === titleIndex;
-
-  if (isCorrect) {
-    setStatus("correct");
-    setLocked(true);
-
-    setTimeout(() => {
-      if (currentIndex === sentences.length - 1) {
-        // ✅ Only mark complete after last question is correct
-        onComplete && onComplete();
-      } else {
-        setCurrentIndex((prev) => prev + 1);
+    if (isCorrect) {
+      setStatus("correct");
+      setLocked(true);
+      setTimeout(() => {
+        if (currentIndex === sentences.length - 1) {
+          onComplete && onComplete();
+        } else {
+          setCurrentIndex((prev) => prev + 1);
+          setStatus(null);
+          setLocked(false);
+        }
+      }, 1000);
+    } else {
+      setStatus("wrong");
+      setLocked(true);
+      setTimeout(() => {
         setStatus(null);
         setLocked(false);
-      }
-    }, 1000);
-  } else {
-    setStatus("wrong");
-    setLocked(true);
+      }, 1000);
+    }
+  };
 
-    setTimeout(() => {
-      setStatus(null);   // Reset color
-      setLocked(false);  // Allow retry
-    }, 1000);
-  }
-};
+  const progress = ((currentIndex + 1) / sentences.length) * 100;
 
   return (
-    <div
-      className="quiz-game"
-      style={{
-        fontFamily: "heebo",
-        position: "relative",
-        direction: "rtl",
-        display: "flex",
-        flexDirection: "column",
-        alignItems: "center",
-        textAlign: "center",
-      }}
-    >
-      {/* Title */}
-      <p
-        style={{
-          fontSize: "4vw",
-          fontWeight: "bold",
-          paddingBottom: "2vw",
-        }}
-      >
-        בחרו את הכותרת המתאימה למשפט
-      </p>
+    /* dg-wrapper fills the reading-box fullscreen card — no own background */
+    <div className="dg-wrapper">
 
-      {/* Question counter */}
-      <p
-        style={{
-          fontSize: "3vw",
-          fontWeight: "bold",
-          paddingBottom: "1vw",
-        }}
-      >
-        שאלה {currentIndex + 1} מתוך {sentences.length}
-      </p>
+      {/* Heading */}
+      <div className="dg-heading">בחרו את הכותרת המתאימה למשפט</div>
+        <span className="dg-badge">
+          שאלה {currentIndex + 1} מתוך {sentences.length}
+        </span>
+
+      {/* Progress bar */}
+      <div className="dg-progress-track">
+        <div className="dg-progress-fill" style={{ width: `${progress}%` }} />
+      </div>
 
       {/* Sentence box */}
-      <div
-        style={{
-          fontFamily: "heebo",
-          maxWidth: 600,
-          width: "90%",
-          padding: "3vw",
-          fontSize: "4vw",
-          borderRadius: "4vw",
-          background:
-            status === "correct"
-              ? "#d4edda"
-              : status === "wrong"
-              ? "#f8d7da"
-              : "#f4f6fb",
-          border:
-            status === "correct"
-              ? "0.5vw solid #28a745"
-              : status === "wrong"
-              ? "0.5vw solid #dc3545"
-              : "0.5vw solid #1bbfe5",
-          transition: "all 0.3s ease",
-        }}
-      >
+      <div className={`dg-sentence-box ${status || ""}`}>
+        <div className={`dg-status-icon ${status ? "visible" : ""} ${status || ""}`}>
+          {status === "correct" ? "✓" : status === "wrong" ? "✕" : ""}
+        </div>
         {sentences[currentIndex]}
       </div>
 
-      {/* Answer buttons */}
-      <div
-        style={{
-          fontFamily: "heebo",
-          marginTop: "3vw",
-          display: "grid",
-          gridTemplateColumns: "1fr",
-          gap: "0.8rem",
-          width: "70%",
-          maxWidth: 600,
-        }}
-      >
+      {/* Options */}
+      <div className="dg-options-grid">
         {titles.map((title, i) => (
           <button
             key={i}
+            className="dg-option"
             onClick={() => handleAnswer(i)}
             disabled={locked}
-            style={{
-              fontFamily: "heebo",
-              padding: "2vw",
-              borderRadius: "3vw",
-              border: "0.5vw solid #1bbfe5",
-              background: "#fff",
-              cursor: locked ? "default" : "pointer",
-              fontSize: "4vw",
-              fontWeight: 500,
-              transition: "all 0.2s ease",
-              color: "#003561",
-            }}
           >
+            <span className="dg-option-dot" />
             {title}
           </button>
         ))}
       </div>
+
+      {/* Dot pagination */}
+      <div className="dg-dots">
+        {sentences.map((_, i) => (
+          <div key={i} className={`dg-dot ${i === currentIndex ? "active" : ""}`} />
+        ))}
+      </div>
+
     </div>
   );
 }

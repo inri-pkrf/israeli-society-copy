@@ -1,23 +1,20 @@
-/* קונטיינר ראשי */
+/* ── quiz screen ── */
 #quiz {
   position: relative;
   top: 0;
   left: 0;
   width: 100vw;
-  height: 100vh;
-  background-size: cover;
-  background-repeat: no-repeat;
+  min-height: 100vh;
   background-color: #fff;
   display: flex;
   flex-direction: column;
   align-items: center;
-  overflow-y: scroll;
+  overflow-y: auto;
   overflow-x: hidden;
   z-index: 1000;
   direction: rtl;
 }
 
-/* כותרת של השאלה */
 .question-number-q {
   font-size: 15vw;
   font-family: "karantina";
@@ -25,7 +22,6 @@
   margin-top: 25vw;
 }
 
-/* שאלה */
 .question-q {
   margin-top: 6vw;
   direction: rtl;
@@ -35,13 +31,13 @@
   text-align: center;
   padding: 0 5vw;
 }
+
 .progress-bar-container-q {
   direction: rtl;
   position: relative;
   width: 90%;
   height: 3vw;
   background-color: #ccc;
-  cursor: pointer;
   border-radius: 4vw;
   margin-top: -5vw;
 }
@@ -50,11 +46,9 @@
   height: 100%;
   background-color: #1bbfe5;
   transition: width 0.1s linear;
+  border-radius: 4vw;
 }
 
-
-
-/* תשובות */
 .answers-q {
   display: flex;
   flex-direction: column;
@@ -83,7 +77,6 @@
   color: white;
 }
 
-/* כפתורי ניווט */
 .navigation-buttons {
   display: flex;
   justify-content: space-between;
@@ -104,227 +97,155 @@
   cursor: pointer;
 }
 
-.prev-button {
-  background-color: rgb(28, 180, 227);
-}
-
-.next-button {
-  background-color: #2858ab;
-}
-
+.prev-button  { background-color: rgb(28, 180, 227); }
+.next-button  { background-color: #2858ab; }
 .button-disabled {
   background-color: rgb(102, 102, 102);
   opacity: 0.3;
   cursor: default;
 }
 
-
+/* ── results screen ── */
 .results {
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
+  position: fixed;
+  top: 0;
+  left: 0;
   width: 100vw;
   height: 100vh;
-    font-size: 5vw;
-    direction: rtl;
-    text-align: center;
-    top: 0vh;
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center center;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-image: url("/public/assets/imgs/Bg3.jpg");
-    overflow-y: scroll;
-    overflow-x: hidden;
-    font-family: "Assistant";
-    z-index: 10000;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-image: url("/public/assets/imgs/Bg2.jpg");
+  overflow-y: auto;
+  overflow-x: hidden;
+  z-index: 10000;
+  direction: rtl;
+  -webkit-overflow-scrolling: touch;
 }
 
+/* inner scroll content — normal flow, no absolute positioning */
+.results-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 28vw 5vw 20vw;   /* top clears the fixed header */
+  gap: 4vw;
+  box-sizing: border-box;
+  min-height: 100%;
+  font-family: "Assistant";
+  font-size: 5vw;
+}
 
-/* ניקוד */
 .score {
-    font-family: "Karantina";
-    font-size: 21vmin;
-    margin-top: -40vh;
-    color: rgb(255 255 255);
-}
-
-/* הודעה */
-.message {
+  font-family: "Karantina";
+  font-size: 30vw;
   color: white;
-    position: absolute;
-    font-family: "Assistant";
-    font-size: 7vmin;
-    margin-top: -7vh;
-    right: 50%;
-    width: 108vw;
-    font-weight: bold;
-    transform: translateX(50%);
-    text-align: center;
+  line-height: 1;
+  margin: 0;
 }
 
-/* שם משתמש */
 .user-name {
   font-family: "Assistant", Arial;
-    color: #ffffff;
-    position: absolute;
-    right: 50%;
-    transform: translateX(50%);
-    font-size: 8vmin;
-    margin-top: -20vh;
-    width: 90%;
-    text-align: center;
+  color: white;
+  font-size: 7vw;
+  margin: 0;
+  width: 90%;
 }
 
-/* כפתור שיתוף */
-.share-btn {
-    background-color: rgb(33, 173, 216);
-    color: white;
-    border: none;
-    border-radius: 5vw;
-    padding: 2vw 5vw;
-    font-size: 5vmin;
-    font-family: "Heebo";
-    width: 50%;
-    position: absolute;
-    right: 50%;
-    transform: translateX(50%);
-    margin-top: 32vw;
-    cursor: pointer;
-    display: block;
+.message {
+  color: white;
+  font-family: "Assistant";
+  font-size: 7vw;
+  font-weight: bold;
+  width: 90%;
+  margin: 0;
 }
 
-/* כפתור נסה שוב */
-.try-button {
- position: absolute;
-    background-color: #2858ab;
-    color: white;
-    border: none;
-    border-radius: 6vw;
-    padding: 2vw 5vw;
-    font-size: 6vw;
-    font-family: "Assistant", Arial;
-    width: 50%;
-    right: 50%;
-    transform: translateX(50%);
-    margin-top: 48vw;
-    cursor: pointer;
-    display: block;
+/* all result buttons — same width, stacked cleanly */
+.share-btn,
+.try-button,
+.end-btn,
+.reset-btn,
+.mistakes-btn {
+  width: 70vw;
+  max-width: 360px;
+  padding: 3vw 5vw;
+  font-size: 5.5vw;
+  font-family: "Heebo";
+  border: none;
+  border-radius: 8vw;
+  color: white;
+  cursor: pointer;
+  display: block;
 }
 
-/* כפתור אפס הכל */
-.reset-btn {
-    position: absolute;
-    background-color: #2858ab;
-    color: white;
-    border: none;
-    border-radius: 50px;
-    padding: 2vw 5vw;
-    font-size: 6vw;
-    font-family: "Assistant", Arial;
-    width: 50%;
-    right: 50%;
-    transform: translateX(50%);
-    margin-top: 65vw;
-    cursor: pointer;
-    display: block;
+.share-btn    { background-color: rgb(33, 173, 216); }
+.try-button   { background-color: #2858ab; }
+.end-btn      { background-color: rgb(33, 173, 216); }
+.mistakes-btn { background-color: rgb(80, 131, 221); }
+.reset-btn    { background-color: #2858ab; }
 
-}
-.mistakes-btn{
-     background-color: rgb(80 131 221);
-    color: white;
-    border: none;
-    border-radius: 5vw;
-    padding: 2vw 5vw;
-    font-size: 6vw;
-    font-family: "Heebo";
-    width: 45%;
-    position: absolute;
-    margin: 20vw auto;
-    cursor: pointer;
-    right: 28vw;
-    display: block;
-    top: 47vh;
-}
-
-/* כפתור סיום */
-.end-btn {
-    background-color: rgb(33, 173, 216);
-    color: white;
-    border: none;
-    border-radius: 8vw;
-    padding: 2vw 5vw;
-    font-size: 6vw;
-    font-family: "Heebo";
-    width: 45%;
-    position: absolute;
-    right: 28vw;
-    top: 57vh;
-    margin: 20vw auto;
-    cursor: pointer;
-    display: block;
-}
-
-.container-endBtn{
- position: fixed;
-    bottom: 0vh;
-    width: 100vw;
-    background-color: white;
-    height: 18vw;
-}
-
-.container-mistakes{
-position: absolute;
-    margin-top: 40vw;
-    text-align: right;
-    font-family: 'ASSISTANT';
-    width: 90vw;
-    padding-left: 4vw;
-    direction: rtl;
-}
-
-.mistake-q.wrong{
-    color: #f86363;
-    font-size: 6vmin
-}
-.mistake-q.correct{
-    color: #2b8f96;
-    font-size: 6vmin
-}
-.ans-mis{
-  font-size: 5vmin;
-}
-.ans-mis-cor{
-  font-size: 5vmin;
-  font-weight: 200;
-
-}
-
-.back-btn-mis{
-height: 12vw;
-    margin-top: 3vw;
-    padding: 2vw 5vw;
-    font-size: 5vw;
-    font-family: "Heebo";
-    border: none;
-    border-radius: 5vw;
-    color: white;
-    cursor: pointer;
-    background-color: rgb(33, 173, 216);
-
-}
-
+/* ── mistakes screen ── */
 #title-mistakes {
   top: 20vw;
   position: absolute;
   font-family: 'karantina';
   text-align: center;
   width: 100vw;
-  color:  rgb(33, 173, 216);
+  color: rgb(33, 173, 216);
   padding-bottom: 5vw;
   font-size: 12vw;
   direction: rtl;
 }
- 
+
+.container-mistakes {
+  position: absolute;
+  margin-top: 40vw;
+  text-align: right;
+  font-family: 'ASSISTANT';
+  width: 90vw;
+  padding-right: 4vw;
+  padding-bottom: 25vw;   /* clears the fixed bottom button */
+  direction: rtl;
+}
+
+.mistake-q.wrong  { color: #f86363; font-size: 6vmin; }
+.mistake-q.correct { color: #2b8f96; font-size: 6vmin; }
+.ans-mis     { font-size: 5vmin; }
+.ans-mis-cor { font-size: 5vmin; font-weight: 200; }
+
+.container-endBtn {
+  position: fixed;
+  bottom: 0;
+  width: 100vw;
+  background-color: white;
+  height: 18vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.mistakes-container {
+  position: relative;
+  width: 100vw;
+  min-height: 100vh;
+  overflow-y: auto;
+  overflow-x: hidden;
+  -webkit-overflow-scrolling: touch;
+  background-color: #fff;
+  direction: rtl;
+  padding-bottom: 20vw;
+  box-sizing: border-box;
+}
+.back-btn-mis {
+  height: 12vw;
+  padding: 2vw 5vw;
+  font-size: 5vw;
+  font-family: "Heebo";
+  border: none;
+  border-radius: 5vw;
+  color: white;
+  cursor: pointer;
+  background-color: rgb(33, 173, 216);
+}

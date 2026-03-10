@@ -4,7 +4,7 @@ import '../componentsCSS/Header.css';
 import Hamburger from './Hamburger';
 import NavBar from './NavBar';
 
-function Header() {
+function Header({ darkMode = false }) {
   const navigate = useNavigate();
   const location = useLocation();
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
@@ -15,27 +15,23 @@ function Header() {
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
+  // if darkMode prop passed, always use dark — otherwise use path
+  const isLightPath = !darkMode && ['/home', '/game', '/test'].includes(location.pathname);
+  const isDarkMode = !isLightPath;
 
-  const isSpecialPath = ['/home', '/game', '/test'].includes(location.pathname);
-
-  const imageSrc = isSpecialPath
-    ? `${process.env.PUBLIC_URL}/assets/imgs/collegeLogo.png` 
-    : `${process.env.PUBLIC_URL}/assets/imgs/whiteLogo.svg`; 
-
-
-  const isDarkMode = !['/home', '/game', '/test'].includes(location.pathname);
-
+  const imageSrc = isLightPath
+    ? `${process.env.PUBLIC_URL}/assets/imgs/collegeLogo.png`
+    : `${process.env.PUBLIC_URL}/assets/imgs/whiteLogo.svg`;
 
   return (
-    <header className={isSpecialPath ? 'header' : 'header2'}>
-      {/*desktop or mobile*/}
+    <header className={isLightPath ? 'header' : 'header2'}>
       {isMobile ? <Hamburger className="hamburger" /> : <NavBar isDark={isDarkMode} />}
 
       <img src={imageSrc} className="App-logo" alt="logo" />
 
       <button className="back-homeNav" onClick={() => navigate('/home')} />
 
-      {isSpecialPath && (
+      {isLightPath && (
         <img
           src={`${process.env.PUBLIC_URL}/assets/imgs/blueTriangle.png`}
           alt="Decorative"

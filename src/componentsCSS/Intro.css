@@ -6,250 +6,68 @@
   height: 100vh;
   background-size: cover;
   background-repeat: no-repeat;
-  display: flex;
-  justify-content: center;
-  align-items: center;
   z-index: 10000;
-  overflow-y: scroll;
+  overflow-y: auto;
   overflow-x: hidden;
   background-image: url('/public/assets/imgs/Bg1.png');
+  -webkit-overflow-scrolling: touch;
 }
 
-@media screen and (max-width: 768px) {
+/* ── inner layout: normal flow so small phones can scroll ── */
+.intro-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  min-height: 100%;
+  padding: 8vw 5vw 25vw;
+  box-sizing: border-box;
+  gap: 4vw;
+}
 
 #logo-white {
-  position: absolute;
   width: 40vw;
+  max-width: 180px;
   height: auto;
   z-index: 5;
-  right: 50%;
-  transform: translateX(50%);
-  top: 6%;
 }
 
-#welcome-text-intro{
-  color: white;
-  font-family: "karantina", Arial;
-  font-size: 3em;
-  transform: translateX(50%);
-  right: 50%;
-  direction: rtl;
-  POSITION: absolute;
-  margin-top: -8vh;
-  width: 90vw;
-}
-
-#introduction-sub {
-  font-family: 'Heebo', sans-serif;
-  font-size: 6vw;
-  color: white;
-  position: absolute;
-  direction: rtl;
-  margin-top: 3vh;
-  width: 80vw;
-  right: 50%;
-    top: 70vw;
-  transform: translateX(50%);
-}
-
-#sub-title{
+#sub-title {
   font-family: 'Karantina', Arial;
   font-size: 15vw;
   color: white;
-  margin-bottom: -5vw;
-  position: absolute;
-  transform: translateX(50%);
-  right: 50%;
-  top: 40vw;
+  line-height: 1;
+  margin: 0;
   width: 90vw;
-}
-
-
-
-.hpArrow-intro {
-  position: absolute;
-  z-index: 5;
-  right: 50%;
-  transform: translateX(50%);
-  bottom: 10vw;
-  animation: bounce2 2s ease infinite;
-  height: 25vw;
-  width: auto;
-  top: 140vw;
-}
-
-.video-intro {
-  position: absolute;
-  right: 50%;
-  transform: translateX(50%);
-  height: 100vh;
-}
-
-.skip {
-  position: absolute;
-  top: 6%;
-  left: 2%;
-  background-color: transparent;
-  font-family: 'Assistant', sans-serif;
-  font-size: 6vw;
-  color: black;
-  z-index: 9999999;
-  border: none;
-  font-weight: bolder;
-}
-
-}
-
-@media screen and (min-width: 769px) and (max-width: 1024px)  {
-  #logo-white {
-    position: absolute;
-    width: 40vw;
-    height: auto;
-    z-index: 5;
-    right: 50%;
-    transform: translateX(50%);
-    top: 6%;
-  }
-  #sub-title{
-    font-family: 'Karantina', Arial;
-    font-size: 3em;
-    color: white;
-    margin-bottom: -5vw;
-    position: absolute;
-    transform: translateX(50%);
-    right: 50%;
-    margin-top: -19vh;
-    width: 90vw;
-  }
-  
-  
-#welcome-text-intro{
-  color: white;
-  font-family: "karantina" ,Arial;
-  font-size: 9em;
-  transform: translateX(50%);
-  right: 50%;
   direction: rtl;
-  POSITION: absolute;
-  margin-top: -32vh;
+}
+
+#welcome-text-intro {
+  color: white;
+  font-family: "Karantina", Arial;
+  font-size: 10vw;
+  direction: rtl;
   width: 90vw;
+  margin: 0;
+  line-height: 1.2;
 }
 
 #introduction-sub {
   font-family: 'Heebo', sans-serif;
-  font-size: 3em;
+  font-size: 5vw;
   color: white;
-  position: absolute;
   direction: rtl;
-  margin-top: -16vh;
-  width: 80vw;
-  right: 50%;
-  top: 50vh;
-  transform: translateX(50%);
+  width: 85vw;
+  margin: 0;
+  line-height: 1.6;
 }
-
-
 
 .hpArrow-intro {
-  position: absolute;
-  z-index: 5;
-  right: 50%;
-  transform: translateX(50%);
-  bottom: 18vh;
-  animation: bounce2 2s ease infinite;
-  height: 8vh;
+  height: 18vw;
   width: auto;
-  /* top: 77vh; */
-}
-.hpArrow-intro:hover {
-  cursor: pointer;
-
-}
-
-.video-intro {
-  position:absolute;
-  height:150vh;
-
-}
-}
-
-
-@media screen and (min-width: 1025px) {
-  #intro-lomda {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    background-size: cover;
-    background-repeat: no-repeat;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 10000;
-    background-image: url('/public/assets/imgs/Bg1.png');
-  }
-  #logo-white {
-    position: absolute;
-    width: 14vw;
-    height: auto;
-    z-index: 5;
-    right: 50%;
-    transform: translateX(50%);
-    top: 6%;
-  }
-  
-#welcome-text-intro{
-  color: white;
-  font-family: "karantina", Arial;
-  font-size: 6em;
-  transform: translateX(50%);
-  right: 50%;
-  direction: rtl;
-  POSITION: absolute;
-  margin-top: -6vh;
-  width: 90vw;
-}
-
-#introduction-sub {
-font-family: 'Heebo';
-font-size: 2vw;
-color: white;
-position: absolute;
-direction: rtl;
-margin-top: -6vh;
-width: 87vw;
-right: 50%;
-  top: 50vh;
-
-transform: translateX(50%);
-}
-
-
-#sub-title{
-  font-family: 'Karantina', Arial;
-  font-size: 7vw;
-  color: white;
-  position: absolute;
-  transform: translateX(50%);
-  right: 50%;
-  margin-top: -31vh;
-  width: 90vw;
-}
-
-
-.hpArrow-intro {
-  position: absolute;
-  z-index: 5;
-  right: 50%;
-  transform: translateX(50%);
-  bottom: 20vh;
   animation: bounce2 2s ease infinite;
-  height: 15vh;
-  width: auto;
-}
-.hpArrow-intro:hover {
   cursor: pointer;
+  margin-top: 2vw;
 }
 
 .video-intro {
@@ -258,43 +76,73 @@ transform: translateX(50%);
   left: 0;
   width: 100vw;
   height: 100vh;
-  object-fit: contain; /* מתאים את הוידיאו למסך מבלי לחתוך אותו */
+  object-fit: cover;   /* fills screen cleanly without stretching */
 }
 
+/* ── skip button: always visible, white text ── */
 .skip {
-  position: absolute;
-  top: 10%;
-  left: 10%;
-  background-color: transparent;
+  position: fixed;
+  top: 4vw;
+  left: 4vw;
+  background-color: rgba(0, 0, 0, 0.35);
+  border: 1.5px solid rgba(255, 255, 255, 0.5);
+  border-radius: 8vw;
   font-family: 'Assistant', sans-serif;
-  font-size: 8vmin;
-  color: black;
+  font-size: 5vw;
+  color: white;                  /* ← always visible */
   z-index: 9999999;
-  border: none;
-  font-weight: bolder;
+  padding: 1.5vw 4vw;
+  font-weight: bold;
+  cursor: pointer;
 }
+
 .skip:hover {
- cursor: pointer;
- font-size: 3.5em;
-
+  background-color: rgba(255, 255, 255, 0.2);
 }
 
+/* ── tablet ── */
+@media screen and (min-width: 769px) and (max-width: 1024px) {
+  .intro-inner {
+    padding: 6vw 5vw 15vw;
+    gap: 3vw;
+  }
+
+  #logo-white   { width: 25vw; }
+  #sub-title    { font-size: 8vw; }
+  #welcome-text-intro { font-size: 7vw; }
+  #introduction-sub   { font-size: 3vw; }
+  .hpArrow-intro      { height: 10vw; }
+  .skip               { font-size: 3vw; top: 2vw; left: 2vw; }
 }
 
+/* ── desktop ── */
+@media screen and (min-width: 1025px) {
+  .intro-inner {
+    padding: 4vw 5vw 12vw;
+    gap: 2vw;
+  }
 
+  #logo-white         { width: 14vw; }
+  #sub-title          { font-size: 7vw; }
+  #welcome-text-intro { font-size: 5vw; }
+  #introduction-sub   { font-size: 2vw; width: 60vw; }
+  .hpArrow-intro      { height: 8vw; }
+  .skip               { font-size: 2vw; top: 2vw; left: 2vw; padding: 0.8vw 2vw; }
 
+  .video-intro {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    object-fit: contain;
+  }
+}
 
-
-
-
+/* ── animations ── */
 @keyframes fadeOut {
-  from {
-    opacity: 1;
-  }
-
-  to {
-    opacity: 0;
-  }
+  from { opacity: 1; }
+  to   { opacity: 0; }
 }
 
 #video.fade-out {
@@ -306,25 +154,12 @@ transform: translateX(50%);
 }
 
 @keyframes slide-in-from-top {
-  0% {
-    opacity: 0;
-  }
-
-  100% {
-    opacity: 1;
-  }
+  0%   { opacity: 0; }
+  100% { opacity: 1; }
 }
 
 @keyframes bounce2 {
-  0% {
-    bottom: 8vh;
-  }
-
-  50% {
-    bottom: 6vh;
-  }
-
-  100% {
-    bottom: 8vh;
-  }
+  0%   { transform: translateY(0); }
+  50%  { transform: translateY(-8px); }
+  100% { transform: translateY(0); }
 }

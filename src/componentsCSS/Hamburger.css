@@ -21,7 +21,7 @@
 }
 .hamburger-line.open:nth-child(1) {
     background-color: white;
-    transform: rotate(45deg) translate(2vw, 2vw);
+    transform: rotate(40deg) translate(1vw, 2.5vw);
 }
 
 .hamburger-line.open:nth-child(2) {
@@ -42,7 +42,7 @@
     background-color: #175a85;
     z-index: 20;
     text-align: center; /* ממורכז את כל התוכן בתפריט */
-    padding-top: 10vh; /* ריווח למעלה */
+    padding-top:2vh; 
     overflow-y: auto;
     transform: translateX(-100%);
     transition: transform 0.4s ease-in-out;

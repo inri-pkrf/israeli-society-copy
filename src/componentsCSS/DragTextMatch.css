@@ -1,0 +1,165 @@
+@import url('https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800&display=swap');
+
+/* ── wrapper: natural height, no overflow clipping ── */
+.dg-wrapper {
+  direction: rtl;
+  font-family: 'Heebo', sans-serif;
+  width: 100%;
+  height: auto;           /* ← grow with content, not fixed */
+  display: flex;
+  flex-direction: column;
+  padding: 4vw 0 0vw;
+  box-sizing: border-box;
+  overflow: visible;      /* ← let the parent (reading-backdrop) scroll */
+}
+
+/* ── badge ── */
+.dg-badge {
+  background: rgba(27, 191, 229, 0.12);
+  border: 1.5px solid rgba(27, 191, 229, 0.4);
+  color: #0ea5c9;
+  font-size: 3vw;
+  font-weight: 700;
+  padding: 1vw 3.5vw;
+  border-radius: 20px;
+  margin-bottom: 3vw;
+}
+
+/* ── heading ── */
+.dg-heading {
+  color: #003561;
+  font-size: 4.5vw;
+  font-weight: 800;
+  margin-bottom: 2vw;
+  line-height: 1.4;
+}
+
+/* ── progress bar ── */
+.dg-progress-track {
+  height: 1.2vw;
+  background: #e2e8f0;
+  border-radius: 10px;
+  margin-bottom: 4vw;
+  overflow: hidden;
+  width: 100%;
+}
+
+.dg-progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #1bbfe5, #0ea5c9);
+  border-radius: 10px;
+  transition: width 0.5s ease;
+}
+
+/* ── sentence box ── */
+.dg-sentence-box {
+  border-radius: 4vw;
+  padding: 4vw 5vw;
+  font-size: 4vw;
+  line-height: 1.75;
+  color: #1e3a5f;
+  margin-bottom: 4vw;
+  transition: all 0.3s ease;
+  position: relative;
+  background: #f0f9ff;
+  border: 1.5px solid #bae6fd;
+}
+
+.dg-sentence-box.correct {
+  background: #f0fdf4;
+  border-color: #86efac;
+}
+
+.dg-sentence-box.wrong {
+  background: #fff1f2;
+  border-color: #fca5a5;
+}
+
+/* ── status icon ── */
+.dg-status-icon {
+  display: none;
+  position: absolute;
+  top: -3.5vw;
+  left: 50%;
+  transform: translateX(-50%);
+  color: white;
+  width: 7vw;
+  height: 7vw;
+  border-radius: 50%;
+  align-items: center;
+  justify-content: center;
+  font-size: 3.5vw;
+  font-weight: 700;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.dg-status-icon.visible { display: flex; }
+.dg-status-icon.correct  { background: #10b981; }
+.dg-status-icon.wrong    { background: #ef4444; }
+
+/* ── options ── */
+.dg-options-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 2vw;
+}
+
+.dg-option {
+  background: #ffffff;
+  border: 1.5px solid #cbd5e1;
+  border-radius: 3.5vw;
+  padding: 3vw 4vw;
+  color: #003561;
+  font-size: 4vw;
+  font-weight: 500;
+  font-family: 'Heebo', sans-serif;
+  cursor: pointer;
+  text-align: right;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  gap: 3vw;
+  width: 100%;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06);
+}
+
+.dg-option:disabled { cursor: default; }
+
+.dg-option:focus,
+.dg-option:active,
+.dg-option:focus-visible {
+  outline: none;
+  box-shadow: none;
+  background: #ffffff;
+  border-color: #cbd5e1;
+}
+
+.dg-option-dot {
+  width: 2vw;
+  height: 2vw;
+  min-width: 2vw;
+  border-radius: 50%;
+  background: #1bbfe5;
+  flex-shrink: 0;
+}
+
+/* ── dot pagination ── */
+.dg-dots {
+  display: flex;
+  justify-content: center;
+  gap: 1.5vw;
+  margin-top: 6vw;
+}
+
+.dg-dot {
+  height: 1.5vw;
+  width: 1.5vw;
+  border-radius: 3px;
+  background: #cbd5e1;
+  transition: all 0.3s ease;
+}
+
+.dg-dot.active {
+  width: 5vw;
+  background: #1bbfe5;
+}

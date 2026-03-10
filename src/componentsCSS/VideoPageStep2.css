@@ -1,7 +1,7 @@
 @media screen and (max-width: 768px) {
 
 .video-step2 {
-    position: fixed;
+    position: a;
     top: 0vh;
     left: 0;
     width: 100vw;

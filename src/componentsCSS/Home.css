@@ -1,530 +1,171 @@
- 
- 
-@media screen and (max-width: 768px) {
- 
- .homepage-container {
-position: fixed;
+/* ── shared base ── */
+.homepage-container {
+  position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
   background-color: #ffffff;
-  z-index: 2000; 
+  z-index: 2000;
+  overflow-y: auto;
+  overflow-x: hidden;
+  -webkit-overflow-scrolling: touch;
+  direction: rtl;
+}
+
+.home-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 28vw 5vw 20vw;   /* top clears header, bottom gives breathing room */
+  gap: 6vw;
+  box-sizing: border-box;
+  min-height: 100%;
+}
+
+.home-title {
+  font-family: "karantina";
+  font-weight: 400;
+  color: #1bbfe5;
+  width: 90vw;
+  font-size: 13vw;
+  margin: 0;
+  line-height: 1.2;
+  text-align: center;
+}
+
+.info1 {
+  font-family: "heebo";
+  font-size: 5vw;
+  width: 90vw;
   text-align: right;
-  padding-top: 2vh;
-  overflow: scroll;
+  direction: rtl;
+  line-height: 1.6;
+  color: #333;
+  margin: 0;
 }
 
-
-
-
-.home-title{
-    font-family: "karantina";
-    font-size: 13vw;
-    font-weight: 400;
-    position: absolute;
-    right: 50%;
-    transform: translateX(50%);
-    width: 90vw;
-    color: #1bbfe5;
-    margin-top: 35vw;
-    text-align: center;
-
-}
-
-.info1{
-        font-family: "heebo";
-        font-size: 6vw;
-        position: absolute;
-        right: 50%;
-        transform: translateX(50%);
-        width: 90vw;
-        margin-top: 85vw;
-        text-align: right;
-        direction: rtl;
-        line-height: 1.4;
-
-}
-.info2{
-    font-family: "heebo";
-    font-size: 1.3em;
-    position: absolute;
-    right: 50%;
-    transform: translateX(50%);
-    width: 90vw;
-    margin-top: 69vh;
-    text-align: center;
-
-}
-.info3{
-    font-family: "heebo";
-    font-size: 1.3em;
-    position: absolute;
-    right: 50%;
-    transform: translateX(50%);
-    width: 90vw;
-    margin-top: 95vh;
-    text-align: center;
-
-}
 .home-button {
-        background-color: #1bbfe5;
-        border: none;
-        border-radius: 55px;
-        width: 75vw;
-        height: 16vw;
-        position: absolute;
-        font-size: 10vw;
-        font-family: "Karantina";
-        color: #ffffff;
-        padding: 1vw;
-        right: 50%;
-        transform: translateX(50%);
-        margin-top: 230vw;
-        box-shadow: 9px 10px 20px #87b8cc, -3px -3px 5px rgba(255, 255, 255, 0.2);
+  background-color: #1bbfe5;
+  border: none;
+  border-radius: 55px;
+  width: 75vw;
+  height: 16vw;
+  font-size: 10vw;
+  font-family: "Karantina";
+  color: #ffffff;
+  cursor: pointer;
+  box-shadow: 9px 10px 20px #87b8cc, -3px -3px 5px rgba(255, 255, 255, 0.2);
+  margin-bottom: 10vw;      /* ← space under the button */
 }
 
-.pakar-logo{
- position: absolute;
-        height: 7vh;
-        width: auto;
-        right: 62vw;
-        margin-top: 5vh;
-}
-.pakar-grey{
-    position: absolute;
-    height: 7vh;
-    width: auto;
-    right: 79vw;
-    margin-top: 5vh;
+.home-button:hover {
+  background-color: #2f829d;
 }
 
-
-
-.collage-logo{
-    position: absolute;
-    height: 12vh;
-    width: auto;
-    margin-top: 2vh;
-    right: 5%;
+/* logos row */
+.logos-row {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 4vw;
+  width: 90vw;
 }
 
-.credits{
-    font-family: 'heebo';
-    position: absolute;
-    margin-top: 139vh;
-    right: 50%;
-    transform: translateX(50%);
-    width: 90vw;
-    font-size: 1.2em;
-    font-style: italic;
-    margin-top: 19vh;
-    text-align: center;
+.pakar-logo,
+.pakar-grey {
+  height: 7vw;
+  width: auto;
 }
 
-.bold-text{
-    position: absolute;
-    text-align: right;
-    right: 16vw;
-    font-weight: bold;
-    color: rgb(86, 85, 85);
-    font-size: 1.1em;
+.collage-logo {
+  height: 10vw;
+  width: auto;
 }
 
-.regular-text{
-    position: absolute;
-    text-align: center;
-    right: 67vw;
-    font-size: 1.1em;
-    color: rgb(86, 85, 85);
+.credits {
+  font-family: 'heebo';
+  font-size: 4vw;
+  color: #323030;
+  width: 90vw;
+  text-align: center;
+  font-style: italic;
+}
 
+.footer {
+  width: 90vw;
+  font-size: 4.5vw;
+  font-weight: bold;
+  text-align: center;
+}
 
+.linkCredits {
+  text-decoration: underline;
+  font-family: "heebo";
+  font-size: 4.5vw;
+  text-align: center;
+  color: #525253;
+  direction: rtl;
+  width: 90vw;
+}
 
+.feedback {
+  color: rgb(86, 85, 85);
+  width: 90vw;
+  font-size: 5vw;
+  text-align: center;
+}
+
+#linkMenuGrey { color: rgb(86, 85, 85); }
+
+.bold-text {
+  font-weight: bold;
+  color: rgb(86, 85, 85);
+  font-size: 4.5vw;
+}
+
+.regular-text {
+  color: rgb(86, 85, 85);
+  font-size: 4.5vw;
 }
 
 .tzahi-button {
-    border: none;
-    border-radius: 30px;
-    width: 69vw;
-    height: 8vh;
-    position: absolute;
-    font-size: 1.3em;
-    font-family: "Assistant";
-    font-weight: bold;
-    color: rgb(255, 255, 255);
-    padding: 1.5vw;
-    right: 50%;
-    transform: translateX(50%);
-    margin-top: 18vh;
-    background-color: rgb(123 122 122);
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3); 
-
+  border: none;
+  border-radius: 30px;
+  width: 69vw;
+  height: 14vw;
+  font-size: 5vw;
+  font-family: "Assistant";
+  font-weight: bold;
+  color: white;
+  background-color: rgb(123, 122, 122);
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+  cursor: pointer;
 }
 
-.feedback{
-    position: absolute;
-    right: 50%;
-    transform: translateX(50%);
-    color: rgb(86, 85, 85);
-    margin-top: 219vh;
-    margin-bottom: 20vh;
-    width: 93vw;
-    font-size: 1.3em;
-    text-align: center;
-} 
-
-.footer{
-    position: absolute;
-    right: 50%;
-    height: 10vh;
-    transform: translateX(50%);
-    background-color: rgba(86, 85, 85, 0);
-    font-weight: bold;
-    margin-top: 183vh;
-    margin-bottom: 22vh;
-    width: 90vw;
-    font-size: 1.1em;
+/* ── tablet ── */
+@media screen and (min-width: 769px) and (max-width: 1024px) {
+  .home-inner  { padding: 15vw 5vw 12vw; gap: 4vw; }
+  .home-title  { font-size: 6vw; }
+  .info1       { font-size: 2.5vw; }
+  .home-button { width: 40vw; height: 10vw; font-size: 5vw; margin-bottom: 6vw; }
+  .pakar-logo, .pakar-grey { height: 5vw; }
+  .collage-logo { height: 7vw; }
+  .credits     { font-size: 2.5vw; }
+  .linkCredits { font-size: 2.5vw; }
+  .feedback    { font-size: 2.5vw; }
 }
 
-
-#linkMenuGrey{
-    color:rgb(86, 85, 85);
-}
-
-.linkCredits{
-    position: absolute;
-    margin-top: 181vh;
-    text-decoration: underline;
-    font-family: "heebo";
-    right: 50%;
-    transform: translateX(50%);
-    font-size: 1.2em;
-    text-align: center;
-    color: #525253;
-    direction: rtl;
-    width: 100vw;
-    z-index: 100;
-}
-}
-@media screen and (min-width: 769px) and (max-width: 1024px)  {
-    
-    .homepage-container {
-        position: fixed;
-          top: 0;
-          left: 0;
-          width: 100%;
-          height: 100%;
-          background-color: #ffffff;
-          z-index: 2000;
-          text-align: right;
-          padding-top: 2vh;
-          overflow: scroll;
-          direction: rtl;
-        }
-    
-        .home-title{
-            font-family: "karantina";
-            font-size: 5em;
-            font-weight: 400;
-            position: absolute;
-            right: 50%;
-            transform: translateX(50%);
-            width: 90vw;
-            color: #1bbfe5;
-            margin-top: 13vh;
-            text-align: center;
-        
-        }
-        
-        .info1{
-                   font-family: "heebo";
-        font-size: 1.3em;
-        position: absolute;
-        right: 50%;
-        transform: translateX(50%);
-        width: 90vw;
-        margin-top: 40vh;
-        text-align: center;
-        direction: rtl;
-        
-        }
-      
-        .home-button {
-            background-color: #2893b7;
-            border: none;
-            border-radius: 55px;
-            width: 35vw;
-            height: 10vh;
-            position: absolute;
-            font-size: 3.5em;
-            font-family: "Karantina";
-            font-weight: bold;
-            color: #ffffff;
-            padding: 0.5vw;
-            right: 50%;
-            transform: translateX(50%);
-            margin-top: 87vh;
-            box-shadow: 9px 10px 20px #323030, -3px -3px 5px rgba(255, 255, 255, 0.2);
-        }
-        
-        .pakar-logo{
-            position: absolute;
-            height: 10vh;
-            width: auto;
-            right: 46vw;
-            margin-top: 6vh;
-        }
-        .pakar-grey{
-            position: absolute;
-            height: 10vh;
-            width: auto;
-            right: 64vw;
-            margin-top: 6vh;
-        }
-        
-        .collage-logo{
-            position: absolute;
-            height: 10vh;
-            width: auto;
-            margin-top: 5vh;
-            right: 20%;
-        }
-        
-        .credits{
-            font-family: 'heebo';
-        position: absolute;
-        right: 50%;
-        transform: translateX(50%);
-        width: 60vw;
-        font-size: 2em;
-        color: #323030;
-        margin-top: 20vh;
-        text-align: center;
-        }
-
-        .bold-text{
-            position: absolute;
-            text-align: right;
-            right: 16vw;
-            font-weight: bold;
-            color: rgb(86, 85, 85);
-            font-size: 1.1em;
-        }
-        
-        .regular-text{
-            position: absolute;
-            text-align: center;
-            right: 67vw;
-            font-size: 1.1em;
-            color: rgb(86, 85, 85);
-        }
-        
-        .feedback{
-            position: absolute;
-            right: 50%;
-            transform: translateX(50%);
-            color: rgb(86, 85, 85);
-            margin-top: 200vh;
-            margin-bottom: 10vh;
-            width: 93vw;
-            font-size: 1.3em;
-            text-align: center;
-        } 
-        
-        .footer{
-            position: absolute;
-            right: 50%;
-            height: 10vh;
-            transform: translateX(50%);
-            background-color: rgba(86, 85, 85, 0);
-            font-weight: bold;
-            margin-top: 155vh;
-            margin-bottom: 22vh;
-            width: 90vw;
-            font-size: 1.1em;
-        }
-        
-        
-        #linkMenuGrey{
-            color:rgb(86, 85, 85);
-        }
-        
-        .linkCredits{
-            position: absolute;
-            margin-top: 150vh;
-            text-decoration: underline;
-            font-family: "Assistant";
-            right: 50%;
-            transform: translateX(50%);
-            font-size: 1.2em;
-            text-align: center;
-            color: #525253;
-            direction: rtl;
-            width: 100vw;
-            z-index: 100;
-        }
-}
-
+/* ── desktop ── */
 @media screen and (min-width: 1025px) {
- 
-    .homepage-container {
-        position: fixed;
-          top: 0;
-          left: 0;
-          width: 100%;
-          height: 100%;
-          background-color: #ffffff;
-          z-index: 2000; 
-          text-align: right;
-          padding-top: 2vh;
-          overflow: scroll;
-          direction: rtl;
-        }
-        
-        .home-title{
-            font-family: "karantina";
-            font-size: 5em;
-            font-weight: 400;
-            position: absolute;
-            right: 50%;
-            transform: translateX(50%);
-            width: 90vw;
-            color: #1bbfe5;
-            margin-top: 13vh;
-            text-align: center;
-        
-        }
-        
-        .info1{
-            font-family: "heebo";
-            font-size: 4.5vmin;
-            position: absolute;
-            right: 50%;
-            transform: translateX(50%);
-            width: 80vw;
-            margin-top: 45vh;
-            text-align: center;
-        
-        }
-       
-        .home-button {
-           background-color: #56c3e8;
-        border: none;
-        border-radius: 55px;
-        width: 25vw;
-        height: 10vh;
-        position: absolute;
-        font-size: 8vmin;
-        font-family: "Karantina";
-        font-weight: bold;
-        color: #ffffff;
-        padding: 0.5vw;
-        right: 50%;
-        transform: translateX(50%);
-        margin-top: 101vh;
-        box-shadow: 9px 10px 20px #323030, -3px -3px 5px rgba(255, 255, 255, 0.2);
-        }
-        .home-button:hover{
-         background-color: #2f829d;
-         cursor: pointer;
-
-        }
-        
-        .pakar-logo{
-            position: absolute;
-            height: 13vh;
-            width: auto;
-            right: 46vw;
-            margin-top: 6vh;
-        }
-        .pakar-grey{
-            position: absolute;
-            height: 13vh;
-            width: auto;
-            right: 64vw;
-            margin-top: 6vh;
-        }
-        
-        .collage-logo{
-            position: absolute;
-            height: 14vh;
-            width: auto;
-            margin-top: 5vh;
-            right: 20%;
-        }
-        
-        
-        .credits{
-       font-family: "heebo";
-        position: absolute;
-        right: 50%;
-        transform: translateX(50%);
-        width: 60vw;
-        color: #323030;
-        margin-top: 25vh;
-        font-size: 5vmin;
-        text-align: center;
-        }
-        
-        .bold-text{
-            position: absolute;
-            text-align: right;
-            right: 16vw;
-            font-weight: bold;
-            color: rgb(86, 85, 85);
-            font-size: 1.1em;
-        }
-        
-        .regular-text{
-            position: absolute;
-            text-align: center;
-            right: 67vw;
-            font-size: 1.1em;
-            color: rgb(86, 85, 85);
-        }
-        
-        .feedback{
-            position: absolute;
-            right: 50%;
-            transform: translateX(50%);
-            color: rgb(86, 85, 85);
-            margin-top: 219vh;
-            margin-bottom: 20vh;
-            width: 93vw;
-            font-size: 1.3em;
-            text-align: center;
-        } 
-        
-        .footer{
-            position: absolute;
-            right: 50%;
-            height: 10vh;
-            transform: translateX(50%);
-            background-color: rgba(86, 85, 85, 0);
-            font-weight: bold;
-            margin-top: 183vh;
-            margin-bottom: 22vh;
-            width: 90vw;
-            font-size: 1.1em;
-        }
-        
-        
-        #linkMenuGrey{
-            color:rgb(86, 85, 85);
-        }
-        
-        .linkCredits{
-            position: absolute;
-            margin-top: 181vh;
-            text-decoration: underline;
-            font-family: "heebo";
-            right: 50%;
-            transform: translateX(50%);
-            font-size: 1.2em;
-            text-align: center;
-            color: #525253;
-            direction: rtl;
-            width: 100vw;
-            z-index: 100;
-        }
+  .home-inner  { padding: 12vw 5vw 8vw; gap: 3vw; }
+  .home-title  { font-size: 5vw; }
+  .info1       { font-size: 1.8vw; width: 70vw; }
+  .home-button { width: 25vw; height: 8vw; font-size: 4vw; margin-bottom: 4vw; }
+  .pakar-logo, .pakar-grey { height: 4vw; }
+  .collage-logo { height: 6vw; }
+  .credits     { font-size: 1.8vw; width: 60vw; }
+  .linkCredits { font-size: 1.8vw; }
+  .feedback    { font-size: 1.8vw; }
 }

@@ -1,26 +1,26 @@
 #TrackPage {
   width: 100vw;
   max-width: 100vmin;
-  margin-top: 72vw ;
+  margin-top: 0;
   text-align: center;
-  position: absolute;
-  z-index: 20;
-  background: transparent;
-  min-height: 150vh;
+  position: relative;
+  z-index: 40;
+  background: white;
+  min-height: 200vh;
   height: auto;
   overflow-x: hidden;
   overflow-y: hidden;
   box-sizing: border-box;
-  z-index: 40;
   direction: rtl;
+  padding-top: 0vw;        /* pushes track content below the fixed header */
 }
 
 .track-container {
   position: absolute;
-    left: 0;
-    width: 100vw;
-    height: 120vh;
-  top: 0vw;
+  left: 0;
+  width: 100vw;
+  height: 120vh;
+  top: 70vw;
   z-index: 10;
   background-color: white;
 }
@@ -41,15 +41,14 @@
   z-index: 20;
 }
 
-.track-circle:nth-child(2) { top: 5vw; left: 65vw; background: #9fd18b; }
+.track-circle:nth-child(2) { top: 5vw;  left: 65vw; background: #9fd18b; }
 .track-circle:nth-child(3) { top: 25vw; left: 10vw; background: #f0d57a; }
 .track-circle:nth-child(4) { top: 40vw; left: 50vw; background: #e8c79c; }
 .track-circle:nth-child(5) { top: 70vw; left: 40vw; background: #d88c8c; }
 .track-circle:nth-child(6) { top: 80vw; left: 10vw; background: #d46f5e; }
 .track-circle:nth-child(7) { top: 95vw; left: 65vw; background: #9baeee; }
 
-/* מיקומים ייחודיים לעיגולים עבור החברה הערבית */
-.arabic-company .track-circle:nth-child(2) { top: 5vw; left: 65vw; }
+.arabic-company .track-circle:nth-child(2) { top: 5vw;  left: 65vw; }
 .arabic-company .track-circle:nth-child(3) { top: 30vw; left: 20vw; }
 .arabic-company .track-circle:nth-child(4) { top: 90vw; left: 65vw; }
 
@@ -58,7 +57,7 @@
   font-weight: lighter;
   font-family: "karantina";
   position: absolute;
-  top: -7vw; 
+  top: -7vw;
   left: 82%;
 }
 
@@ -70,29 +69,24 @@
   width: 80%;
 }
 
-.locked {
-  opacity: 0.4;
-  pointer-events: none;
-}
-
-.completed {
-  transform: scale(1.1);
-}
+.locked    { opacity: 0.4; pointer-events: none; }
+.completed { transform: scale(1.1); }
 
 .reading-backdrop {
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   width: 100vw;
-  height: 150vh;
+  height: 100vh;
+  max-height: 100vh;
   background-image: url("/public/assets/imgs/Bg2.jpg");
   background-size: cover;
   background-repeat: no-repeat;
-  z-index: 25;
-
-  /* Enable scrolling */
-  overflow-y: auto;      /* changed from hidden */
-  -webkit-overflow-scrolling: touch; /* smooth scrolling on mobile */
+  z-index: 100;             /* above SocietyHeader z-index:30 */
+  overflow-y: auto;
+  padding-bottom: 50vw;
+  -webkit-overflow-scrolling: touch;
+  box-sizing: border-box;
 }
 
 #TrackPage.reading-open {
@@ -100,14 +94,8 @@
 }
 
 @keyframes popupFadeIn {
-  from {
-    opacity: 0;
-    transform: translate(-50%, -45%);
-  }
-  to {
-    opacity: 1;
-    transform: translate(-50%, -50%);
-  }
+  from { opacity: 0; transform: translate(-50%, -45%); }
+  to   { opacity: 1; transform: translate(-50%, -50%); }
 }
 
 .number-box {
@@ -131,22 +119,20 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  z-index: 10050; /* ensure close button is above dragged image */
+  z-index: 10050;
 }
 
-.reading-close:hover {
-  opacity: 0.7;
-}
+.reading-close:hover { opacity: 0.7; }
 
-.reading-box h2 { 
-  font-size: 5vw; 
-  margin: 8vw 0 vw 0; 
+.reading-box h2 {
+  font-size: 5vw;
+  margin: 8vw 0 0 0;
   font-weight: 700;
 }
 
-.reading-box p { 
-  font-size: 4.5vw; 
-  line-height: 1.8; 
+.reading-box p {
+  font-size: 4.5vw;
+  line-height: 1.8;
   margin: 0;
 }
 
@@ -154,7 +140,7 @@
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
-  top: 130vw;
+  top: 200vw;
   padding: 0.8vw 2.4vw;
   font-size: 7vw;
   border: none;
@@ -170,16 +156,17 @@
   text-align: center;
 }
 
-
 #rode-img {
   position: absolute;
-  height: 90vw;   /* נמתח לפי גובה המסך */
-  width: auto;    /* שומר על פרופורציות */
+  height: 90vw;
+  width: auto;
   top: 65vw;
   left: 45%;
   transform: translate(-50%, -50%);
   z-index: 15;
 }
+
+/* ── regular reading box (small popup) ── */
 .reading-box {
   position: relative;
   top: 35vw;
@@ -187,43 +174,40 @@
   transform: translateX(50%);
   width: 70vw;
   max-width: 80vw;
-  max-height: 200vw;
   background: white;
   padding: 15vw 10vw 8vw 8vw;
   border-radius: 24px;
   text-align: right;
-  z-index: 35;
+  z-index: 9999;
   color: #003561;
   box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
   animation: popupFadeIn 0.3s ease-out;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  z-index: 9999;   
-  height: auto;
-  overflow: hidden;
+  height: auto;             /* ← natural height */
+  overflow: visible;
 }
 
-/* מסך מלא – רחב יותר וממורכז (שלב 2 ו-4) */
+/* ── fullscreen box: grows with content, backdrop scrolls ── */
 .reading-box.fullscreen {
   position: relative;
-  top: 30vw;
+  top: 20vw;
   right: 50%;
   transform: translateX(50%);
-  width: 96vw;          /* ← רחב יותר */
-  max-width: 1200px;    /* שלא יהיה ענק במסכים גדולים */
-  height: 160vw;        /* גובה דינמי בלי חיתוך */
-  /* padding: 15vw 10vw 8vw 8vw; */
+  width: 96vw;
+  max-width: 1200px;
+  height: auto;
+  padding: 15vw 6vw 30vw;
   border-radius: 10vw;
   display: flex;
   flex-direction: column;
   box-sizing: border-box;
-    /* overflow-y: auto;                 */
-  /* -webkit-overflow-scrolling: touch; */
-  /* max-height: 160vh; */
+  overflow: visible;
+  margin-bottom: 40vw;
 }
 
-/* חץ קדימה בתוך ה-reading box */
+/* ── arrow button ── */
 .arrow-btn {
   width: 10vw;
   height: 10vw;
@@ -243,5 +227,3 @@
   left: 5vw;
   position: absolute;
 }
-
-
