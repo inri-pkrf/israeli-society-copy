@@ -11,8 +11,6 @@ export default function IntroductionToSociety() {
 
   const companyData = videoData[prompt];
 
-  /* כל ה-Hooks חייבים להיות לפני כל return */
-
   const initialSlides = companyData?.slides ?? [
     { title: companyData?.title ?? '', text: companyData?.videoInfo ?? '' },
   ];
@@ -39,29 +37,28 @@ export default function IntroductionToSociety() {
     setHasNavigated(true);
   };
 
-const goToNextStep = () => {
-  if (prompt === "מוגבלויות והגיל השלישי") {
-    navigate('/interlude', { 
-      state: { 
-        prompt,
-        from: "introduction-to-society"
-      } 
-    });
-  } else {
-    navigate('/video-page', { 
-      state: { 
-        prompt,
-        videoIndex: 0,
-        from: "introduction-to-society"
-      } 
-    });
-  }
-};
+  const goToNextStep = () => {
+    if (prompt === "מוגבלויות והגיל השלישי") {
+      navigate('/interlude', {
+        state: {
+          prompt,
+          from: "introduction-to-society"
+        }
+      });
+    } else {
+      navigate('/video-page', {
+        state: {
+          prompt,
+          videoIndex: 0,
+          from: "introduction-to-society"
+        }
+      });
+    }
+  };
 
   const shouldShowButton =
     prompt !== "החברה החרדית" || hasNavigated;
 
-  /* רק עכשיו מותר return מוקדם */
   if (!companyData) return null;
 
   return (
@@ -75,29 +72,29 @@ const goToNextStep = () => {
 
       <div className="intro-content">
 
-        <h1>{companyData.title ?? 'Introduction'}</h1>
-
         <p className='video-info2'>
           {companyData.videoInfo}
         </p>
 
         <div className='video-content'>
-          <div id="text-container">
-
-
-            <h2>{activeSlide.title}</h2>
-            <p>{activeSlide.text}</p>
-          </div>
+        <div id="text-container">
+          <h2>{activeSlide.title}</h2>
+          <p>
+            {activeSlide.text.split('\n').map((line, i) => (
+              <React.Fragment key={i}>
+                {line}
+                <br />
+              </React.Fragment>
+            ))}
+          </p>
         </div>
-
-        
           <button
             className="introduction-to-society next-step-button-2"
             onClick={goToNextStep}
           >
             לשלב הבא
           </button>
-        
+        </div>
 
       </div>
     </div>

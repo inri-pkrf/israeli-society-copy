@@ -116,7 +116,7 @@ const TrackPage = () => {
             <div className="reading-box">
               <h1 className="number-box">{activeStep}</h1>
               <h2>{companySteps[activeStep - 1].title}</h2>
-              <p>{companySteps[activeStep - 1].text}</p>
+              <p dangerouslySetInnerHTML={{ __html: companySteps[activeStep - 1].text }} />
             </div>
 
             {activeStep < companySteps.length && (

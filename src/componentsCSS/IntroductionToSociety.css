@@ -1,74 +1,78 @@
 .introduction-to-society {
 	direction: rtl;
 	overflow-y: scroll;
-    overflow-x: hidden;}
+	overflow-x: hidden;
+}
 
-
-
-
-.video-info2{
-    font-family: "Heebo";
-    font-size: 5vw;
-    font-weight: 400;
-    position: absolute;
-    right: 50%;
-    transform: translateX(50%);
-    width: 100vw;
-	height: 150vw;
-    color: #535353;
-    text-align: center;
-    top: 66vw;
+.video-info2 {
+	font-family: "Heebo";
+	font-size: 5vw;
+	font-weight: 400;
+	position: absolute;
+	right: 50%;
+	transform: translateX(50%);
+	width: 100vw;
+	height: 100vw;
+	color: #535353;
+	text-align: center;
+	top: 66vw;
 	background-color: white;
 }
 
-.video-content #text-container{
+.video-content {
+	position: absolute;
+	top: 100vw;
+	left: 50%;
+	transform: translateX(-50%);
+	width: 90%;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 4vw;
+}
+
+.video-content #text-container {
 	background-color: #F2F2FF;
-	padding: 2.5vw 5vw 3vw;
+	padding: 2.5vw 5vw 5vw;
 	box-sizing: border-box;
 	border-radius: 16px;
 	width: 100%;
 	color: #003561;
 	text-align: right;
-	position: absolute;
-	top: 100vw;
-	left: 50%;
-	transform: translateX(-50%);
 }
 
-.next-step-button-2.introduction-to-society{
-	max-width: 320px;
-    z-index: 100;
-	position: absolute;
-	top: 175vw;
-	left: 50%;
-	transform: translateX(-50%);
-
+.video-content #text-container h2 {
+	font-size: 6vw;
+	margin: 0 0 2vw 0;
 }
 
-.intro-content { padding-bottom: 5vh; }
+.video-content #text-container p {
+	font-size: 4.5vw;
+	white-space: pre-line;
+	margin: 0;
+}
 
-.video-content #text-container h2{ font-size: 6vw; }
-.video-content #text-container p{ font-size: 4.5vw; }
+.next-step-button-2.introduction-to-society {
+	z-index: 100;
+	align-self: center;
+}
 
-
-#text-container {
-    position: absolute;
-	top: 50vw;
+.intro-content {
+	padding-bottom: 5vh;
 }
 
 #TrueFalseText {
-    position: absolute;
-    right: 50%;
-    transform: translateX(50%);
-    color: #003561;
-    text-align: center;
-    top: 80vw;
-    font-size: 6vw;
-    width: 100%;
+	position: absolute;
+	right: 50%;
+	transform: translateX(50%);
+	color: #003561;
+	text-align: center;
+	top: 80vw;
+	font-size: 6vw;
+	width: 100%;
 	background-color: white;
 }
 
 .next-step-button-2.True-False {
 	top: 150vw;
 }
-

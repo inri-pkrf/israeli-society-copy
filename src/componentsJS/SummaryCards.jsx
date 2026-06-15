@@ -44,12 +44,12 @@ const SummaryCards = ({ onExitToSummary }) => {
       <div className="card-sections-wrapper">
 
       <div className="card-section">
-        <p>{currentCard.Arab}</p>
-        <img src={`${process.env.PUBLIC_URL}/assets/imgs/cuctuseJPNG/cactusArab.png`} alt="קקטוס ערבי" />
-      </div>
-      <div className="card-section">
         <p>{currentCard.Dos}</p>
         <img src={`${process.env.PUBLIC_URL}/assets/imgs/cuctuseJPNG/cactusDos.png`} alt="קקטוס חרדי" />
+      </div>
+      <div className="card-section">
+        <p>{currentCard.Arab}</p>
+        <img src={`${process.env.PUBLIC_URL}/assets/imgs/cuctuseJPNG/cactusArab.png`} alt="קקטוס ערבי" />
       </div>
       <div className="card-section card-old">
         <p>{currentCard.Old}</p>

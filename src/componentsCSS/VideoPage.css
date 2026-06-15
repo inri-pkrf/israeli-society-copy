@@ -9,18 +9,7 @@
     font-family: "Heebo";
     font-size: 1.2em;
 }
-.footer-vid {
-    position: absolute;
-    right: 50%;
-    height: 10vh;
-    transform: translateX(50%);
-    background-color: rgba(86, 85, 85, 0);
-    font-weight: bold;
-    margin-top: 63vh;
-    margin-bottom: -31vh;
-    width: 90vw;
-    font-size: 1.1em;
-}
+
 }
 
 
@@ -35,17 +24,6 @@
       transform: translateX(50%);
       font-family: "Heebo";
       font-size: 2em;
-  }
-  .footer-vid {
-      position: absolute;
-      right: 50%;
-      height: 10vh;
-      transform: translateX(50%);
-      background-color: rgba(86, 85, 85, 0);
-      font-weight: bold;
-      margin-top: 2vh;
-      width: 90vw;
-      font-size: 1.1em;
   }
   
   
@@ -65,15 +43,5 @@
     font-family: "Heebo";
     font-size: 2em;
 }
-.footer-vid {
-    position: absolute;
-    right: 50%;
-    height: 10vh;
-    transform: translateX(50%);
-    background-color: rgba(86, 85, 85, 0);
-    font-weight: bold;
-    margin-top: 42vh;
-    width: 90vw;
-    font-size: 1.1em;
-}
+
   }

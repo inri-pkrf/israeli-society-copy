@@ -21,8 +21,9 @@ const correctMap = { 0: 0, 1: 1, 2: 2, 3: 3, 4: 4 };
 
 export default function DragTextMatch({ onComplete }) {
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [status, setStatus] = useState(null); // null | 'correct' | 'wrong'
+  const [status, setStatus] = useState(null);
   const [locked, setLocked] = useState(false);
+  const [correctAnswers, setCorrectAnswers] = useState({}); // { sentenceIndex: titleIndex }
 
   const handleAnswer = (titleIndex) => {
     if (locked) return;
@@ -31,6 +32,7 @@ export default function DragTextMatch({ onComplete }) {
     if (isCorrect) {
       setStatus("correct");
       setLocked(true);
+      setCorrectAnswers((prev) => ({ ...prev, [currentIndex]: titleIndex }));
       setTimeout(() => {
         if (currentIndex === sentences.length - 1) {
           onComplete && onComplete();
@@ -52,22 +54,20 @@ export default function DragTextMatch({ onComplete }) {
 
   const progress = ((currentIndex + 1) / sentences.length) * 100;
 
+  // מציאת אילו כותרות כבר נענו נכון בשאלות קודמות
+  const answeredTitleIndices = Object.values(correctAnswers);
+
   return (
-    /* dg-wrapper fills the reading-box fullscreen card — no own background */
     <div className="dg-wrapper">
-
-      {/* Heading */}
       <div className="dg-heading">בחרו את הכותרת המתאימה למשפט</div>
-        <span className="dg-badge">
-          שאלה {currentIndex + 1} מתוך {sentences.length}
-        </span>
+      <span className="dg-badge">
+        שאלה {currentIndex + 1} מתוך {sentences.length}
+      </span>
 
-      {/* Progress bar */}
       <div className="dg-progress-track">
         <div className="dg-progress-fill" style={{ width: `${progress}%` }} />
       </div>
 
-      {/* Sentence box */}
       <div className={`dg-sentence-box ${status || ""}`}>
         <div className={`dg-status-icon ${status ? "visible" : ""} ${status || ""}`}>
           {status === "correct" ? "✓" : status === "wrong" ? "✕" : ""}
@@ -75,28 +75,28 @@ export default function DragTextMatch({ onComplete }) {
         {sentences[currentIndex]}
       </div>
 
-      {/* Options */}
       <div className="dg-options-grid">
-        {titles.map((title, i) => (
-          <button
-            key={i}
-            className="dg-option"
-            onClick={() => handleAnswer(i)}
-            disabled={locked}
-          >
-            <span className="dg-option-dot" />
-            {title}
-          </button>
-        ))}
+        {titles.map((title, i) => {
+          const isAnswered = answeredTitleIndices.includes(i);
+          return (
+            <button
+              key={i}
+              className={`dg-option ${isAnswered ? "answered" : ""}`}
+              onClick={() => handleAnswer(i)}
+              disabled={locked || isAnswered}
+            >
+              <span className="dg-option-dot" />
+              {title}
+            </button>
+          );
+        })}
       </div>
 
-      {/* Dot pagination */}
       <div className="dg-dots">
         {sentences.map((_, i) => (
           <div key={i} className={`dg-dot ${i === currentIndex ? "active" : ""}`} />
         ))}
       </div>
-
     </div>
   );
 }

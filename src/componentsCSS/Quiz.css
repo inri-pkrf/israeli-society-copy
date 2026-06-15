@@ -179,6 +179,22 @@
   display: block;
 }
 
+
+.try-button,
+.reset-btn,
+.mistakes-btn {
+  width: 50vw;
+  max-width: 360px;
+  padding: 2vw 5vw;
+  font-size: 5.5vw;
+  font-family: "Heebo";
+  border: none;
+  border-radius: 8vw;
+  color: white;
+  cursor: pointer;
+  display: block;
+}
+
 .share-btn    { background-color: rgb(33, 173, 216); }
 .try-button   { background-color: #2858ab; }
 .end-btn      { background-color: rgb(33, 173, 216); }

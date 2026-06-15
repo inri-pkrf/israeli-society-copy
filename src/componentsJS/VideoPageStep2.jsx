@@ -1,10 +1,22 @@
-import React from 'react';
+import React, { useState, useRef } from 'react';
 import '../componentsCSS/VideoPageStep2.css';
 
 const VideoPageStep2 = ({ videoSrc, videoInfo, onNextStep }) => {
+  const [showButton, setShowButton] = useState(false);
+  const videoRef = useRef(null);
+
+  const handleVideoEnded = () => {
+    setShowButton(true);
+  };
+
   return (
     <div className="video-step2">
-      <video className="video-play" controls>
+      <video
+        className="video-play"
+        controls
+        ref={videoRef}
+        onEnded={handleVideoEnded}
+      >
         <source src={videoSrc} type="video/mp4" />
         Your browser does not support the video tag.
       </video>
@@ -13,9 +25,11 @@ const VideoPageStep2 = ({ videoSrc, videoInfo, onNextStep }) => {
         <p className="video-info2">{videoInfo}</p>
       )}
 
-      <button className="next-step-button-2" onClick={onNextStep}>
-        לשלב הבא
-      </button>
+      {showButton && (
+        <button className="next-step-button-2" id="next-step-button-2-video" onClick={onNextStep}>
+          לשלב הבא
+        </button>
+      )}
     </div>
   );
 };

@@ -19,7 +19,7 @@
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
-    top: 140vw;
+    top: 40vh;
     padding: 3vw 5vw;
     font-size: 6vw;
     border-radius: 30px;
@@ -45,7 +45,9 @@
 }
 
 
-
+#next-step-button-2-video {
+    top: 84vh;
+}
 
 
 @media screen and (min-width: 769px) and (max-width: 1024px)  {

@@ -45,14 +45,14 @@ const TrueOrFalseGame = () => {
     }
   };
 
-  const formatFeedback = (text) => {
-    if (!text) return '';
-    return text
-      .replace(/(תשובה נכונה, המשפט מיתוס,)/g, '<strong>$1</strong><br/>')
-      .replace(/(המשפט אמת,)/g, '<strong>$1</strong><br/>')
-      .replace(/(המשפט מיתוס,)/g, '<strong>$1</strong><br/>')
-      .replace(/(תשובה נכונה, זו אמת,)/g, '<strong>$1</strong><br/>');
-  };
+const formatFeedback = (text) => {
+  if (!text) return '';
+  return text
+    .replace(/(תשובה נכונה, המשפט מיתוס,)/g, '<strong>$1</strong><br/>')
+    .replace(/(תשובה נכונה, זו אמת,)/g, '<strong>$1</strong><br/>')
+    .replace(/((?<!תשובה נכונה, )המשפט מיתוס,)/g, '<strong>$1</strong><br/>')
+    .replace(/(המשפט אמת,)/g, '<strong>$1</strong><br/>');
+};
 
   const correctSrc = `${process.env.PUBLIC_URL}/assets/imgs/cactuseCorrect.png`;
   const wrongSrc   = `${process.env.PUBLIC_URL}/assets/imgs/catuseWrong.png`;

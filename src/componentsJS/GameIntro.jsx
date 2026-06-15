@@ -1,7 +1,5 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
-import { useNavigate } from 'react-router-dom'; 
-
+import { useNavigate } from 'react-router-dom';
 import '../componentsCSS/GameIntro.css';
 import AudioPlayer from '../componentsJS/AudioPlayer';
 
@@ -14,33 +12,30 @@ const GameIntro = () => {
     setShowButton(true);
   };
 
-
- 
   return (
     <div id="game-intro">
-        <h3 className="part-titlethree">חלק שלישי
-        </h3>
-      <h1 className="GameInto-title" > נקודות ממשק
-בין החברה החרדית לערבית
+      <img className="white-cactus" src={`${process.env.PUBLIC_URL}/assets/imgs/white-cactus.png`} alt="cactus" />
 
-      </h1>
-      <div className="audio-container-game">
-          <AudioPlayer src={audioSrc} className="Audio-player" onEnded={handleAudioEnded} isDarkMode={true}  />
+      <div className="circle-div-game">
+        <p className='PartOne-subTitle-game'>חלק שלישי</p>
+        <h1 className='GameInto-title'>
+          נקודות ממשק{"\n"}בין החברה החרדית לערבית
+        </h1>
+
+        <div className="audio-container-game">
+          <AudioPlayer src={audioSrc} className="Audio-player" onEnded={handleAudioEnded} isDarkMode={false} />
         </div>
-        {!showButton && (
-            <p className='pod-explain'>הקשיבו לדברי ההסבר על הקווים המשיקים בין החברה החרדית לערבית
-</p>
-        )}
+
+        <p className='PartOne-explaining-game'>
+          הקשיבו לדברי ההסבר על הקווים המשיקים בין החברה החרדית לערבית
+        </p>
+
         {showButton && (
-          <button className="next-button-game-intro" onClick={() => navigate('/game-explain')}>
+          <button className="next-button-one-game" onClick={() => navigate('/game-explain')}>
             המשך לחלק הבא
           </button>
         )}
-
-    
-
- 
-<div className="footer"></div>
+      </div>
     </div>
   );
 };

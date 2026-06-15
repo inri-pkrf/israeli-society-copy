@@ -23,7 +23,7 @@ const SummaryPoints = () => {
       <p className='instructions-summary'>
        סיכמנו עבורכם את 10 הנקודות החשובות ביותר
         <br />
-לשלושת החברות יש ללחוץ על החצים על מנת להתקדם  <br />
+לשלושת החברות.<br /> יש ללחוץ על החצים כדי להתקדם.  <br />
       </p>
       
       <div className="card-arrows-sum">

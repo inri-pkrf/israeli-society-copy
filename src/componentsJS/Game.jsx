@@ -211,7 +211,6 @@ const Game = () => {
             בשבילנו את/ה צבר אמיתי!
           </p>
           <div className="end-images-row">
-            <img src={`${process.env.PUBLIC_URL}/assets/imgs/cuctuseJPNG/cactusOld.png`} alt="כפתור 3" className="end-img" />
             <img src={`${process.env.PUBLIC_URL}/assets/imgs/cuctuseJPNG/cactusDos.png`} alt="כפתור 3" className="end-img" />
             <img src={`${process.env.PUBLIC_URL}/assets/imgs/cuctuseJPNG/cactusArab.png`} alt="כפתור 3" className="end-img" />
           </div>
