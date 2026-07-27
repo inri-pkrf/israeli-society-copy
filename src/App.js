@@ -22,49 +22,7 @@ import SummaryPoints from './componentsJS/SummaryPoints'
 import FinalScreen from './componentsJS/FinalScreen'
 import Quiz from './componentsJS/Quiz'
 
-
-// mobile only until the design is complete
-
-function useIsPortraitAndSmallScreen() {
-  const [isAllowed, setIsAllowed] = React.useState(() => {
-    const width = window.innerWidth;
-    const height = window.innerHeight;
-    if (width > 768) return false;  
-    return height > width;           
-  });
-
-  React.useEffect(() => {
-    const handleResize = () => {
-      const width = window.innerWidth;
-      const height = window.innerHeight;
-      if (width > 768) {
-        setIsAllowed(false);
-      } else {
-        setIsAllowed(height > width);
-      }
-    };
-
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
-  }, []);
-
-  return isAllowed;
-}
-
-
 function App() {
-  const location = useLocation();
-  const allowedHorizontalPaths = ['/video-page'];
-  const isAllowed = useIsPortraitAndSmallScreen();
-  const isHorizontalAllowed = allowedHorizontalPaths.includes(location.pathname);
-   if (!isHorizontalAllowed && !isAllowed) {
-    return (
-      <div className="orientation-warning" >
-      
-      </div>
-    );
-  }
-
   return (
     <div className="App">
       <Header className="header-fixed" />
@@ -89,8 +47,7 @@ function App() {
         <Route path="/summary-points" element={<SummaryPoints/>} />
         <Route path="/final-screen" element={<FinalScreen/>} />
         <Route path="/test" element={<Quiz/>} />
-
-        </Routes>
+      </Routes>
     </div>
   );
 }
